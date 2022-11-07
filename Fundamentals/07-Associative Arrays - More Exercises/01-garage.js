@@ -6,32 +6,28 @@ function garage(input) {
         car = car.split(' - ');
         const garageNumber = car.shift();
         const arrayOfCar = car[0].split(', ');
+        if (!garages[garageNumber]) {
+            garages[garageNumber] = '--- ';
+        }
 
-        arrayOfCar.forEach(car => {
-            const [key, value] = car.split(': ');
-            if (!garages[garageNumber]) {
-                garages[garageNumber] = [];
+        for (let index = 0; index < arrayOfCar.length; index++) {
+            const [key, value] = arrayOfCar[index].split(': ');
+            if (index === 0 && garages[garageNumber] !== '--- ') {
+                garages[garageNumber] += '\n--- '
             }
-            garages[garageNumber].push([key, value]);
-        })
+            if (index >= arrayOfCar.length - 1) {
+                garages[garageNumber] += `${key} - ${value}`;
+            } else {
+                garages[garageNumber] += `${key} - ${value}, `;
+            }
+
+        }
     })
 
-    const entriesOfGarages = Object.entries(garages);
-    for (let [garageNumber, arrayOfCarsArr] of entriesOfGarages) {
-        console.log(`Garage № ${garageNumber}`);
-        let arrayOfCars = arrayOfCarsArr.map(carArr => {
-            carArr = carArr.join(' - ')
-            return carArr
-        })
-
-        let finalLine = '--- '
-        arrayOfCars.forEach((car, index) => {
-            finalLine += car;
-            if (index < arrayOfCars.length - 1) {
-                finalLine += ', '
-            }
-        })
-        console.log(finalLine);
+    let entries = Object.entries(garages);
+    for (let [key, value] of entries) {
+        console.log(`Garage № ${key}`);
+        console.log(value);
     }
 }
 
