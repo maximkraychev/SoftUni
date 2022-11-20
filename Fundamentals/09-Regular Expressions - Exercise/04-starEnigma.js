@@ -13,7 +13,7 @@ function starEnigma(input) {
         const currentMassage = input[index];
         let decryptKey = currentMassage.match(decryptingMessageRegExp);
         if (decryptKey === null) {
-            continue;
+            decryptKey = 0;
         } else {
             decryptKey = decryptKey.length;
         }
