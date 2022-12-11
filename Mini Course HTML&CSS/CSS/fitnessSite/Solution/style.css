@@ -1,0 +1,96 @@
+body {
+    background: #F0F1F5;
+    margin: 0;
+    font-family: "Helvetica", sans-serif;
+    padding: 1rem 22rem;
+}
+
+header>section {
+    float: left;
+    color: #F9690E;
+}
+
+header section p {
+    display: inline-block;
+}
+
+nav {
+    text-align: right;
+}
+
+nav ul {
+    float: right;
+}
+
+nav ul li {
+    display: inline-block;
+    padding-left: 8px;
+}
+
+nav ul li a {
+    color: #F9690E;
+    text-decoration: none;
+}
+
+main section:nth-child(1) {
+    margin-top: 3rem;
+    background-image: url("../Requirements-and-Resources/Images/picture.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 11rem 22rem;
+}
+
+main section:nth-child(1) {
+    text-align: center;
+}
+
+main section:nth-child(1) h1 {
+    color: white;
+    
+}
+
+main section:nth-child(1) span {
+    color: #F9690E;
+}
+
+main section:nth-child(1) button {
+    background: #F9690E;
+    border: none;
+    color: white;
+    font-size: 22px;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  
+}
+
+main section:nth-child(1) button:hover{
+    background-color: #FFFFFF;
+    color: #F9690E;
+}
+
+main section:nth-child(2) article {
+    background: #F9690E;
+    color: white;
+    width: 24%;
+    display: inline-block;
+    padding: 4.54%;
+}
+
+main section:nth-child(2) h3 {
+    text-align: center;
+}
+
+footer article {
+    width: 49.8%;
+    display: inline-block;
+    margin-top: 40px;
+}
+
+footer article:nth-child(2) {
+    text-align: right;
+}
+
+footer i {
+    padding-left: 16px;
+}
