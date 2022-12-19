@@ -6,11 +6,32 @@ The output is a Boolean result indicating whether the matrix is magical or not.
 
 function magicMatrices(arr) {
 
+    // More functional:
     const arrSumOfRows = arr.map((x) => x.reduce((acc, curr) => acc + curr));
     const arrSumOfCol = arr.reduce((acc, curr) => acc.map((el, i) => el + curr[i]));
     const allCombined = arrSumOfRows.concat(arrSumOfCol);
-    
+
     return allCombined.every((el) => el === allCombined[0]);
+
+    // With nested loops:
+
+    const numberToTestWith = arr[0].reduce((acc, curr) => acc + curr);
+
+    for (let i = 0; i < arr.length; i++) {
+        let rowSum = 0;
+        let colSum = 0;
+
+        for (let j = 0; j < arr.length; j++) {
+            rowSum += arr[i][j];
+            colSum += arr[j][i];
+        }
+
+        if (rowSum !== numberToTestWith || colSum !== numberToTestWith) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 magicMatrices([
