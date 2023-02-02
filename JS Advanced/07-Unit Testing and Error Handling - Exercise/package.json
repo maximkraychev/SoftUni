@@ -1,0 +1,16 @@
+{
+  "name": "07-unit-testing-and-error-handling---exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "01-requestValidator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  }
+}
