@@ -44,7 +44,7 @@ function solution() {
     continueBTN.disabled = true;
   });
 
-  continueBTN.addEventListener('click', ()=> {
+  continueBTN.addEventListener('click', () => {
     const div = document.getElementById('block');
     div.innerHTML = '';
     const h3 = document.createElement('h3');
