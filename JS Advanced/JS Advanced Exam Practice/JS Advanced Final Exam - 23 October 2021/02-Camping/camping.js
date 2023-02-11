@@ -12,7 +12,7 @@ class SummerCamp {
         }
 
         for (const el of this.listOfParticipants) {
-            if (el.name == name) {
+            if (el.name === name) {
                 return `The ${name} is already registered at the camp.`;
             }
         }
@@ -33,7 +33,7 @@ class SummerCamp {
 
     unregisterParticipant(name) {
         for (let i = 0; i < this.listOfParticipants.length; i++) {
-            const currentParticipant = this.listOfParticipants[0].name;
+            const currentParticipant = this.listOfParticipants[i].name;
             if (currentParticipant == name) {
                 this.listOfParticipants.splice(i, 1);
                 return `The ${name} removed successfully.`;
@@ -89,6 +89,16 @@ class SummerCamp {
 }
 
 
+let camp = new SummerCamp('Jane Austen', 'Pancharevo Sofia 1137, Bulgaria');
+
+camp.registerParticipant('Petar Petarson', 'student', 300) //"The Petar Petarson was successfully registered.");
+
+camp.registerParticipant('Sara Dickinson', 'child', 200) //"The Sara Dickinson was successfully registered.");
+
+camp.unregisterParticipant('Sara Dickinson') // "The Sara Dickinson removed successfully.");
+
+
+
 // const summerCamp = new SummerCamp("Jane Austen", "Pancharevo Sofia 1137, Bulgaria");
 // console.log(summerCamp.registerParticipant("Petar Petarson", "student", 200));
 // console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
@@ -108,15 +118,18 @@ class SummerCamp {
 // console.log(summerCamp.registerParticipant("Dimitur Kostov", "student", 300));
 // console.log(summerCamp.timeToPlay("WaterBalloonFights", "Petar Petarson", "Dimitur Kostov"));
 
-const summerCamp = new SummerCamp("Jane Austen", "Pancharevo Sofia 1137, Bulgaria");
-console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
-console.log(summerCamp.timeToPlay("Battleship", "Petar Petarson"));
-console.log(summerCamp.registerParticipant("Sara Dickinson", "child", 200));
-//console.log(summerCamp.timeToPlay("WaterBalloonFights", "Petar Petarson", "Sara Dickinson"));
-console.log(summerCamp.registerParticipant("Dimitur Kostov", "student", 300));
-console.log(summerCamp.timeToPlay("WaterBalloonFights", "Petar Petarson", "Dimitur Kostov"));
+// const summerCamp = new SummerCamp("Jane Austen", "Pancharevo Sofia 1137, Bulgaria");
+// console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
+// console.log(summerCamp.timeToPlay("Battleship", "Petar Petarson"));
+// console.log(summerCamp.registerParticipant("Sara Dickinson", "child", 200));
+// //console.log(summerCamp.timeToPlay("WaterBalloonFights", "Petar Petarson", "Sara Dickinson"));
+// console.log(summerCamp.registerParticipant("Dimitur Kostov", "student", 300));
+// console.log(summerCamp.timeToPlay("WaterBalloonFights", "Petar Petarson", "Dimitur Kostov"));
 
-console.log(summerCamp.toString());
+// console.log(summerCamp.toString());
+
+
+
 
 
 
