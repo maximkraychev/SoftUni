@@ -1,6 +1,6 @@
 const { expect } = require("chai");
 
-const Repository = require('../repository');
+let { Repository } = require("..solution");
 
 describe('Repository', function () {
     describe('Constructor', () => {
