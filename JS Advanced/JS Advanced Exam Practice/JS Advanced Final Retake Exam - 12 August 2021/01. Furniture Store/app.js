@@ -22,10 +22,10 @@ function solve() {
 
         const trOne = factoryElement('tr', null, 'info');
         trOne.appendChild(factoryElement('td', model));
-        trOne.appendChild(factoryElement('td', price));
+        trOne.appendChild(factoryElement('td', price.toFixed(2)));
         const tdWithButtons = document.createElement('td');
         const moreBtn = factoryElement('button', 'More Info', 'moreBtn');
-        const buyBtn = factoryElement('button', 'Buy It', 'buyBtn');
+        const buyBtn = factoryElement('button', 'Buy it', 'buyBtn');
         tdWithButtons.appendChild(moreBtn);
         tdWithButtons.appendChild(buyBtn);
         trOne.appendChild(tdWithButtons);
