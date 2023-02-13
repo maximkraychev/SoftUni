@@ -1,0 +1,16 @@
+{
+  "name": "03.-flowers-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "flowerShop.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  }
+}
