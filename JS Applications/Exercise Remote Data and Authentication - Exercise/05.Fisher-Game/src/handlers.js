@@ -19,6 +19,13 @@ export function headerHandler() {
     span.textContent = sessionStorage.getItem('email');
 }
 
+export function addButtonHandler() {
+    if(sessionStorage.getItem('accessToken')) {
+        const addBtn = document.querySelector('.add');
+        addBtn.disabled = false;
+    }
+}
+
 export function credentialsHandler(credentials) {
     sessionStorage.setItem('accessToken', credentials.accessToken);
     sessionStorage.setItem('email', credentials.email);
