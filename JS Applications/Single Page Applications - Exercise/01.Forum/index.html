@@ -35,42 +35,80 @@
     <!-- homepage -->
     <div class="container">
         <main>
-            <div class="new-topic-border">
-                <div class="header-background">
-                    <span>New Topic</span>
+            <section class="new-topic">
+                <div class="new-topic-border">
+                    <div class="header-background">
+                        <span>New Topic</span>
+                    </div>
+                    <form>
+                        <div class="new-topic-title">
+                            <label for="topicName">Title <span class="red">*</span></label>
+                            <input type="text" name="topicName" id="topicName">
+                        </div>
+                        <div class="new-topic-title">
+                            <label for="username">Username <span class="red">*</span></label>
+                            <input type="text" name="username" id="username">
+                        </div>
+                        <div class="new-topic-content">
+                            <label for="postText">Post <span class="red">*</span></label>
+                            <textarea type="text" name="postText" id="postText" rows="8" class="height"></textarea>
+                        </div>
+                        <div class="new-topic-buttons">
+                            <button class="cancel">Cancel</button>
+                            <button class="public">Post</button>
+                        </div>
+
+                    </form>
                 </div>
-                <form>
-                    <div class="new-topic-title">
-                        <label for="topicName">Title <span class="red">*</span></label>
-                        <input type="text" name="topicName" id="topicName">
-                    </div>
-                    <div class="new-topic-title">
-                        <label for="username">Username <span class="red">*</span></label>
-                        <input type="text" name="username" id="username">
-                    </div>
-                    <div class="new-topic-content">
-                        <label for="postText">Post <span class="red">*</span></label>
-                        <textarea type="text" name="postText" id="postText" rows="8" class="height"></textarea>
-                    </div>
-                    <div class="new-topic-buttons">
-                        <button class="cancel">Cancel</button>
-                        <button class="public">Post</button>
-                    </div>
 
-                </form>
-            </div>
-
-            <div class="topic-title">
-
-                <!-- topic component  -->
-                <div class="topic-container">
-                    
-                </div>
-                
+                <div class="topic-title">
+                    <!-- topic component  -->
+                    <div class="topic-container"></div>
+            </section>
 
         </main>
 
+        <section class="info-comments">
+            <div class="container">
+                <!-- theme content  -->
+                <div class="theme-content">
+                    <!-- theme-title  -->
+                    <div class="theme-title">
+                        <div class="theme-name-wrapper">
+                            <div class="theme-name">
+                                <h2>Angular 10</h2>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- comment  -->
+
+                    <div class="comment">
+
+                    </div>
+
+                    <div class="answer-comment">
+                        <p><span>currentUser</span> comment:</p>
+                        <div class="answer">
+                            <form>
+                                <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
+                                <div>
+                                    <label for="username">Username <span class="red">*</span></label>
+                                    <input type="text" name="username" id="username">
+                                </div>
+                                <button>Post</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
     </div>
+
+
 
     <footer>
         <p>This site is designed to be used for training purposes at SoftUni.</p>

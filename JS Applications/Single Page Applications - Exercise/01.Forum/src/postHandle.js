@@ -1,8 +1,18 @@
-const formElement = document.querySelector('form');
-const postBtn = document.querySelector('.public');
+import {sectionHome, renderHome} from './renderHome.js';
+
 const urlForPost = 'http://localhost:3030/jsonstore/collections/myboard/posts';
 
+const formElement = sectionHome.querySelector('form');
+const postBtn = sectionHome.querySelector('.public');
+const cancelBtn = sectionHome.querySelector('.cancel');
+
 postBtn.addEventListener('click', post);
+cancelBtn.addEventListener('click', onCancel);
+
+function onCancel(event) {
+    event.preventDefault();
+    formElement.reset();
+}
 
 async function post(event) {
     event.preventDefault();
@@ -34,6 +44,7 @@ async function post(event) {
 
         const data = await response.json();
         formElement.reset()
+        renderHome();
     } catch (err) {
         alert(err.message)
     }
