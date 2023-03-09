@@ -63,7 +63,7 @@ function previewHandler(event) {
 
     if (target.tagName == 'A') {
         event.preventDefault();
-        const postId = target.id;
+        const postId = target.dataset.id;
         renderComments(postId)
     }
 }
