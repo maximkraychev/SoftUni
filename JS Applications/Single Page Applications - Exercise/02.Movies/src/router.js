@@ -1,4 +1,5 @@
 import { renderAddMoviePage } from './addMovie.js';
+import { onDelete } from './delete.js';
 import { renderHome } from './home.js';
 import { renderLogin } from './login.js';
 import { logout } from './logout.js';
@@ -13,12 +14,13 @@ const routerData = {
     '/login': renderLogin,
     '/register': renderRegister,
     '/add': renderAddMoviePage,
-    '/delete': '',
+    '/delete': onDelete,
     '/edit': renderEdit,
     '/like': '',
 }
 
-export function router(pathname) {
-    routerData[pathname]();
+export function router(pathname, event) {
+   
+    routerData[pathname](event);
     navHandler();
 }

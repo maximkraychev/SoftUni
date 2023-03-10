@@ -9,7 +9,6 @@ const url = 'http://localhost:3030/users/login';
 
 export async function renderLogin() {
     body.querySelector('section').replaceWith(loginSection);
-    navHandler();
 }
 
 const formElement = loginSection.querySelector('form');

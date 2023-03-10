@@ -1,3 +1,5 @@
+import { navHandler } from "./navigationHandler.js";
+
 const detailsSecttion = document.querySelector('#movie-example');
 detailsSecttion.remove();
 const body = document.querySelector('body');
@@ -16,6 +18,7 @@ export function details(data) {
     divForDataset.dataset.movieId = data._id;
     divForDataset.dataset.ownerId = data._ownerId;
     buttonAccesHandler(data);
+    navHandler()
 }
 
 const deleteBtn = detailsSecttion.querySelector('.btn-danger');

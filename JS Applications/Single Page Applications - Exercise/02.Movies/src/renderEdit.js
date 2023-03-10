@@ -1,3 +1,4 @@
+import { details } from "./details.js";
 import { getRequest } from "./getRequest.js";
 import { putRequest } from "./putRequest.js";
 
@@ -8,15 +9,12 @@ let movieId = '';
 const formElement = editMovieSection.querySelector('form');
 
 
-export function renderEdit() {
-    const divWithDataset = body.querySelector('.col-md-4');
-    if (divWithDataset) {
-        movieId = divWithDataset.dataset.movieId;
-    }
+export function renderEdit(event) {
+    const divWithDataset = event.target.parentElement;
+    movieId = divWithDataset.dataset.movieId;
 
     body.querySelector('section').replaceWith(editMovieSection);
     loadDataForEdit();
-
 }
 
 async function loadDataForEdit() {
@@ -28,7 +26,6 @@ async function loadDataForEdit() {
     title.value = data.title;
     description.value = data.description;
     img.value = data.img;
-
 }
 
 formElement.addEventListener('submit', edit);
@@ -44,9 +41,7 @@ async function edit(event) {
     const dataForRequest = { title, description, img };
 
     const data = await putRequest(`http://localhost:3030/data/movies/${movieId}`, dataForRequest);
-    console.log(data);
+    details(data)
     formElement.reset();
-    
-
 }
 
