@@ -1,3 +1,4 @@
+import { addLike } from './addLike.js';
 import { renderAddMoviePage } from './addMovie.js';
 import { onDelete } from './delete.js';
 import { renderHome } from './home.js';
@@ -16,7 +17,7 @@ const routerData = {
     '/add': renderAddMoviePage,
     '/delete': onDelete,
     '/edit': renderEdit,
-    '/like': '',
+    '/like': addLike,
 }
 
 export function router(pathname, event) {
