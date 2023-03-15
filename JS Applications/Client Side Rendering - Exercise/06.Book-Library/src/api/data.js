@@ -21,6 +21,6 @@ export async function updateBook(data, id) {
     return api.put(endpoints.singleBook + id, data);
 }
 
-export async function deleteBook(data, id) {
-    return api.delete(endpoints.singleBook + id, data);
+export async function deleteBook(id) {
+    return api.delete(endpoints.singleBook + id);
 }

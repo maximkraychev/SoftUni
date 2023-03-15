@@ -1,3 +1,5 @@
-export function onDelete(ctx, id) {
-    console.log(id);
+import { deleteBook } from './api/data.js'
+
+export async function onDelete(id) {
+    deleteBook(id);
 }
