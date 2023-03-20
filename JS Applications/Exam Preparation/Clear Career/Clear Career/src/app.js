@@ -18,7 +18,7 @@ page('home', showHome);
 page('/create', showCreate);
 page('/dashboard', showDashboard);
 page('/details/:id', showDetails);
-page('/edit', showEdit);
+page('/edit/:id', showEdit);
 page('/login', showLogin);
 page('/register', showRegister);
 
