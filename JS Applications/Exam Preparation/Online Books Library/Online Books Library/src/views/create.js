@@ -1,9 +1,11 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { addBook } from '../api/data.js';
+import { formHandler } from '../util.js';
 
-const createTemplate = () => html`
+const createTemplate = (onSubmit) => html`
 <!-- Create Page ( Only for logged-in users ) -->
 <section id="create-page" class="create">
-    <form id="create-form" action="" method="">
+    <form @submit=${onSubmit} id="create-form" action="" method="">
         <fieldset>
             <legend>Add new Book</legend>
             <p class="field">
@@ -42,6 +44,21 @@ const createTemplate = () => html`
 </section>
 `;
 
+let context = null;
+
 export function showCreate(ctx) {
-    ctx.render(createTemplate());
+    context = ctx;
+    ctx.render(createTemplate(formHandler(onSubmit)));
+}
+
+async function onSubmit(data, form) {
+
+    if (Object.values(data).some(x => x == '')) {
+        alert('All fields must be filled!');
+        return;
+    }
+
+    await addBook(data);
+    form.reset();
+    context.page.redirect('/dashboard');
 }

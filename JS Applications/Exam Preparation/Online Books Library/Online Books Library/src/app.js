@@ -18,9 +18,9 @@ page('/index.html', '/dashboard');
 page('/dashboard', showDashboard);
 page('/login', showLogin);
 page('/register', showRegister);
-page('/details', showDetails);
+page('/details/:id', showDetails);
+page('/details/edit/:id', showEdit);
 page('/create', showCreate);
-page('/edit', showEdit);
 page('/myBooks', showMyBooks);
 
 page.start();

@@ -1,35 +1,36 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { editBook, getBook } from '../api/data.js';
+import { formHandler } from '../util.js';
 
-const editTemplate = () => html`
+const editTemplate = (onSubmit, book) => html`
 <!-- Edit Page ( Only for the creator )-->
 <section id="edit-page" class="edit">
-    <form id="edit-form" action="#" method="">
+    <form @submit=${onSubmit} id="edit-form" action="#" method="">
         <fieldset>
             <legend>Edit my Book</legend>
             <p class="field">
                 <label for="title">Title</label>
                 <span class="input">
-                    <input type="text" name="title" id="title" value="A Court of Thorns and Roses">
+                    <input type="text" name="title" id="title" .value=${book.title}>
                 </span>
             </p>
             <p class="field">
                 <label for="description">Description</label>
                 <span class="input">
-                    <textarea name="description"
-                        id="description">Feyre's survival rests upon her ability to hunt and kill – the forest where she lives is a cold, bleak place in the long winter months. So when she spots a deer in the forest being pursued by a wolf, she cannot resist fighting it for the flesh. But to do so, she must kill the predator and killing something so precious comes at a price ...</textarea>
+                    <textarea .value=${book.description} name="description" id="description"></textarea>
                 </span>
             </p>
             <p class="field">
                 <label for="image">Image</label>
                 <span class="input">
-                    <input type="text" name="imageUrl" id="image" value="/images/book1.png">
+                    <input type="text" name="imageUrl" id="image" .value=${book.imageUrl}>
                 </span>
             </p>
             <p class="field">
                 <label for="type">Type</label>
                 <span class="input">
-                    <select id="type" name="type" value="Fiction">
-                        <option value="Fiction" selected>Fiction</option>
+                    <select .value=${book.type} id="type" name="type" value="Fiction">
+                        <option value="Fiction">Fiction</option>
                         <option value="Romance">Romance</option>
                         <option value="Mistery">Mistery</option>
                         <option value="Classic">Clasic</option>
@@ -43,6 +44,21 @@ const editTemplate = () => html`
 </section>
 `;
 
-export function showEdit(ctx) {
-    ctx.render(editTemplate());
+export async function showEdit(ctx) {
+    const bookId = ctx.params.id;
+    const book = await getBook(bookId);
+    const onSubmitEdit = onSubmit.bind(null, ctx, bookId);
+
+    ctx.render(editTemplate(formHandler(onSubmitEdit), book));
+}
+
+async function onSubmit(ctx, bookId, data, form) {
+    if (Object.values(data).some(x => x == '')) {
+        alert('All fields must be filled!');
+        return;
+    }
+
+    await editBook(bookId, data);
+    form.reset();
+    ctx.page.redirect('/details/' + bookId);
 }
