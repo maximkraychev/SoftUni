@@ -15,5 +15,5 @@ export async function register(data) {
 }
 
 export async function logout() {
-    return api.get(endpoints.login);
+    return api.get(endpoints.logout);
 }

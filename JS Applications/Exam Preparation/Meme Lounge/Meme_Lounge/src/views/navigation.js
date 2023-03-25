@@ -1,4 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
+import { logout } from '../api/user.js';
+import { clearUserData } from '../util.js';
 
 export const navigationTemplate = (ctx, content) => html`
     <!-- Notifications -->
@@ -17,9 +19,9 @@ export const navigationTemplate = (ctx, content) => html`
             <div class="user">
                 <a href="/create">Create Meme</a>
                 <div class="profile">
-                    <span>Welcome, {email}</span>
+                    <span>Welcome, ${ctx.user.email}</span>
                     <a href="/profile">My Profile</a>
-                    <a href="#">Logout</a>
+                    <a href="javascript:void(0)" @click=${onLogout.bind(null, ctx)}>Logout</a>
                 </div>
             </div>`
         : html`
@@ -43,3 +45,10 @@ export const navigationTemplate = (ctx, content) => html`
         <p>Created by SoftUni Delivery Team</p>
     </footer>
 `;
+
+
+async function onLogout(ctx) {
+    await logout();
+    clearUserData();
+    ctx.page.redirect('/welcome');
+}
