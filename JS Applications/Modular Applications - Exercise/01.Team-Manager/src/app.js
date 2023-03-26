@@ -10,17 +10,19 @@ import { showRegister } from './views/register.js';
 import { addRender } from './middleweare/addRender.js';
 import { showOverlay } from './views/overlay.js';
 import { addSession } from './middleweare/addsession.js';
+import { addQueery } from './middleweare/addQueery.js';
 
 //middleweare
 page(addSession);
+page(addQueery);
 page(addRender);
 
-page('index.html', '/home');
+page('/index.html', '/home');
 page('/', '/home');
 page('/home', showHome);
 page('/browse', showBrowse);
 page('/create', showCreate);
-page('/details', showDetails);
+page('/details/:id', showDetails);
 page('/edit', showEdit);
 page('/login', showLogin);
 page('/myTeams', showMyTeams);

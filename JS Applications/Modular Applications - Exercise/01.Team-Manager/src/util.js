@@ -26,3 +26,11 @@ export function formErrorHandler(message) {
     divWithError.textContent = message;
     divWithError.style.display = '';
 }
+
+export function anchorHandler(element, string) {
+    if (string == 'show') {
+        element.style.visibility = 'visible';
+    } else if (string == 'hide') {
+        element.style.visibility  = 'hidden';
+    }
+}
