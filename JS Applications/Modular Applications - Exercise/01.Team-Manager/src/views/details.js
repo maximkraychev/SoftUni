@@ -13,12 +13,12 @@ const detailsTemplate = (team, members, pendingRequests, userInfo) => html`
             <div>
                 ${userInfo.isTeamOwner 
                     ? html`
-                        <a href="/edit/${team._id}" class="action">Edit team</a>`
+                        <a href="/browse/${team._id}/edit" class="action">Edit team</a>`
                     : null}
                 
                 ${userInfo.isUser && !userInfo.isAlreadyMember && !userInfo.isPendingUser
                     ? html`
-                        <a @click=${joinTeam.bind(null, team._id)} href="javascript:void(0)" class="action">Join team</a>` 
+                        <a @click=${joinTeam.bind(null, team._id, pendingRequests)} href="javascript:void(0)" class="action">Join team</a>` 
                     : null}
                 
                 ${userInfo.isAlreadyMember && !userInfo.isTeamOwner 
@@ -61,7 +61,7 @@ const userTemplate = (user, userInfo) => html`
 
 const membershipTemplate = (member) => html`
 <li>${member.user.username}
-    <a href="javascript:void(0)" class="tm-control action">Approve</a>
+    <a @click=${approve.bind(null, member._id)} href="javascript:void(0)" class="tm-control action">Approve</a>
     <a href="javascript:void(0)"class="tm-control action">Decline</a>
 </li>
 `;
@@ -80,8 +80,8 @@ export async function showDetails(ctx) {
 
     const isGuest = userId == undefined;
     const isUser = userId != undefined;
-    const isPendingUser = pendingRequests.some(x => x.user._id == userId);
-    const isAlreadyMember = members.some(x => x.user._id == userId);
+    const isPendingUser = pendingRequests.some(x => x._ownerId == userId);
+    const isAlreadyMember = members.some(x => x._ownerId == userId);
     const isTeamOwner = userId == team._ownerId;
     const checkIsOwner = checkForOwner.bind(null, team._ownerId);
 
@@ -93,7 +93,16 @@ export async function showDetails(ctx) {
         isTeamOwner,
         checkIsOwner
     }
-    ctx.render(detailsTemplate(team, members, pendingRequests, userInfo));
+
+    ctx.update = update.bind(null, ctx, team, members, pendingRequests, userInfo);
+    ctx.update();
+   
+}
+
+
+
+function update(ctx, ...params) {
+    ctx.render(detailsTemplate(...params));
 }
 
 
@@ -105,19 +114,35 @@ function checkForOwner(ownerId, userId) {
     }
 }
 
-async function joinTeam(teamId, event) {
+async function joinTeam(teamId, pendingRequests, event) {
 
     const anchorElement= event.currentTarget;
     const showHideElement = anchorHandler.bind(null, anchorElement);
     
     try{
         showHideElement('hide');
-        await requestForNewMember(teamId);
-        context.page.redirect(context.path);
-        
+        const pendingData = await requestForNewMember(teamId);
+
+        const userData = context.user;
+        // We should remove the accsesToken before pushing the userData;
+        pendingData.user = userData;
+        pendingRequests.push(pendingData);
+        context.update();
     } catch(err) {
         showHideElement('show');
     }
+}
+
+
+async function approve(memberId) {
+    console.log(memberId);
+
+
+} 
+
+
+async function onCancelOrLeave() {
+
 }
 
 

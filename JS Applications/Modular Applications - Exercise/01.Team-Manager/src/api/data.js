@@ -5,7 +5,7 @@ const pageSize = 2;
 const endpoints = {
     teams: '/data/teams',
     getMembers: '/data/members?where=',
-    getTeam: '/data/teams/',
+    team: '/data/teams/',
     getMemberships: (teamId) => `/data/members?where=teamId%3D%22${teamId}%22&load=user%3D_ownerId%3Ausers`,
     becomeMember: '/data/members',
     member: '/data/members/',
@@ -32,7 +32,11 @@ export async function createTeam(data) {
 }
 
 export async function getTeam(teamId) {
-    return api.get(endpoints.getTeam + teamId)  ;
+    return api.get(endpoints.team + teamId);
+}
+
+export async function editTeam(teamId, data) {
+    return api.put(endpoints.team + teamId, data);
 }
 
 export async function getMemberships(teamId) {

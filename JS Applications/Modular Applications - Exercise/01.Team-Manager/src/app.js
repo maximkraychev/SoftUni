@@ -8,7 +8,6 @@ import { showLogin } from './views/login.js';
 import { showMyTeams } from './views/myTeams.js';
 import { showRegister } from './views/register.js';
 import { addRender } from './middleweare/addRender.js';
-import { showOverlay } from './views/overlay.js';
 import { addSession } from './middleweare/addsession.js';
 import { addQueery } from './middleweare/addQueery.js';
 
@@ -22,13 +21,9 @@ page('/', '/home');
 page('/home', showHome);
 page('/browse', showBrowse);
 page('/create', showCreate);
-page('/details/:id', showDetails);
-page('/edit', showEdit);
+page('/browse/:id', showDetails);
+page('/browse/:id/edit', showEdit);
 page('/login', showLogin);
 page('/myTeams', showMyTeams);
 page('/register', showRegister);
 page.start();
-
-
-
-//showOverlay('an error')

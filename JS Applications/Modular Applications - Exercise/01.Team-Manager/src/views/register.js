@@ -30,7 +30,6 @@ export function showRegister(ctx) {
 
 async function onRegister(ctx, {email, username, password, repass}, form) {
 
-
     if (/^\w+@\w+\.\w+$/g.test(email) == false) {
         formErrorHandler('Invalid email!')
         return;

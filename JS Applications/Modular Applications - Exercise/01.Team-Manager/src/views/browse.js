@@ -31,7 +31,7 @@ const teamTemplate = (team, members) => html`
             <h2>${team.name}</h2>
             <p>${team.description}</p>
             <span class="details">${findNumberOfMembers(team._id, members)} Members</span>
-            <div><a href="/details/${team._id}" class="action">See details</a></div>
+            <div><a href="/browse/${team._id}" class="action">See details</a></div>
         </div>
     </article>
 `;

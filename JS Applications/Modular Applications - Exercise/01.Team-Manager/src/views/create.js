@@ -43,5 +43,5 @@ async function onCreate(ctx, {name, logoUrl, description}, form) {
    
     const team = await createTeam({name, logoUrl, description});
     form.reset();
-    ctx.page.redirect('/details/' + team._id);
+    ctx.page.redirect('/browse/' + team._id);
 }
