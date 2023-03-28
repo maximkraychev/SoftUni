@@ -47,8 +47,8 @@ export async function requestForNewMember(teamId) {
     return api.post(endpoints.becomeMember, {teamId});
 }
 
-export async function approveMembership(userId) {
-    return api.put(endpoints.member + userId);
+export async function approveMembership(userId, user) {
+    return api.put(endpoints.member + userId, user);
 } 
 
 export async function cancelOrLeave(userId) {
