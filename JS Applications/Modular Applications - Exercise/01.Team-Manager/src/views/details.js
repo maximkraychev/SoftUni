@@ -86,6 +86,8 @@ export async function showDetails(ctx) {
     const [team, listOfPeople] = await Promise.all([getTeam(teamId), getMemberships(teamId)])
 
     listOfPeople.forEach(x => x.status == 'member' ? teamInfo.members.push(x) : teamInfo.pendingRequests.push(x));
+    console.log(teamInfo.members);
+    console.log(teamInfo.pendingRequests);
 
     const userInfo = {
         isGuest: () => userId == undefined,
@@ -135,29 +137,37 @@ async function joinTeam(teamId, teamInfo, event) {
 
 
 async function approve(member, teamInfo, event) {
-    const anchorElement= event.currentTarget;
-    const showHideElement = anchorHandler.bind(null, anchorElement);
+    const anchorApproveElement= event.currentTarget;
+    const anchorDeclineElelent = anchorApproveElement.nextElementSibling;
+    const showHideApproveElement = anchorHandler.bind(null, anchorApproveElement);
+    const showHideDeclineElement = anchorHandler.bind(null, anchorDeclineElelent);
 
     try {
-        showHideElement('hide');
-        member.status = 'member';
+        showHideApproveElement('hide');
+        showHideDeclineElement('hide');
+        const obj = {
+            _id: member._id,
+            _ownerId: member._ownerId,
+            teamId: member.teamId,
+            status: 'member',
+            _createdOn: member._createdOn
+        }
         console.log(member);
-        const approvedMember = await approveMembership(member._id, member);
+        const approvedMember = await approveMembership(member._id, obj);
         console.log(approvedMember);
         // After there is no error with the fetch request for approval, we make the same thing localy 
         // by removing the member from pendingRequests array and adding it into the members array,
         // that way litHTML can reRender only the changes without making new fetch requests for the both arrays;
+
         const indexOfAlreadyApprovedMember = teamInfo.pendingRequests.findIndex(x => x._id == approvedMember._id);
         teamInfo.pendingRequests.splice(indexOfAlreadyApprovedMember, 1);
         teamInfo.members.push(approvedMember);
 
         context.update()
     } catch (err) {
-        showHideElement('show');
+        showHideApproveElement('show');
+        showHideDeclineElement('show');
     }
-   
-
-
 } 
 
 
