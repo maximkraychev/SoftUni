@@ -3,7 +3,7 @@ const { expect } = require('chai');
 
 const host = 'http://localhost:3000'; // Application host (NOT service host - that can be anything)
 const interval = 500;
-const DEBUG = false;
+const DEBUG = true;
 const slowMo = 500;
 
 const mockData = require('./mock-data.json');
@@ -612,7 +612,7 @@ describe('E2E tests', function () {
             expect(postData.comment).to.equal(comment);
         });
 
-        it('No-author can add new comment (test with 2 comments) [ 5 Points ]', async () => {
+        it.only('No-author can add new comment (test with 2 comments) [ 5 Points ]', async () => {
             const user = mockData.users[0];
             const data = mockData.catalog[2];
             const comments = mockData.comments;
