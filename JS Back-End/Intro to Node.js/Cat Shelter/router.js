@@ -1,4 +1,5 @@
 const { sendStatic } = require("./sendCSS");
+const { notFound } = require("./utils");
 
 const routes = {};
 
@@ -8,7 +9,7 @@ function match(req, res) {
     const method = req.method;
     console.log('<<<', path, method);
 
-    if (path.endsWith('.css') || path.endsWith('.ico')) {
+    if (path.endsWith('.css') || path.endsWith('.png')) {
         sendStatic(req, res, path);
         return;
     }
@@ -20,11 +21,9 @@ function match(req, res) {
     }
 
     if (typeof handler == 'function') {
-        handler(req, res);
+        handler(req, res, path, routes);
     } else {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.write('404 Not Found');
-        res.end();
+        notFound(req, res);
     }
 
 }
