@@ -1,6 +1,6 @@
 const http = require('http');
-const router = require('./router');
-const { handlerGet, handlerPost } = require('./handler');
+const router = require('./src/router');
+const { handlerGet, handlerPost } = require('./src/handler');
 const port = 3000;
 
 router.get('/', handlerGet);
@@ -12,7 +12,5 @@ router.get('/edit', handlerGet);
 router.post('/addBreed', handlerPost);
 router.post('/addCat', handlerPost);
 //router.post('/edit', edit);
-
-
 
 http.createServer(router.match).listen(port);

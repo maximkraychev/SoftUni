@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const type = {
     '.css': 'text/css',
-    '.png': 'image/png',
+    '.ico': 'image/x-icon',
 }
 
 function sendStatic(req, res, path) {
@@ -10,7 +10,7 @@ function sendStatic(req, res, path) {
     const basePath = curType == '.css' ? './content/styles' : './content/images';
 
     fs.stat(basePath + path, (err, stat) => {
-        
+
         if (err !== null || stat.isFile() != true) {
             res.writeHead(404);
             res.end();
