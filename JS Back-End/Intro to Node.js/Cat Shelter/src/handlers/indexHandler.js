@@ -2,19 +2,27 @@ const fs = require('fs');
 const { notFound } = require('../utils');
 const { Transform } = require('stream');
 
-
 const animalCards = new Transform({
     transform(chunk, encoding, callback) {
-        console.log('test');
-        // TODO.. This readfile is synchronous action find a way to change that later!
-        const fileData = fs.readFileSync('./data/cats.json');
-        const data = JSON.parse(fileData.toString());
-        const dataAsArray = Object.values(data);
-        const html = dataAsArray.length == 0 ? '<h2>There are no Animal yet!</h2>' : dataAsArray.map(createHtmlForCat);
+      console.log('test');
+      let data = '';
+      const fileStream = fs.createReadStream('./data/cats.json');
+      fileStream.on('data', (chunk) => {
+        data += chunk;
+      });
+      fileStream.on('end', () => {
+        const jsonData = JSON.parse(data);
+        const dataArray = Object.values(jsonData);
+        const html = dataArray.length == 0 ? '<h2>There are no Animal yet!</h2>' : dataArray.map(createHtmlForCat);
         this.push(chunk.toString().replace('%%$$%%', html));
         callback();
-    }
-})
+      });
+      fileStream.on('error', (error) => {
+        console.error(error);
+      });
+    },
+  });
+  
 
 
 function indexHandler(req, res, path) {
