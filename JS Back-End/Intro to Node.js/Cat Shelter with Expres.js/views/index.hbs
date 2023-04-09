@@ -1,0 +1,10 @@
+       <section class="cats">
+            <ul>
+               {{#each data}}
+                    {{> cardForAnimal}}
+                {{else}}
+                    <li><p>The are no animals is the data!</p></li>
+                {{/each}}
+            </ul>
+        </section>
+
