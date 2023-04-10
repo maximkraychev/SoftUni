@@ -12,7 +12,7 @@ app.engine('.hbs', handlebars.engine)
 app.set('view engine', '.hbs');
 
 // Middleware for forms;
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 // Middlewares for static files;
 app.use('/static', express.static('static'));

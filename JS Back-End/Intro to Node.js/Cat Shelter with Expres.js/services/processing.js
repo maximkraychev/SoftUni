@@ -9,7 +9,7 @@ function getCatsData() {
     return catData;
 }
 
-function getById(id) {
+function getCatById(id) {
     return catData.find(x => x._id == id);
 }
 
@@ -34,9 +34,18 @@ function createBreed(breed) {
     });
 }
 
+function idGenerator() {
+    return ('000000000' + Math.round(Math.random() * 999999999)).slice(-9);
+}
+
+function saveImages(data, name) {
+const path = '/static/images/' + name;
+fs.writeFileSync()
+}
+
 module.exports = {
     getCatsData,
-    getById,
+    getCatById,
     getBreedsData,
     createBreed
 }
