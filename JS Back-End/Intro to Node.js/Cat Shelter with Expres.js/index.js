@@ -2,6 +2,8 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const homeController = require('./controllers/homeController');
 const addController = require('./controllers/addController');
+const detailsController = require('./controllers/detailsController');
+
 // Express setup;
 const app = express();
 app.listen(3000);
@@ -19,4 +21,5 @@ app.use('/static', express.static('static'));
 
 app.use(['/', '/index.html', '/home'], homeController);
 app.use('/cats', addController);
+app.use('/details', detailsController);
 
