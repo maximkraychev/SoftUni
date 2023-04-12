@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getCatById, handlerDeleteCat } = require('../services/processing');
+const { getCatById, handlerDeleteCat, editData } = require('../services/processing');
 
 router.get('/:id', (req, res) => {
     const id = req.params.id;
@@ -12,5 +12,17 @@ router.post('/:id/delete', async (req, res) => {
     await handlerDeleteCat(id);
     res.redirect('/');
 })
+
+router.get('/:id/edit', async (req, res) => {
+    const id = req.params.id;
+    const data = getCatById(id);
+    res.render('editCat', { data });
+
+})
+
+// router.post('/:id/edit', async (req, res) => {
+//     console.log(req);
+//     await editData(req, res);
+// })
 
 module.exports = router;

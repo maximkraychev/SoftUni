@@ -44,28 +44,28 @@ function getCatById(id) {
     return catData[id];
 }
 
-
 async function newCatHandleData(req, res) {
     const form = new formidable.IncomingForm();
 
-    form.parse(req, async (err, fields, files) => {
-        if (err !== null) {
-            throw new Error(err.message);
-        }
-        const { name, description, breed } = fields;
-        // TODO.. maybe some validations for the data;
-
-        try {
-            const imgStaticPath = await saveImage(files);
-            const idForData = await newCatSaveData(name, description, breed, imgStaticPath);
-            console.log(idForData);
-            return idForData;
-        } catch (err) {
-            console.log(err.message);
-            delete catData[id];
-            // TODO handle error;
-        }
-
+    return new Promise((resolve, reject) => {
+        form.parse(req, async (err, fields, files) => {
+            if (err !== null) {
+                throw new Error(err.message);
+            }
+            const { name, description, breed } = fields;
+            // TODO.. maybe some validations for the data;
+            
+            try {
+                const imgStaticPath = await saveImage(files);
+                const idForData = await newCatSaveData(name, description, breed, imgStaticPath);
+                resolve(idForData);
+            } catch (err) {
+                console.log(err.message);
+                delete catData[id];
+                reject(err.message);
+                // TODO handle error;
+            }
+        })
     })
 
 }
@@ -137,11 +137,37 @@ async function deleteImg(imgName) {
     }); // TODO handle error;
 }
 
+async function editData(res, req) {
+    const id = req.params.id;
+    const form = new formidable.IncomingForm();
+
+    form.parse(req, async (err, fields, files) => {
+        if (err !== null) {
+            throw new Error(err.message);
+        }
+        const { name, description, breed } = fields;
+        // TODO.. maybe some validations for the data;
+
+        try {
+            const imgStaticPath = await saveImage(files);
+            const idForData = await newCatSaveData(name, description, breed, imgStaticPath);
+            resolve(idForData);
+        } catch (err) {
+            console.log(err.message);
+            delete catData[id];
+            reject(err.message);
+            // TODO handle error;
+        }
+
+    });
+}
+
 module.exports = {
     getCatsData,
     getCatById,
     getBreedsData,
     createBreed,
     newCatHandleData,
-    handlerDeleteCat
+    handlerDeleteCat,
+    editData
 }

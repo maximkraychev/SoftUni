@@ -25,11 +25,11 @@ router.post('/add-cat', async (req, res) => {
 
     try {
         const catId = await newCatHandleData(req, res);
-        console.log(catId);
         res.redirect('/details/' + catId);
+
     } catch(err) {
         console.log(err.message);
-        //TODO handle the error;
+        //TODO handle the error, maybe return 404 page; 
     }
 })
 

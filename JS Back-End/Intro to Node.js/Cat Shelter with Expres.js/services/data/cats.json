@@ -1,4 +1,11 @@
 {
+  "193415725": {
+    "_id": "193415725",
+    "name": "my cat ",
+    "description": "afafaffa",
+    "breed": "The best",
+    "img": "/static/images/7efbae36a83692ef782779700.png"
+  },
   "276282383": {
     "_id": "276282383",
     "img": "https://cdn.pixabay.com/photo/2015/06/19/14/20/cat-814952_1280.jpg",
@@ -13,13 +20,6 @@
     "breed": "Bombay Cat",
     "description": "Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho."
   },
-  "395182407": {
-    "_id": "395182407",
-    "name": "aadsda",
-    "description": "asdasdasd",
-    "breed": "The best",
-    "img": "/static/images/ea010dbb3c6703b06a6c26000.png"
-  },
   "493457542": {
     "_id": "493457542",
     "img": "https://ichef.bbci.co.uk/news/976/cpsprodpb/12A9B/production/_111434467_gettyimages-1143489763.jpg",
@@ -27,26 +27,12 @@
     "breed": "Bombay Cat",
     "description": "Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho."
   },
-  "549095029": {
-    "_id": "549095029",
-    "name": "Test",
-    "description": "adsadadasdasd",
-    "breed": "The best",
-    "img": "/static/images/06799f41303b49a6f18ac9800.png"
-  },
   "722944575": {
     "_id": "722944575",
     "img": "https://cdn.pixabay.com/photo/2018/08/08/05/12/cat-3591348_1280.jpg",
     "name": "Pretty Kitty",
     "breed": "Bombay Cat",
     "description": "Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho."
-  },
-  "945237731": {
-    "_id": "945237731",
-    "name": "My Cat",
-    "description": "aksjfasjkfhsfahufi",
-    "breed": "Last test",
-    "img": "/static/images/72b743fb37bee3ca3d2e43400.png"
   },
   "008947491": {
     "_id": "008947491",
