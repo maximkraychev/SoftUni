@@ -24,13 +24,13 @@ router.get('/add-cat', (req, res) => {
 router.post('/add-cat', async (req, res) => {
 
     try {
-        await newCatHandleData(req, res);
+        const catId = await newCatHandleData(req, res);
+        console.log(catId);
+        res.redirect('/details/' + catId);
     } catch(err) {
         console.log(err.message);
         //TODO handle the error;
     }
-
-    //res.redirect
 })
 
 module.exports = router;
