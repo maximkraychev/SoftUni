@@ -36,8 +36,8 @@ function createBreed(breed) {
 }
 
 // CATS handlers;
-function getCatsData() {
-    return catData;
+function getCatsData(search) {
+    return Object.values(catData).filter(x => Object.values(x).some(x => x.toLowerCase().includes(search)));
 }
 
 function getCatById(id) {

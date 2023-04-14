@@ -8,7 +8,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles/site.css">
     <link rel="shortcut icon" type="image/png" href="/static/images/pawprint.ico" />
-    <title>{{title}}</title>
+    <title>Cat Shelter</title>
 </head>
 
 <body>
@@ -22,9 +22,9 @@
         </nav>
         <h1>Cat Shelter</h1>
         {{#if isHome}}
-        <form action="/search">
-            <input type="text">
-            <button type="button">Search</button>
+        <form action="/home">
+            <input name="search" type="text">
+            <button type="submit">Search</button>
         </form>
         {{/if}}
     </header>

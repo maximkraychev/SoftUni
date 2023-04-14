@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const homeController = require('./controllers/homeController');
 const addController = require('./controllers/addController');
 const detailsController = require('./controllers/detailsController');
+const searchController = require('./controllers/searchController');
 
 // Express setup;
 const app = express();
@@ -19,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // Middlewares for static files;
 app.use('/static', express.static('static'));
 
-app.use(['/', '/index.html', '/home'], homeController);
+app.use(['/home', '/', '/index.html'], homeController);
 app.use('/cats', addController);
 app.use('/details', detailsController);
 
