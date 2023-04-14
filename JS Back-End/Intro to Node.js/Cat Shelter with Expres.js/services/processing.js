@@ -54,7 +54,7 @@ async function newCatHandleData(req, res) {
             }
             const { name, description, breed } = fields;
             // TODO.. maybe some validations for the data;
-            
+
             try {
                 const imgStaticPath = await saveImage(files);
                 const idForData = await newCatSaveData(name, description, breed, imgStaticPath);
@@ -81,8 +81,11 @@ async function saveImage(files) {
     return `/static/images/${pictureName}.png`;
 }
 
-async function newCatSaveData(name, description, breed, imgStaticPath) {
-    const id = idGenerator();
+async function newCatSaveData(name, description, breed, imgStaticPath, id) {
+    if (id == undefined) {
+        id = idGenerator();
+    }
+
     catData[id] = {
         _id: id,
         name,
@@ -137,29 +140,35 @@ async function deleteImg(imgName) {
     }); // TODO handle error;
 }
 
-async function editData(res, req) {
+async function editData(req, res) {
     const id = req.params.id;
     const form = new formidable.IncomingForm();
 
-    form.parse(req, async (err, fields, files) => {
-        if (err !== null) {
-            throw new Error(err.message);
-        }
-        const { name, description, breed } = fields;
-        // TODO.. maybe some validations for the data;
+    return new Promise((resolve, reject) => {
+        form.parse(req, async (err, fields, files) => {
+            if (err !== null) {
+                throw new Error(err.message);
+            }
 
-        try {
-            const imgStaticPath = await saveImage(files);
-            const idForData = await newCatSaveData(name, description, breed, imgStaticPath);
-            resolve(idForData);
-        } catch (err) {
-            console.log(err.message);
-            delete catData[id];
-            reject(err.message);
-            // TODO handle error;
-        }
+            let { name, description, breed, currentImg } = fields;
+            // TODO.. maybe some validations for the data;
 
-    });
+            try {
+                if (files.upload.size != 0) {         // IS new img;
+                    const imgName = currentImg.split('/').pop();
+                    //console.log(files);
+                    [currentImg] = await Promise.all([saveImage(files), deleteImg(imgName)]);
+                }
+            
+                const idForData = await newCatSaveData(name, description, breed, currentImg, id);
+                resolve(idForData);
+            } catch (err) {
+                console.log(err.message);
+                reject(err.message);
+                // TODO handle error;
+            }
+        });
+    })
 }
 
 module.exports = {

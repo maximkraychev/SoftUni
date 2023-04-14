@@ -2,15 +2,21 @@
 <form action="/details/{{_id}}/edit" method="post" class="cat-form" enctype="multipart/form-data">
     <h2>Edit Cat</h2>
     <label for="name">Name</label>
-    <input type="text" id="name" value="{{name}}">
+    <input name="name" type="text" id="name" value="{{name}}">
     <label for="description">Description</label>
     <textarea
-        id="description">{{description}}</textarea>
-    <label for="image">Image</label>
-    <input type="file" id="image" value="asd">
+        name="description" id="description">{{description}}</textarea>
+    <label for="currentImg">Current Image</label>
+    <input type="hidden" id="currentImg" name="currentImg" value="{{img}}">
+    <img src="{{img}}" alt="img">
+    <label for="image">New Image</label>
+    <input type="file" id="image" name="upload" value="">
     <label for="group">Breed</label>
-    <select id="group">
-        <option value="Fluffy Cat">{{breed}}</option>
+    <select name="breed" id="group">
+        <option selected="{{breed}}" value="{{breed}}">{{breed}}</option>
+        {{#each breeds}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
     </select>
     <button>Edit Cat</button>
 </form>
