@@ -1,7 +1,11 @@
+const { getCubeById } = require('../services/dataService');
+
 const router = require('express').Router();
 
 router.get('/:id', (req, res) => {
-    res.render('deails', {title: 'Cubicle'});
+    const id = req.params.id;
+    const cube = getCubeById(id);
+    res.render('details', {cube, title: 'Cubicle'});
 })
 
 module.exports = router;
