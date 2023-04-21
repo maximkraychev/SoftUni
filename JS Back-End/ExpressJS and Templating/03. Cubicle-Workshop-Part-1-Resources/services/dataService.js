@@ -33,7 +33,7 @@ function getCubesBySearchParams({ search, from, to }) {
     const toAsNumber = Number(to) || 6;
 
     return data.filter((x) => 
-        (x.difficultyLevel >= fromAsNumber && x.difficultyLevel <= toAsNumber)
+        (Number(x.difficultyLevel) >= fromAsNumber && Number(x.difficultyLevel) <= toAsNumber)
         && (x.name.toLowerCase().includes(searchToLower) || x.description.toLowerCase().includes(searchToLower)));
 }
 
