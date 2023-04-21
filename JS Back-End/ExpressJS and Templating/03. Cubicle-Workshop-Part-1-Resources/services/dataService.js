@@ -27,10 +27,20 @@ function createCube(name, imageUrl, description, difficultyLevel) {
     });
 }
 
+function getCubesBySearchParams({ search, from, to }) {
+    const searchToLower = search.toLowerCase();
+    const fromAsNumber = Number(from) || 1;
+    const toAsNumber = Number(to) || 6;
+
+    return data.filter((x) => 
+        (x.difficultyLevel >= fromAsNumber && x.difficultyLevel <= toAsNumber)
+        && (x.name.toLowerCase().includes(searchToLower) || x.description.toLowerCase().includes(searchToLower)));
+}
 
 
 module.exports = {
     getAllCubes,
     createCube,
     getCubeById,
+    getCubesBySearchParams,
 }
