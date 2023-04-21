@@ -4,13 +4,13 @@ const uniqid = require('uniqid');
 const pathToData = './config/database.json';
 const data = JSON.parse(fs.readFileSync(pathToData));
 
-function getAllCubes() {
-    return Array.from(data);
-}
+// function getAllCubes() {
+//     return Array.from(data);
+// }
 
-function getCubeById(id) {
-    return data.find((cube) => cube._id == id);
-}
+// function getCubeById(id) {
+//     return data.find((cube) => cube._id == id);
+// }
 
 function createCube(name, imageUrl, description, difficultyLevel) {
     const id = uniqid();
@@ -39,8 +39,6 @@ function getCubesBySearchParams({ search, from, to }) {
 
 
 module.exports = {
-    getAllCubes,
     createCube,
-    getCubeById,
     getCubesBySearchParams,
 }

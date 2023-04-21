@@ -1,6 +1,6 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
-const bodyParser = require('body-parser');
+const defaultTitle = require('../middlewares/defaultTitle');
 
 module.exports = (app) => {
 
@@ -10,7 +10,10 @@ module.exports = (app) => {
     app.set('view engine', '.hbs');
 
     // Setup the body parser
-    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(express.urlencoded({ extended: false }));
+
+    // Setup defaultTitle
+    app.use(defaultTitle('Cubicle'));
 
     // Setup the static files
     app.use('/static', express.static('static'));

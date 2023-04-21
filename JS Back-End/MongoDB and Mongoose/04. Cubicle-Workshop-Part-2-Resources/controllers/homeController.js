@@ -1,10 +1,15 @@
-const { getAllCubes } = require('../services/dataService');
+const { getAllCubes } = require('../services/cubeService');
 
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
-    const data = getAllCubes();
-    res.render('index', { data, title: 'Cubicle'});
+router.get('/', async (req, res) => {
+    try {
+        const data = await getAllCubes();
+        res.render('index', { data, title: 'Cubicle' });
+    } catch (err) {
+        console.log(err.message);
+        //TODO...
+    }
 });
 
 module.exports = router;
