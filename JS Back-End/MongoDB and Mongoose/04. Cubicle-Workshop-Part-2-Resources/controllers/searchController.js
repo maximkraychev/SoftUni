@@ -1,14 +1,19 @@
-const { getCubesBySearchParams } = require('../services/dataService');
+const { getCubesBySearchParams } = require('../services/cubeService');
 
 const router = require('express').Router();
 
-router.post('/', (req, res) => {
-    const data = getCubesBySearchParams(req.body);
+router.post('/', async (req, res) => {
+    try {
+        const data = await getCubesBySearchParams(req.body);
 
-    if (data.length == 0) {
-        res.redirect('/');
-    } else {
-        res.render('index', { data, title: 'Cubicle'});
+        if (data.length == 0) {
+            res.redirect('/');
+        } else {
+            res.render('index', { data, title: 'Cubicle' });
+        }
+    } catch (err) {
+        console.log(err.message);
+        //TODO...
     }
 });
 
