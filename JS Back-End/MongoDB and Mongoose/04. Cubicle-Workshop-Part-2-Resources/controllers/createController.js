@@ -1,4 +1,4 @@
-const { createCube } = require('../services/dataService');
+const { createCube } = require('../services/cubeService');
 
 const router = require('express').Router();
 
@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name, imageUrl, description, difficultyLevel } = req.body;
-        const id = await createCube(name, imageUrl, description, difficultyLevel);
+        const document = await createCube(req.body);
+        const id = document._id.toString();
         res.redirect('/details/' + id);
     } catch (err) {
         console.log(err);

@@ -12,20 +12,20 @@ const data = JSON.parse(fs.readFileSync(pathToData));
 //     return data.find((cube) => cube._id == id);
 // }
 
-function createCube(name, imageUrl, description, difficultyLevel) {
-    const id = uniqid();
-    data.push({
-        _id: id,
-        name,
-        imageUrl,
-        description,
-        difficultyLevel,
-    });
+// function createCube(name, imageUrl, description, difficultyLevel) {
+//     const id = uniqid();
+//     data.push({
+//         _id: id,
+//         name,
+//         imageUrl,
+//         description,
+//         difficultyLevel,
+//     });
 
-    return new Promise((resolve, reject) => {
-        fs.writeFile(pathToData, JSON.stringify(data, null, 2), err => err == null ? resolve(id) : reject());
-    });
-}
+//     return new Promise((resolve, reject) => {
+//         fs.writeFile(pathToData, JSON.stringify(data, null, 2), err => err == null ? resolve(id) : reject());
+//     });
+// }
 
 // function getCubesBySearchParams({ search, from, to }) {
 //     const searchToLower = search.toLowerCase();
@@ -39,5 +39,5 @@ function createCube(name, imageUrl, description, difficultyLevel) {
 
 
 module.exports = {
-    createCube,
+
 }
