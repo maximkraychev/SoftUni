@@ -39,9 +39,26 @@ async function getCubesBySearchParams({ search, from, to }) {
     }).lean();
 }
 
+async function attachAccessory(cubeId, accessoryId) {
+    const cube = await Cube.findById(cubeId);
+    cube.accessories.push(accessoryId)
+    await cube.save();
+}
+
+
+// async function test() {
+//     (await Cube.find({})).forEach(x => {
+//         x.accessories = [];
+//         x.save();
+//     })
+// }
+
+// test();
+
 module.exports = {
     getAllCubes,
     getCubeById,
     getCubesBySearchParams,
-    createCube
+    createCube,
+    attachAccessory
 }

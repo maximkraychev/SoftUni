@@ -10,8 +10,8 @@ const accessorSchema = new Schema({
             message: props => `${props.value} is not a valid URL`
         }
     },
-    description: { type: String, require: true, maxlength: 20 },
-    cubes: { type: [Types.ObjectId], default: [], ref: 'Cube' }
+    description: { type: String, require: true, maxlength: 50 },
+    //cubes: { type: [Types.ObjectId], default: [], ref: 'Cube' }  This is needed if 'many to many' 
 });
 
 const Accessory = model('Accessory', accessorSchema);

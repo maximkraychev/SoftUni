@@ -2,7 +2,7 @@ const { Schema, model, Types } = require('mongoose');
 
 const cubeSchema = new Schema({
     name: { type: String, require: true },
-    description: { type: String, require: true, maxlength: 20 },
+    description: { type: String, require: true, maxlength: 50 },
     imageUrl: {
         type: String,
         require: true,

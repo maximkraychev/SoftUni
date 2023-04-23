@@ -16,6 +16,20 @@ async function createAccessory(reqBody) {
     return Accessory.create(data);
 }
 
+// async function getAccessoryById(id) {
+//     return Accessory.findById(id).lean();
+// }
+
+async function getAccessoryToBeAttach(currentAccessory) {
+    return await Accessory
+        .find({})
+        .where('accessories')
+        .ne(currentAccessory)
+        .lean()
+
+}
+
 module.exports = {
     createAccessory,
+    getAccessoryToBeAttach
 }

@@ -32,8 +32,4 @@ router.post('/accessory', async (req, res) => {
     }
 });
 
-router.get('/accessory/:id', (req, res) => {
-    res.render('attachAccessory', { title: 'Attach Accessory' });
-});
-
 module.exports = router;
