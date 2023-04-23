@@ -6,8 +6,8 @@
     <form action="" method="POST">
         <label for="accessory">Accessories</label>
         <select id="accessory" name="accessory" />
-        {{#each accessoryToBeAttach}}
-        {{> accessoryCard}}
+        {{#each accessoriesToBeAttach}}
+        {{> accessoryOptionCard}}
         {{/each}}
         </select>
         <input type="submit" value="Attach">

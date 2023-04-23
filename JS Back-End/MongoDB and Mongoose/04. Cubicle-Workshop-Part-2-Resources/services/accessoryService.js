@@ -16,20 +16,14 @@ async function createAccessory(reqBody) {
     return Accessory.create(data);
 }
 
-// async function getAccessoryById(id) {
-//     return Accessory.findById(id).lean();
-// }
-
-async function getAccessoryToBeAttach(currentAccessory) {
+async function getAccessoriesToBeAttach(currentAccessory) {
     return await Accessory
-        .find({})
-        .where('accessories')
-        .ne(currentAccessory)
-        .lean()
+        .find({ _id: { $nin: currentAccessory } })
+        .lean();
 
 }
 
 module.exports = {
     createAccessory,
-    getAccessoryToBeAttach
+    getAccessoriesToBeAttach
 }

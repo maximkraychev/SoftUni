@@ -1,15 +1,16 @@
 const router = require('express').Router();
-const { getAccessoryToBeAttach } = require('../services/accessoryService');
+const { getAccessoriesToBeAttach } = require('../services/accessoryService');
 const { getCubeById, attachAccessory } = require('../services/cubeService');
 
 router.get('/accessory/:id', async (req, res) => {
     try {
         const cube = await getCubeById(req.params.id);
-        const currentAccessory = cube.accessories;
-        const accessoryToBeAttach = await getAccessoryToBeAttach(currentAccessory);
-        console.log(accessoryToBeAttach);
-        const isThereSomethingToAttach = accessoryToBeAttach.length > 0;
-        res.render('attachAccessory', { cube, accessoryToBeAttach, isThereSomethingToAttach, title: 'Attach Accessory' });
+        const currentAccessories = cube.accessories;
+        
+        const accessoriesToBeAttach = await getAccessoriesToBeAttach(currentAccessories);
+        const isThereSomethingToAttach = accessoriesToBeAttach.length > 0;
+
+        res.render('attachAccessory', { cube, accessoriesToBeAttach, isThereSomethingToAttach, title: 'Attach Accessory' });
     } catch (err) {
         console.log(err.message);
         //TODO...
