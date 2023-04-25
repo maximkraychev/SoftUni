@@ -229,6 +229,10 @@ span.error {
     display: block;
 }
 
+div.forSpace {
+    padding: 20px;
+}
+
 img#sadFaceImg{
     display: block;
     margin: 0 auto;

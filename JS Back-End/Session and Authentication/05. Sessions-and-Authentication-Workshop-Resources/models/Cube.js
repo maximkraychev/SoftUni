@@ -12,14 +12,15 @@ const cubeSchema = new Schema({
         }
     },
     difficultyLevel: { type: Number, require: true, min: [1, 'Minimum difficalty level is 1'], max: [6, 'Maximum difficalty leel is 6'] },
-    accessories: { type: [Types.ObjectId], default: [], ref: 'Accessory' }
+    accessories: { type: [Types.ObjectId], default: [], ref: 'Accessory' },
+    creatorId: { type: Types.ObjectId, ref: 'User' }
 });
 
 const Cube = model('Cube', cubeSchema);
 
 module.exports = Cube;
 
-// Validation can be done like this as well;
+// Validation can be done like this as well:
 
 // cubeSchema.path('imageUrl').validate(function () {
 //     return this.imageUrl.startsWith('http');
