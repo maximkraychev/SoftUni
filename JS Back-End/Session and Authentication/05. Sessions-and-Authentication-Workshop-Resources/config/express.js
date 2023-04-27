@@ -1,5 +1,7 @@
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const auth = require('../middlewares/auth');
 const defaultTitle = require('../middlewares/defaultTitle');
 
 const jwsSecret = process.env.JWT_SALT || 'bfde67512f675d12fc7218';
@@ -14,10 +16,15 @@ module.exports = (app) => {
     // Setup the body parser
     app.use(express.urlencoded({ extended: false }));
 
-    // Setup defaultTitle
-    app.use(defaultTitle('Cubicle'));
-
     // Setup the static files
     app.use('/static', express.static('static'));
 
+    // Setup cooki parser
+    app.use(cookieParser());
+
+    // Setup auth with JSON Web Token
+    app.use(auth(jwsSecret));
+    
+    // Setup defaultTitle
+    app.use(defaultTitle('Cubicle'));
 };

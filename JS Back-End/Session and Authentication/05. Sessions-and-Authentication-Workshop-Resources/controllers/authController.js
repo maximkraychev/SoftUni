@@ -1,4 +1,5 @@
 const { register, login } = require('../services/authService');
+const jwt = require('jsonwebtoken');
 
 const router = require('express').Router();
 
@@ -22,7 +23,7 @@ router.post('/register', async (req, res) => {
         }
 
         const data = await register(username, password);
-        // TODO: save the data in json web token;
+        attachToken(req, res, data);
         res.redirect('/');
     } catch (err) {
         res.render('registerPage', {
@@ -47,7 +48,7 @@ router.post('/login', async (req, res) => {
         }
 
         const data = await login(username, password);
-        // TODO: save data in json web token;
+        attachToken(req, res, data);
         res.redirect('/');
     } catch (err) {
         res.render('loginPage', {
@@ -57,6 +58,11 @@ router.post('/login', async (req, res) => {
     }
 
 });
+
+function attachToken(req, res, data) {
+    const token = req.signJwt(data);
+    res.cookie('jwt', token, { maxAge: 3600000 });
+}
 
 
 
