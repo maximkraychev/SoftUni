@@ -3,6 +3,7 @@ const exphbs  = require('express-handlebars');
 const cookieParser = require('cookie-parser');
 const auth = require('../middlewares/auth');
 const defaultTitle = require('../middlewares/defaultTitle');
+const nav = require('../middlewares/nav');
 
 const jwsSecret = process.env.JWT_SALT || 'bfde67512f675d12fc7218';
 
@@ -24,6 +25,9 @@ module.exports = (app) => {
 
     // Setup auth with JSON Web Token
     app.use(auth(jwsSecret));
+
+    // Setup navigation middleware
+    app.use(nav());
     
     // Setup defaultTitle
     app.use(defaultTitle('Cubicle'));
