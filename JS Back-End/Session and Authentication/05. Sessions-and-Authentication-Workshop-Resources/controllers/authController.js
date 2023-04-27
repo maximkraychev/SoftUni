@@ -59,6 +59,12 @@ router.post('/login', async (req, res) => {
 
 });
 
+// TODO: Chnage the logout to post;
+router.get('/logout', (req, res) => {
+    res.clearCookie('jwt');
+    res.redirect('/');
+})
+
 function attachToken(req, res, data) {
     const token = req.signJwt(data);
     res.cookie('jwt', token, { maxAge: 3600000 });
