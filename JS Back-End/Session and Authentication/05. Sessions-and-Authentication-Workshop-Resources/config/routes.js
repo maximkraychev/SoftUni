@@ -7,7 +7,7 @@ const attachController = require('../controllers/attachController');
 const authController = require('../controllers/authController');
 
 // Import Guards
-const isUser = require('../middlewares/guards');
+const { isUser, isOwner } = require('../middlewares/guards');
 
 module.exports = (app) => {
     app.use('/', homeController);
@@ -15,7 +15,7 @@ module.exports = (app) => {
     app.use('/create', isUser(), createController);
     app.use('/details', detailsController);
     app.use('/search', searchController);
-    app.use('/attach', isUser(), attachController);
+    app.use('/attach', isUser(), isOwner(), attachController);
     app.use('/auth', authController);
     app.all('*', (req, res) => { res.render('404', { title: 'Page Not Found' }) });
 };

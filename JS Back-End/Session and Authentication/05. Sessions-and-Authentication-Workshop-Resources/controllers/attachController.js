@@ -2,9 +2,9 @@ const router = require('express').Router();
 const { getAccessoriesToBeAttach } = require('../services/accessoryService');
 const { getCubeById, attachAccessory } = require('../services/cubeService');
 
-router.get('/accessory/:accessoryId', async (req, res) => {
+router.get('/accessory/:cubeId', async (req, res) => {
     try {
-        const cube = await getCubeById(req.params.accessoryId);
+        const cube = await getCubeById(req.params.cubeId);
         const currentAccessories = cube.accessories;
         
         const accessoriesToBeAttach = await getAccessoriesToBeAttach(currentAccessories);
@@ -17,8 +17,8 @@ router.get('/accessory/:accessoryId', async (req, res) => {
     }
 });
 
-router.post('/accessory/:accessoryId', async (req, res) => {
-    const cubeId = req.params.accessoryId;
+router.post('/accessory/:cubeId', async (req, res) => {
+    const cubeId = req.params.cubeId;
     const accessoryId = req.body.accessory;
     try {
         await attachAccessory(cubeId, accessoryId);
@@ -28,6 +28,5 @@ router.post('/accessory/:accessoryId', async (req, res) => {
         //TODO...
     }
 })
-
 
 module.exports = router;
