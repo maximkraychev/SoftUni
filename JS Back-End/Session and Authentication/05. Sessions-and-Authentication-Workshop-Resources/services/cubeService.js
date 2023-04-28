@@ -13,7 +13,7 @@ async function getCubeByIdPopulated(id) {
     return Cube.findById(id).populate('accessories').lean();
 }
 
-async function createCube(body) {
+async function createCube(body, userId) {
     const missing = Object.entries(body).filter(([k, v]) => !v);
 
     if (missing.length > 0) {
@@ -25,6 +25,7 @@ async function createCube(body) {
         imageUrl: body.imageUrl,
         description: body.description,
         difficultyLevel: body.difficultyLevel,
+        ownerId: userId
     }
 
     return Cube.create(data);

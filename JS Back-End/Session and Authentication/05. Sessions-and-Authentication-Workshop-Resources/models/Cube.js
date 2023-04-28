@@ -13,7 +13,7 @@ const cubeSchema = new Schema({
     },
     difficultyLevel: { type: Number, require: true, min: [1, 'Minimum difficalty level is 1'], max: [6, 'Maximum difficalty leel is 6'] },
     accessories: { type: [Types.ObjectId], default: [], ref: 'Accessory' },
-    creatorId: { type: Types.ObjectId, ref: 'User' }
+    ownerId: { type: Types.ObjectId, ref: 'User' }
 });
 
 const Cube = model('Cube', cubeSchema);

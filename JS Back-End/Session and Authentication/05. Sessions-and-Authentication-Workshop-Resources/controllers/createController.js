@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const document = await createCube(req.body);
+        const userId = req.user._id;
+        const document = await createCube(req.body, userId);
         const id = document._id.toString();
         res.redirect('/details/' + id);
     } catch (err) {
