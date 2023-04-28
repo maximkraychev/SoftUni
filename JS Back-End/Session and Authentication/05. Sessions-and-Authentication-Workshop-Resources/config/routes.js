@@ -6,13 +6,16 @@ const searchController = require('../controllers/searchController');
 const attachController = require('../controllers/attachController');
 const authController = require('../controllers/authController');
 
+// Import Guards
+const isUser = require('../middlewares/guards');
+
 module.exports = (app) => {
     app.use('/', homeController);
     app.use('/about', aboutController);
-    app.use('/create', createController);
+    app.use('/create', isUser(), createController);
     app.use('/details', detailsController);
     app.use('/search', searchController);
-    app.use('/attach', attachController);
+    app.use('/attach', isUser(), attachController);
     app.use('/auth', authController);
     app.all('*', (req, res) => { res.render('404', { title: 'Page Not Found' }) });
 };
