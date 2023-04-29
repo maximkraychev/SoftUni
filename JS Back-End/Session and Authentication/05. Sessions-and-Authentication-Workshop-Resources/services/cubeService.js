@@ -31,6 +31,22 @@ async function createCube(body, userId) {
     return Cube.create(data);
 }
 
+async function updateCube(cubeId, body) {
+    const missing = Object.entries(body).filter(([k, v]) => !v);
+
+    if (missing.length > 0) {
+        throw new Error(missing.map(x => `${x[0]} is required!`).join('\n'));
+    }
+    const data = {
+        name: body.name,
+        imageUrl: body.imageUrl,
+        description: body.description,
+        difficultyLevel: body.difficultyLevel,
+    }
+
+    return Cube.findByIdAndUpdate(cubeId, data);
+}
+
 async function getCubesBySearchParams({ search, from, to }) {
     const searchToLower = search.toLowerCase();
     const fromAsNumber = Number(from) || 1;
@@ -57,5 +73,6 @@ module.exports = {
     getCubesBySearchParams,
     createCube,
     attachAccessory,
-    getCubeByIdPopulated
+    getCubeByIdPopulated,
+    updateCube
 }

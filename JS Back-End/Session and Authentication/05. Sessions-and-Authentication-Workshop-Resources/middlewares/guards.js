@@ -10,9 +10,11 @@ function isUser() {
     }
 }
 
+//Is trade off, good for 'Separation of concerns principle' but we need one more additional search in MongoDB;
 function isOwner() {
     return async (req, res, next) => {
-        const matches = /^\/attach\/accessory\/(\w*)$/g.exec(req.originalUrl);
+        // Its done that so it works for attaching accessory and for edit cube;
+        const matches = /^\/attach\/accessory\/(\w*)$/g.exec(req.originalUrl) || /^\/details\/edit\/(\w*)$/g.exec(req.originalUrl);
 
         if (matches != null) {
             const cubeId = matches[1];
