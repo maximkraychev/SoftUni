@@ -14,7 +14,9 @@ function isUser() {
 function isOwner() {
     return async (req, res, next) => {
         // Its done that so it works for attaching accessory and for edit cube;
-        const matches = /^\/attach\/accessory\/(\w*)$/g.exec(req.originalUrl) || /^\/details\/edit\/(\w*)$/g.exec(req.originalUrl);
+        const matches = /^\/attach\/accessory\/(\w*)$/g.exec(req.originalUrl)
+            || /^\/details\/edit\/(\w*)$/g.exec(req.originalUrl)
+            || /^\/details\/delete\/(\w*)$/g.exec(req.originalUrl);
 
         if (matches != null) {
             const cubeId = matches[1];

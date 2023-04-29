@@ -47,6 +47,10 @@ async function updateCube(cubeId, body) {
     return Cube.findByIdAndUpdate(cubeId, data);
 }
 
+async function deleteCube(cubeId) {
+    return Cube.findByIdAndDelete(cubeId);
+}
+
 async function getCubesBySearchParams({ search, from, to }) {
     const searchToLower = search.toLowerCase();
     const fromAsNumber = Number(from) || 1;
@@ -74,5 +78,6 @@ module.exports = {
     createCube,
     attachAccessory,
     getCubeByIdPopulated,
-    updateCube
+    updateCube,
+    deleteCube
 }

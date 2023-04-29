@@ -1,5 +1,5 @@
 const { isUser, isOwner } = require('../middlewares/guards');
-const { getCubeById, getCubeByIdPopulated, updateCube } = require('../services/cubeService');
+const { getCubeById, getCubeByIdPopulated, updateCube, deleteCube } = require('../services/cubeService');
 
 const router = require('express').Router();
 
@@ -35,6 +35,28 @@ router.post('/edit/:cubeId', isUser(), isOwner(), async (req, res) => {
         const cubeId = req.params.cubeId;
         await updateCube(cubeId, req.body);
         res.redirect('/details/' + cubeId);
+    } catch (err) {
+        console.log(err.message);
+        //TODO..
+    }
+});
+
+router.get('/delete/:cubeId', isUser(), isOwner(), async (req, res) => {
+    try {
+        const cubeId = req.params.cubeId;
+        const cube = await getCubeById(cubeId);
+        res.render('deleteCubePage', { cube, title: 'Delete Cube Page' });
+    } catch (err) {
+        console.log(err.message);
+        //TODO...
+    }
+});
+
+router.post('/delete/:cubeId', isUser(), isOwner(), async (req, res) => {
+    try {
+        const cubeId = req.params.cubeId;
+        await deleteCube(cubeId);
+        res.redirect('/');
     } catch (err) {
         console.log(err.message);
         //TODO..

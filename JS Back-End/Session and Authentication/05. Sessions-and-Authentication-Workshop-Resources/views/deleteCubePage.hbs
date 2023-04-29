@@ -1,12 +1,13 @@
+{{#with cube}}
 <h1>Delete Cube</h1>
 <div class="form">
-    <form action="#" method="POST">
+    <form action="/details/delete/{{_id}}" method="POST">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" value="" disabled="true" />
+        <input type="text" id="name" name="name" value="{{name}}" disabled="true" />
         <label for="description">Description</label>
-        <textarea id="description" name="description" disabled="true" /></textarea>
+        <textarea id="description" name="description" disabled="true" />{{description}}</textarea>
         <label for="image">ImageUrl</label>
-        <input type="text" id="image" name="imageUrl" value="" disabled="true" />
+        <input type="text" id="image" name="imageUrl" value="{{imageUrl}}" disabled="true" />
         <label for="difficulty">Difficulty</label>
         <select id="difficulty" name="difficultyLevel" value="" disabled="true" />
         <option value="1">1 - Very Easy</option>
@@ -19,3 +20,8 @@
         <input type="submit" value="Delete">
     </form>
 </div>
+<script>
+    const select = window.document.querySelector('#difficulty');
+    Array.from(select).map(x => Number(x.value) == {{difficultyLevel}} ? x.setAttribute('selected', 'true') : x);
+</script>
+{{/with}}
