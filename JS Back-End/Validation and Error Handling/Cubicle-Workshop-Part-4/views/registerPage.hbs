@@ -1,11 +1,4 @@
 <h1>Register Form</h1>
-  {{#if error}}
-    <div class="error-box">
-        {{#each error.messages}}
-        <span class="error">{{this}}</span>
-        {{/each}}
-    </div>
-    {{/if}}
 <div class="form">
     <form action="/auth/register" method="POST">
         <label for="username">Username</label>

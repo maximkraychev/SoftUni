@@ -1,12 +1,5 @@
 <h1>Login Form</h1>
 <div class="form">
-      {{#if error}}
-    <div class="error-box">
-        {{#each error.messages}}
-        <span class="error">{{this}}</span>
-        {{/each}}
-    </div>
-    {{/if}}
     <form action="#" method="POST">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" value="{{body.username}}">
