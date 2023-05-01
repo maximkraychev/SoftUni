@@ -52,17 +52,42 @@ router.post('/',
 
 
 router.get('/accessory', (req, res) => {
-    res.render('createAccessory', { title: 'Attach Accessory' });
+    res.render('createAccessory', { title: 'Create Accessory' });
 });
 
-router.post('/accessory', async (req, res) => {
-    try {
-        await createAccessory(req.body);
-        res.redirect('/')
-    } catch (err) {
-        console.log(err.message);
-        //TODO..
-    }
-});
+router.post('/accessory',
+    body('name')
+        .trim()
+        .isLength({ min: 5 }).withMessage('Name must be at least 5 characters long!')
+        .isAlphanumeric('en-US', { ignore: ' ' }).withMessage('Name may contain only english letters, whitespaces and numbers!'),
+    body('description')
+        .trim()
+        .isLength({ min: 20 }).withMessage('Description must be at least 20 characters long!')
+        .isAlphanumeric('en-US', { ignore: ' ' }).withMessage('Description may contain only english letters, whitespaces and numbers!'),
+    body('imageUrl')
+        .trim()
+        .isURL().withMessage('The given URL is not valid URL!'),
+    async (req, res) => {
+        try {
+            const { errors } = validationResult(req);
+
+            if (errors.length > 0) {
+                throw errors;
+            }
+
+            await createAccessory(req.body);
+            res.redirect('/')
+        } catch (err) {
+            res.render('create', {
+                title: 'Create Accessory',
+                error: parseError(err),
+                body: {
+                    name: req.body.name,
+                    description: req.body.description,
+                    imageUrl: req.body.imageUrl,
+                }
+            });
+        }
+    });
 
 module.exports = router;
