@@ -14,11 +14,11 @@ router.post('/register',
     body('username')
         .trim()
         .isAlphanumeric().withMessage('Username may contain only english letters and numbers!')
-        .isLength({ min: 5 }).withMessage('Username must be at least 6 characters long!'),
+        .isLength({ min: 5 }).withMessage('Username must be at least 5 characters long!'),
     body('password')
         .trim()
         .isAlphanumeric().withMessage('Password may contain only english letters and numbers!')
-        .isLength({ min: 8 }).withMessage('Password must be at least 6 characters long!'),
+        .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long!'),
     body('repeatPassword')
         .trim()
         .custom((value, { req }) => value == req.body.password).withMessage('Passwords don\'t match!'),
@@ -52,11 +52,11 @@ router.post('/login',
     body('username')
         .trim()
         .isAlphanumeric().withMessage('Username may contain only english letters and numbers!')
-        .isLength({ min: 5 }).withMessage('Username must be at least 6 characters long!'),
+        .isLength({ min: 5 }).withMessage('Username must be at least 5 characters long!'),
     body('password')
         .trim()
         .isAlphanumeric().withMessage('Password may contain only english letters and numbers!')
-        .isLength({ min: 8 }).withMessage('Password must be at least 6 characters long!'),
+        .isLength({ min: 8 }).withMessage('Password must be at least 8 characters long!'),
     async (req, res) => {
         try {
             const { errors } = validationResult(req);

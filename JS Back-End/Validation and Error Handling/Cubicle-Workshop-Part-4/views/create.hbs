@@ -2,11 +2,11 @@
 <div class="form">
   <form action='/create' method="post">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" value="{{body.name}}">
     <label for="name">Description</label>
-    <textarea id="name" name="description"></textarea>
+    <textarea id="name" name="description">{{body.description}}</textarea>
     <label for="image">ImageUrl</label>
-    <input type="text" id="image" name="imageUrl">
+    <input type="text" id="image" name="imageUrl" value="{{body.imageUrl}}">
     <label for="difficulty">Difficulty</label>
     <select id="difficulty" name="difficultyLevel">
       <option value="1">1 - Very Easy</option>
@@ -19,3 +19,9 @@
     <input type="submit" value="Create">
   </form>
 </div>
+{{#if body.difficultyLevel}}
+<script>
+  const select = window.document.querySelector('#difficulty');
+  Array.from(select).map(x => Number(x.value) == {{ body.difficultyLevel }} ?x.setAttribute('selected', 'true') : x);
+</script>
+{{/if}}

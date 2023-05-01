@@ -229,17 +229,6 @@ span.error {
     display: block;
 }
 
-.error-box {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-}
-
 #notifications {
     margin: 0 auto;
     margin-top: 0px;
