@@ -220,17 +220,24 @@ span.error {
     padding: 10px;
     text-align: center;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 10px;
     font-weight: normal;
     position: relative;
     float: right;
-    margin-top: 20px;
+    margin-top: 10px;
     overflow: hidden;
     display: block;
 }
 
-div.forSpace {
-    padding: 20px;
+.error-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 img#sadFaceImg{

@@ -9,9 +9,11 @@
         "cookie-parser": "^1.4.6",
         "express": "^4.17.1",
         "express-handlebars": "^3.1.0",
+        "express-validator": "^7.0.1",
         "jsonwebtoken": "^9.0.0",
         "mongoose": "^7.0.4",
-        "uniqid": "^5.0.3"
+        "uniqid": "^5.0.3",
+        "validator": "^13.9.0"
     },
     "devDependencies": {
         "nodemon": "^1.19.2"

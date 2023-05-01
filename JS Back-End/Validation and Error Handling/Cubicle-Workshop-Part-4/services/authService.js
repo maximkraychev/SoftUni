@@ -36,7 +36,7 @@ async function login(username, password) {
         _id: user._id,
         username,
     }
-}
+}   
 
 module.exports = {
     register,

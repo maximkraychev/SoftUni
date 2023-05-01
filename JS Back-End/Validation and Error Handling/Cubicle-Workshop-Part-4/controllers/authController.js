@@ -1,5 +1,7 @@
 const { register, login } = require('../services/authService');
 const jwt = require('jsonwebtoken');
+const { validationResult, body } = require('express-validator');
+const { parseError } = require('../utils/parsers');
 
 const router = require('express').Router();
 
@@ -8,56 +10,74 @@ router.get('/register', (req, res) => {
     res.render('registerPage', { title: 'Register Page' })
 });
 
-router.post('/register', async (req, res) => {
-    try {
-        const username = req.body.username.trim();
-        const password = req.body.password.trim();
-        const repeatPassword = req.body.repeatPassword.trim();
+router.post('/register',
+    body('username')
+        .trim()
+        .isAlphanumeric().withMessage('Username may contain only english letters and numbers!')
+        .isLength({ min: 5 }).withMessage('Username must be at least 6 characters long!'),
+    body('password')
+        .trim()
+        .isAlphanumeric().withMessage('Password may contain only english letters and numbers!')
+        .isLength({ min: 8 }).withMessage('Password must be at least 6 characters long!'),
+    body('repeatPassword')
+        .trim()
+        .custom((value, { req }) => value == req.body.password).withMessage('Passwords don\'t match!'),
+    async (req, res) => {
+        try {
+            const { errors } = validationResult(req);
 
-        if (username == '' || password == '') {
-            throw new Error('All fields are required!');
+            if (errors.length > 0) {
+                throw errors;
+            }
+            const data = await register(req.body.username, req.body.password);
+            attachToken(req, res, data);
+            res.redirect('/');
+        } catch (err) {
+            res.render('registerPage', {
+                title: 'Register Page',
+                error: parseError(err),
+                body: {
+                    username: req.body.username
+                }
+            });
         }
-
-        if (password != repeatPassword) {
-            throw new Error('Passwords don\'t match!');
-        }
-
-        const data = await register(username, password);
-        attachToken(req, res, data);
-        res.redirect('/');
-    } catch (err) {
-        res.render('registerPage', {
-            title: 'Register Page',
-            error: err.message.split('\n')
-        });
-    }
-});
+    });
 
 
 router.get('/login', (req, res) => {
     res.render('loginPage', { title: 'Login Page' });
 });
 
-router.post('/login', async (req, res) => {
-    try {
-        const username = req.body.username.trim();
-        const password = req.body.password.trim();
+router.post('/login',
+    body('username')
+        .trim()
+        .isAlphanumeric().withMessage('Username may contain only english letters and numbers!')
+        .isLength({ min: 5 }).withMessage('Username must be at least 6 characters long!'),
+    body('password')
+        .trim()
+        .isAlphanumeric().withMessage('Password may contain only english letters and numbers!')
+        .isLength({ min: 8 }).withMessage('Password must be at least 6 characters long!'),
+    async (req, res) => {
+        try {
+            const { errors } = validationResult(req);
 
-        if (username == '' || password == '') {
-            throw new Error('All fields are required!');
+            if (errors.length > 0) {
+                throw errors;
+            }
+
+            const data = await login(req.body.username, req.body.password);
+            attachToken(req, res, data);
+            res.redirect('/');
+        } catch (err) {
+            res.render('loginPage', {
+                title: 'Login Page',
+                error: parseError(err),
+                body: {
+                    username: req.body.username
+                }
+            });
         }
-
-        const data = await login(username, password);
-        attachToken(req, res, data);
-        res.redirect('/');
-    } catch (err) {
-        res.render('loginPage', {
-            title: 'Login Page',
-            error: err.message.split('\n')
-        });
-    }
-
-});
+    });
 
 // TODO: Chnage the logout to post;
 router.get('/logout', (req, res) => {
