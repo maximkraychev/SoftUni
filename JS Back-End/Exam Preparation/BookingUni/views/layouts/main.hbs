@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body>
-
     <div id="container">
-
-         <div>
+        {{#if error}}
+        <div>
             <div class="notification errorBox">
-                <span>Error</span>
+                {{#each error.messages}}
+                <span>{{this}}</span>
+                {{/each}}
             </div>
         </div>
+        {{/if}}
 
         <nav>
             <div class="left-container">
