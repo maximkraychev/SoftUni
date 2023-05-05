@@ -9,6 +9,11 @@ authController.get('/register', (req, res) => {
     res.render('register');
 });
 
+authController.post('/register', (req, res) => {
+
+    console.log(req.body);
+});
+
 authController.get('/logout', (req, res) => {
     
 });
