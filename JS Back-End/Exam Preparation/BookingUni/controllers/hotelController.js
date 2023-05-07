@@ -1,8 +1,18 @@
-const { createHotel } = require('../services/hotel');
+const { createHotel, getHotelById } = require('../services/hotel');
 const { parseError } = require('../utils/parsers');
 const hotelController = require('express').Router();
 
-hotelController.get('/details/:id', (req, res) => {
+hotelController.get('/details/:id', async (req, res) => {
+
+    try {
+        const hotel = await getHotelById(req.params.id);
+        console.log(hotel);
+        res.render('details', { hotel });
+    } catch (err) {
+        res.render('details', {
+            error: parseError(err)
+        });
+    }
 });
 
 hotelController.get('/edit/:id', (req, res) => {

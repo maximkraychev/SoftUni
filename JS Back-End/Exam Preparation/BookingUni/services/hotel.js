@@ -16,7 +16,17 @@ async function createHotel({ name, city, freeRooms, imgUrl }, owner) {
     });
 };
 
+async function getAllHotels() {
+    return Hotel.find({}).sort({freeRooms: -1}).lean();
+}
+
+async function getHotelById(id) {
+    return Hotel.findById(id).lean();
+}
+
 module.exports = {
     createHotel,
+    getAllHotels,
+    getHotelById
 }
 
