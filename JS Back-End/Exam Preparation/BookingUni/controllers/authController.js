@@ -18,7 +18,6 @@ authController.post('/login',
         .isAlphanumeric().withMessage('Password may contain only english letters and numbers!')
         .isLength({ min: 5 }).withMessage('Password must be at least 5 characters long!'),
     async (req, res) => {
-        console.log(req.body);
         try {
             const { errors } = validationResult(req);
 

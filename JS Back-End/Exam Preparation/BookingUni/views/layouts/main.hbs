@@ -23,15 +23,20 @@
             <div class="left-container">
                 <ul>
                     <li><a href="/">Home</a></li>
+                    {{#if isUser}}
                     <li><a href="">Add +</a></li>
+                    {{else}}
                     <li><a href="/auth/login">Login</a></li>
                     <li><a href="/auth/register">Register</a></li>
+                    {{/if}}
                 </ul>
             </div>
+            {{#if isUser}}
             <div class="right-container">
-                <a href="" class="log-out">UserName</a>
+                <a href="" class="log-out">{{username}}</a>
                 <a href="/auth/logout" class="log-out">Logout</a>
             </div>
+            {{/if}}
         </nav>
         {{{body}}}
         <footer>@SoftUni - JS Back-end - BookingUni 2020</footer>
