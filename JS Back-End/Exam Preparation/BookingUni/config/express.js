@@ -5,6 +5,7 @@ const hbs = require('express-handlebars').create({
 });
 const cookieParser = require('cookie-parser');
 const session = require('../middlewares/session');
+const bodyTrimmer = require('../middlewares/trimBody');
 
 module.exports = (app) => {
     app.engine('.hbs', hbs.engine);
@@ -14,5 +15,6 @@ module.exports = (app) => {
     app.use('/static', express.static('static'));
     app.use(cookieParser());
     app.use(session());
+    app.use(bodyTrimmer());
     app.use(defaultTitle('BookingUni'));
 }

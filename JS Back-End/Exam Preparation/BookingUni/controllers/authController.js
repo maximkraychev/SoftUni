@@ -4,7 +4,6 @@ const { parseError } = require('../utils/parsers');
 const { register, login } = require('../services/user');
 
 authController.get('/login', (req, res) => {
-
     res.render('login');
 });
 
@@ -79,6 +78,11 @@ authController.post('/register',
                 }
             })
         }
+    });
+
+    authController.get('/logout', (req, res) => {
+        res.clearCookie('token');
+        res.redirect('/');
     });
 
 

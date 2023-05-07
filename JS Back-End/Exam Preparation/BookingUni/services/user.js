@@ -45,7 +45,7 @@ function createSession({ _id, email, username }) {
         username
     }
 
-    const token = jwt.sign(payload, JWT_SECRET);
+    const token = jwt.sign(payload, JWT_SECRET, {expiresIn: '4h'});
     return token;
 }
 
