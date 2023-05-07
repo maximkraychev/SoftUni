@@ -1,13 +1,19 @@
+const { isOwner, isUser } = require('../middlewares/guards');
+const { preloadHotel } = require('../middlewares/preLoaders');
 const { createHotel, getHotelById } = require('../services/hotel');
 const { parseError } = require('../utils/parsers');
 const hotelController = require('express').Router();
 
-hotelController.get('/details/:id', async (req, res) => {
+hotelController.get('/details/:id', isUser(), preloadHotel(), async (req, res) => {
 
     try {
-        const hotel = await getHotelById(req.params.id);
-        console.log(hotel);
-        res.render('details', { hotel });
+        const isOwner = res.locals.hotel.owner.toString() == req.user._id.toString();
+        const isAlreadyBooked = res.locals.hotel.bookedUsers
+        res.render('details', {
+            hotel: res.locals.hotel,
+            isOwner,
+            isAlreadyBooked
+        });
     } catch (err) {
         res.render('details', {
             error: parseError(err)
@@ -15,7 +21,7 @@ hotelController.get('/details/:id', async (req, res) => {
     }
 });
 
-hotelController.get('/edit/:id', (req, res) => {
+hotelController.get('/edit/:id', preloadHotel(), isOwner(), (req, res) => {
 
     res.render('edit');
 });

@@ -24,9 +24,14 @@ async function getHotelById(id) {
     return Hotel.findById(id).lean();
 }
 
+async function getHotelByIdRaw(id) {
+    return Hotel.findById(id);
+}
+
 module.exports = {
     createHotel,
     getAllHotels,
-    getHotelById
+    getHotelById,
+    getHotelByIdRaw
 }
 
