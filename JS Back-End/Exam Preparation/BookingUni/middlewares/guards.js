@@ -11,8 +11,6 @@ function isUser() {
 
 function isOwner() {
     return (req, res, next) => {
-        console.log(req.user);
-        console.log(res.locals);
         if (req.user && res.locals.hotel && req.user._id.toString() == res.locals.hotel.owner.toString()) {
             next();
         } else {
