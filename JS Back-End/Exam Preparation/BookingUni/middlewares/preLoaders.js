@@ -10,7 +10,7 @@ function preloadHotel(boolean) {
             }
             next();
         } catch(err) {
-            //TODO decide what to do if there are no id;
+            //TODO decide what to do if there are no id or there is some problem with database;
             console.log(err);
         }
     }

@@ -28,10 +28,15 @@ async function getHotelByIdRaw(id) {
     return Hotel.findById(id);
 }
 
+async function deleteHotel(id) {
+    return Hotel.findByIdAndDelete(id);
+}
+
 module.exports = {
     createHotel,
     getAllHotels,
     getHotelById,
-    getHotelByIdRaw
+    getHotelByIdRaw,
+    deleteHotel
 }
 

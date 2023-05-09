@@ -10,7 +10,6 @@ homeController.get('/', async (req, res) => {
     } catch (err) {
         res.render('home', {
             title: 'BookingUni',
-            hotels: [],
             error: parseError(err)
         })
     }
