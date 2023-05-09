@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const connStr = process.env.DATABASE_CONNECTION_STRING || 'mongodb://localhost:27017/tutorials';
 
 module.exports = async (app) => {
