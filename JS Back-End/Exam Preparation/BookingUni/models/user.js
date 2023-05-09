@@ -5,7 +5,6 @@ const userSchema = new Schema({
     email: { type: String, require: true, },
     username: { type: String, require: true },
     hashedPassword: { type: String, require: true },
-    offeredHotels: { type: [Types.ObjectId], default: [] }
 });
 
 userSchema.index({ email: 1 }, {

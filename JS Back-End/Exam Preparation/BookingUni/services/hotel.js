@@ -32,11 +32,16 @@ async function deleteHotel(id) {
     return Hotel.findByIdAndDelete(id);
 }
 
+async function searchBookedHotelByUserId(id) {
+    return Hotel.find({bookedUsers: id}, 'name').lean();
+}
+
 module.exports = {
     createHotel,
     getAllHotels,
     getHotelById,
     getHotelByIdRaw,
-    deleteHotel
+    deleteHotel,
+    searchBookedHotelByUserId
 }
 
