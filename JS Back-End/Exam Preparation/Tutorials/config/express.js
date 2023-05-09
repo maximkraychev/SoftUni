@@ -3,6 +3,7 @@ const hbs = require('express-handlebars').create({
     extname: 'hbs'
 });
 const cookieParser = require('cookie-parser');
+const bodyTrimmer = require('../middlewares/bodyTrimmer');
 
 
 
@@ -14,4 +15,5 @@ module.exports = (app) => {
     app.use(express.urlencoded({extended: true}));
     app.use('/static', express.static('static'));
     app.use(cookieParser());
+    app.use(bodyTrimmer());
 }
