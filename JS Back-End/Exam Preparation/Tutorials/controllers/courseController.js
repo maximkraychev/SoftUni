@@ -1,16 +1,17 @@
+const { isUser } = require('../middlewares/guards');
 const { createCourse, getCourseById, getCourseByIdRow } = require('../services/course');
 const { parseError } = require('../utils/parsers');
+const coursePreloader = require('../middlewares/preload');
 
 const courseController = require('express').Router();
 
 
-courseController.get('/:id/details', async (req, res) => {
+courseController.get('/:id/details', isUser(), coursePreloader(), async (req, res) => {
     try {
-        const course = await getCourseById(req.params.id);
+        const course = res.locals.course;
         const isOwner = course.owner.toString() == req.user._id;
         const isAlreadyEnrolled = course.usersEnrolled.some(x => x.toString() == req.user._id);
         res.render('courseDetails', {
-            course,
             isOwner,
             isAlreadyEnrolled
         });
@@ -19,9 +20,9 @@ courseController.get('/:id/details', async (req, res) => {
     }
 });
 
-courseController.get('/:id/enroll', async (req, res) => {
+courseController.get('/:id/enroll', isUser(), coursePreloader(true), async (req, res) => {
     try {
-        const course = await getCourseByIdRow(req.params.id);
+        const course = res.locals.course
         const isOwner = course.owner.toString() == req.user._id;
         const isAlreadyEnrolled = course.usersEnrolled.some(x => x.toString() == req.user._id);
 
@@ -46,11 +47,11 @@ courseController.get('/:id/edit', (req, res) => {
     res.render('editCourse');
 });
 
-courseController.get('/create', (req, res) => {
+courseController.get('/create', isUser(), (req, res) => {
     res.render('createCourse');
 });
 
-courseController.post('/create', async (req, res) => {
+courseController.post('/create', isUser(), async (req, res) => {
     try {
         await createCourse(req.body, req.user._id);
         res.redirect('/');
