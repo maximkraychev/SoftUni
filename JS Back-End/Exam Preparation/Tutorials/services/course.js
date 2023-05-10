@@ -37,6 +37,14 @@ async function getCourseByIdRow(id) {
     return Course.findById(id);
 }
 
+async function deleteById(id) {
+    return Course.findByIdAndDelete(id);
+}
+
+async function getCoursesByQuery(query) {
+    return Course.find({title: new RegExp(query, 'i')}, 'title imageUrl createdAt').lean();
+}
+
 
 module.exports = {
     createCourse,
@@ -44,4 +52,6 @@ module.exports = {
     getThreeCoursesByEnrolledUsers,
     getCourseById,
     getCourseByIdRow,
+    deleteById,
+    getCoursesByQuery
 }

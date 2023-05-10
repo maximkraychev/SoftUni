@@ -24,8 +24,8 @@ async function register({ username, password, rePassword }) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = User.create({ username, hashedPassword });
-
+    const user = await User.create({ username, hashedPassword });
+    
     return createSession(user);
 }
 
@@ -48,7 +48,7 @@ function createSession({ _id, username }) {
         _id,
         username
     }
-
+    
     const token = jwt.sign(payload, JWT_SECRET);
     return token;
 }
