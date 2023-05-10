@@ -6,7 +6,7 @@ const homeController = require('express').Router();
 homeController.get('/', async (req, res) => {
     const template = req.user ? 'userHome' : 'guestHome';
     let courses;
-
+   
     try {
         if (template == 'userHome') {
             courses = await getAllCoursesByDate();

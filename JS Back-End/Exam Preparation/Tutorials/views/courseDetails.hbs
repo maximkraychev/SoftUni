@@ -1,26 +1,31 @@
 <div class="container">
-    <h1 class="my-4">Title : JavaScript
+    <h1 class="my-4">Title : {{course.title}}
     </h1>
 
     <div class="row">
 
         <div class="col-md-8">
             <img class="img-fluid"
-                src="https://1.bp.blogspot.com/-pdqcVeIQp64/XDX7TzdRdcI/AAAAAAAAM8E/ZmGuB6caZqIGmEflGHcj3zgXJJrmqRLdgCLcBGAs/w1200-h630-p-k-no-nu/Free%2BCourses%2Bto%2Blearn%2BJavaScript.jpg"
+                src="{{course.imageUrl}}"
                 alt="JavaScript" />
         </div>
 
         <div class="col-md-4 text-center">
             <h4 class="my-3">Duration</h4>
-            <p>4 weeks</p>
+            <p>{{course.duration}}</p>
             <h3 class="my-3">Description</h3>
-            <p>JavaScript is ...</p>
+            <p>{{course.description}}</p>
 
+            {{#if isOwner}}
             <a class="btn btn-danger" href="/">Delete</a>
             <a class="btn btn-warning" href="/">Edit</a>
-            <span class="enrolled-span">You are already enrolled</span>
-            <a class="btn btn-primary" href="/">Enroll</a>
-
+            {{else}}
+                {{#if isAlreadyEnrolled}}
+                <span class="enrolled-span">You are already enrolled</span>
+                {{else}}
+                <a class="btn btn-primary" href="/course/{{course._id}}/enroll">Enroll</a>
+                {{/if}}
+            {{/if}}
         </div>
     </div>
 </div>
