@@ -29,7 +29,6 @@ authController.post('/login', async (req, res) => {
     try {
        
         const token = await login(req.body);
-        console.log(token);
         res.cookie('token', token);
         res.redirect('/');
     } catch(err) {
@@ -39,6 +38,11 @@ authController.post('/login', async (req, res) => {
             error: parseError(err)
         });
     }
+});
+
+authController.get('/logout', (req, res) => {
+    res.clearCookie('token');
+    res.redirect('/');
 });
 
 module.exports = authController;
