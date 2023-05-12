@@ -4,6 +4,7 @@ const hbs = require('express-handlebars').create({
 });
 const cookieParser = require('cookie-parser');
 const bodyTrimmer = require('../middlewares/bodyTrimmer');
+const session = require('../middlewares/session');
 
 
 module.exports = (app) => {
@@ -14,5 +15,6 @@ module.exports = (app) => {
     app.use(express.urlencoded({extended: true}));
     app.use('/static', express.static('static'));
     app.use(cookieParser());
+    app.use(session());
     app.use(bodyTrimmer());
 };
