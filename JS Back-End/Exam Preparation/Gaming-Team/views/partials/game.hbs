@@ -8,6 +8,7 @@
         <p><span>Genre: </span>{{genre}}</p>
         <p><span>Price: </span>${{price}}</p>
     </div>
-
+    {{#if user}}
     <a href="/game/details/{{_id}}" class="btn-details">Details</a>
+    {{/if}}
 </div>

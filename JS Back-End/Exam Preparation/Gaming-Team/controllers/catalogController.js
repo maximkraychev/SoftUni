@@ -9,7 +9,8 @@ catalogCotroller.get('/', async (req, res) => {
         const games = await getAllGames();
         res.render('catalog', {
             title: 'Catalog Page - Gaming Team',
-            games
+            games,
+            user: req.user
         });
     } catch (err) {
         console.log(err);
