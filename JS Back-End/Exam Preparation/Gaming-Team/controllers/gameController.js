@@ -1,4 +1,6 @@
 const gameController = require('express').Router();
+const { isUser } = require('../middlewares/guards');
+const preloader = require('../middlewares/preloader');
 const { createGame } = require('../services/game');
 const parseError = require('../utils/parsers');
 
@@ -17,6 +19,10 @@ gameController.post('/create', async (req, res) => {
             error: parseError(err)
         });
     }
+});
+
+gameController.get('/details/:id', isUser(), preloader(), async (req, res) => {
+    res.render('details', { title: 'Details Page' });
 });
 
 

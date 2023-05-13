@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bodyTrimmer = require('../middlewares/bodyTrimmer');
 const session = require('../middlewares/session');
 
-
 module.exports = (app) => {
 
     app.engine('.hbs', hbs.engine);
