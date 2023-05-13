@@ -14,6 +14,11 @@ async function createGame({platform, name, image, price, genre, description}, ow
     });
 }
 
+async function getAllGames() {
+    return Game.find({}).lean();
+}
+
 module.exports = {
     createGame,
+    getAllGames
 }

@@ -1,5 +1,5 @@
 const authController = require("../controllers/authController");
-const catalogCotroller = require("../controllers/catalog");
+const catalogCotroller = require("../controllers/catalogController");
 const gameController = require("../controllers/gameController");
 const homeController = require("../controllers/homeController");
 
