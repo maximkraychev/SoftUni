@@ -30,10 +30,21 @@ async function deleteGame(id) {
     return Game.findByIdAndDelete(id);
 }
 
+async function findGameBySearch({ search, platform }) {
+    const games = await Game
+        .find({
+            name: { $regex: search, $options: 'i' },
+            platform: { $regex: platform, $options: 'i' }
+        })
+        .lean();
+    return games;
+}
+
 module.exports = {
     createGame,
     getAllGames,
     getGameRow,
     getGame,
-    deleteGame
+    deleteGame,
+    findGameBySearch
 }
