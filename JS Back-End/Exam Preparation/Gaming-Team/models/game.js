@@ -7,7 +7,7 @@ const gameSchema = new Schema({
     description: { type: String, require: true, minLength: [10, 'The description should be at least ten characters long'] },
     genre: { type: String, require: true, minLength: [2, 'The genre should be at least two characters long'] },
     platform: { type: String, enum: { values: ['PC', 'Nintendo', 'PS4', 'PS5', 'XBOX'], message: 'Invalid platform' }, require: true },
-    boughtBy: { type: [Types.ObjectId], require: true },
+    boughtBy: { type: [Types.ObjectId], default: [], require: true },
     owner: { type: Types.ObjectId }
 });
 

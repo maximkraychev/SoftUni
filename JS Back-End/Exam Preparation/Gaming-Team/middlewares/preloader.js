@@ -7,8 +7,6 @@ module.exports = (boolean) => async (req, res, next) => {
         } else {
             res.locals.game = await getGame(req.params.id);
         }
-        
-        res.locals.isOwner = res.locals.game.owner.toString() == req.user._id.toString();
     } catch (err) {
         console.log(err);
         //TODO.. Handle the error;
