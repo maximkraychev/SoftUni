@@ -8,6 +8,19 @@ function isUser() {
     }
 }
 
+//Must be used after preloader
+function isOwner() {
+    return (req, res, next) => {
+        if (res.locals.game.owner.toString() != req.user._id.toString()) {
+            res.redirect('/auth/login');
+            return;
+        }
+        next();
+    }
+}
+
+
 module.exports = {
-    isUser
+    isUser,
+    isOwner
 }

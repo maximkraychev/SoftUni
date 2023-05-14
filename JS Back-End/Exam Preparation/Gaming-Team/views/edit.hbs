@@ -1,0 +1,42 @@
+<!-- Edit Page - Gaming Team -->
+<main id="edit">
+    <!-- In case of error, you should display div with class "errorContainer" -->
+    <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
+    {{#if error}}
+    <div>
+        <div class="errorContainer">
+            {{#each error.messages}}
+            {{> error}}
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    <section id="edit-container">
+        <div class="edit-container-info">
+            <h1>Edit Game Code Offer</h1>
+            <form action="/game/details/{{body._id}}/edit" method="post">
+                <label>Platform:</label>
+                <select id="platform" name="platform">
+                    <option value="">-------</option>
+                    <option value="PC" {{#if body.pc}}selected{{/if}}>PC</option>
+                    <option value="Nintendo" {{#if body.nintendo}}selected{{/if}}>Nintendo</option>
+                    <option value="PS4" {{#if body.ps4}}selected{{/if}}>PS4</option>
+                    <option value="PS5" {{#if body.ps5}}selected{{/if}}>PS5</option>
+                    <option value="XBOX" {{#if body.xbox}}selected{{/if}}>XBOX</option>
+                </select>
+                <label>Name:</label>
+                <input type="text" id="name" name="name" value="{{body.name}}">
+                <label>Image:</label>
+                <input type="text" id="image" name="image" value="{{body.image}}">
+                <label>Price:</label>
+                <input type="number" id="price" name="price" value="{{body.price}}">
+                <label>Genre:</label>
+                <input type="text" id="genre" name="genre" value="{{body.genre}}">
+                <label>Description:</label>
+                <textarea id="description" name="description">{{body.description}}</textarea>
+                <input type="submit" id="btn" value="EDIT"></input>
+            </form>
+        </div>
+    </section>
+</main>

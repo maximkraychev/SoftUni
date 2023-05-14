@@ -26,9 +26,14 @@ async function getGame(id) {
     return Game.findById(id).lean();
 }
 
+async function deleteGame(id) {
+    return Game.findByIdAndDelete(id);
+}
+
 module.exports = {
     createGame,
     getAllGames,
     getGameRow,
-    getGame
+    getGame,
+    deleteGame
 }
