@@ -1,5 +1,5 @@
-const { sendStatic } = require("./sendStatic");
-const { notFound } = require("./utils");
+const { sendStatic } = require("../controllers/staticController");
+const { notFound } = require("../src/utils");
 
 const routes = {};
 
@@ -9,7 +9,7 @@ function match(req, res) {
     const method = req.method;
     console.log('<<<', path, method);
 
-    if (path.endsWith('.css') || path.endsWith('.ico')) {
+    if (path.startsWith('/static/')) {
         sendStatic(req, res, path);
         return;
     }

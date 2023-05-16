@@ -4,7 +4,6 @@ const { Transform } = require('stream');
 
 const animalCards = new Transform({
     transform(chunk, encoding, callback) {
-      console.log('test');
       let data = '';
       const fileStream = fs.createReadStream('./data/cats.json');
       fileStream.on('data', (chunk) => {
