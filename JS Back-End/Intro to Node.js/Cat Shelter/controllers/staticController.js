@@ -11,8 +11,6 @@ function sendStatic(req, res, currenPath) {
     const filePath = path.resolve(appPath, `.${currenPath}`);
 
     fs.stat(filePath, (err, stat) => {
-        console.log(stat);
-        console.log(err);
         if (err != null || stat.isFile() != true) {
             res.writeHead(404);
             res.end();

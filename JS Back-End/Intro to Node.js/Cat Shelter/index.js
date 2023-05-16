@@ -1,10 +1,10 @@
 const http = require('http');
 const router = require('./config/routerConfig');
 const { handlerGet, handlerPost } = require('./src/handler');
-const { indexHandler } = require('./src/handlers/indexHandler');
+const { homeController } = require('./controllers/homeController');
 const port = 3000;
 
-router.get('/', indexHandler);
+router.get('/', homeController);
 router.get('/home', handlerGet);
 router.get('/addBreed', handlerGet);
 router.get('/addCat', handlerGet);
