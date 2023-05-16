@@ -1,5 +1,5 @@
 const { sendStatic } = require("../controllers/staticController");
-const { notFound } = require("../src/utils");
+const { notFound } = require("../util/utils");
 
 const routes = {};
 
@@ -7,7 +7,7 @@ function match(req, res) {
     const url = new URL(req.url, `http://${req.headers.host}`);
     const path = url.pathname;
     const method = req.method;
-    console.log('<<<', path, method);
+    console.log('>>>', 'Path:', path, '<=>', 'Method:', method);
 
     if (path.startsWith('/static/')) {
         sendStatic(req, res, path);
