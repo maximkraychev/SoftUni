@@ -12,9 +12,7 @@ module.exports = (boolean) => async (req, res, next) => {
             throw new Error('We could\'t find product with that ID');
         }
     } catch (err) {
-        //TODO... Chnage the error handling!!!
-        console.error(err);
-        res.render('404', { title: '404 Page - Gaming Team' });
+        res.render('404', { title: '404 Page' });
         return;
     }
 

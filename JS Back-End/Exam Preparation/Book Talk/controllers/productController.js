@@ -72,7 +72,6 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
 });
 
 //Edit
-//TODO... Change: (Path), (Guards), (Name of the Template), (Title)
 productController.get('/details/:id/edit', isUser(), preloader(), isOwner(), (req, res) => {
     res.render('edit', {
         title: 'Edit Page',
@@ -80,7 +79,6 @@ productController.get('/details/:id/edit', isUser(), preloader(), isOwner(), (re
     })
 });
 
-//TODO... Change: (Path), (Guards), (Redirect)
 productController.post('/details/:id/edit', isUser(), preloader(true), isOwner(), async (req, res) => {
     try {
         const product = res.locals.product;
