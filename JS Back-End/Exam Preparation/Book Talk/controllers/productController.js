@@ -61,13 +61,11 @@ productController.get('/details/:id/whish', isUser(), preloader(true), async (re
 });
 
 //Delete
-//TODO... Change: (Path), (Guards), (Redirect)
 productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), async (req, res) => {
     try {
         await deleteProduct(req.params.id);
         res.redirect('/catalog');
     } catch (err) {
-        //TODO... Chnage (Redirect) or logic if there is error;
         console.error(err);
         res.redirect(`/details/${req.params.id}`);
     }
@@ -77,25 +75,27 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
 //TODO... Change: (Path), (Guards), (Name of the Template), (Title)
 productController.get('/details/:id/edit', isUser(), preloader(), isOwner(), (req, res) => {
     res.render('edit', {
-        title: '',
+        title: 'Edit Page',
         body: res.locals.product
-
     })
 });
 
 //TODO... Change: (Path), (Guards), (Redirect)
 productController.post('/details/:id/edit', isUser(), preloader(true), isOwner(), async (req, res) => {
     try {
-        //TODO... transfer the data from req.body to product
         const product = res.locals.product;
-        //product.name = req.body.name  //EXAMPLE  
+        product.title = req.body.title;
+        product.author = req.body.author;
+        product.image = req.body.image;
+        product.bookReview = req.body.bookReview;
+        product.genre = req.body.genre;
+        product.stars = req.body.stars;
         await product.save();
-        res.redirect(`/game/details/${req.params.id}`);
+        res.redirect(`/product/details/${req.params.id}`);
     } catch (err) {
-        //TODO... Change: (Name of the Template), (Title)
         res.locals.product = res.locals.product.toObject();
         res.render('edit', {
-            title: '',
+            title: 'Edit Page',
             body: res.locals.product,
             error: parseError(err)
         });

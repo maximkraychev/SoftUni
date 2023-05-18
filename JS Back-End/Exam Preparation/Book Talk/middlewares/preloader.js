@@ -9,7 +9,7 @@ module.exports = (boolean) => async (req, res, next) => {
         }
 
         if (res.locals.product == null) {
-            throw new Error('We could\'t find game with that ID');
+            throw new Error('We could\'t find product with that ID');
         }
     } catch (err) {
         //TODO... Chnage the error handling!!!
