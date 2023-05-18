@@ -9,7 +9,6 @@ productController.get('/create', isUser(), async (req, res) => {
     res.render('create', { title: 'Create Page' });
 });
 
-//TODO... Change: (Path), (Guards), (Redirect);
 productController.post('/create', isUser(), async (req, res) => {
     try {
         await createProduct(req.body, req.user._id);
@@ -24,22 +23,42 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: ''});
+    const isGuest = req.user == undefined;
+    if (isGuest == false) {
+        userStates(req, res);
+    }
+
+    res.render('details', {
+        title: 'Details',
+        isGuest
+    });
 });
 
-//Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Whish
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+productController.get('/details/:id/whish', isUser(), preloader(true), async (req, res) => {
+    try {
+        userStates(req, res);
+
+        if (res.locals.isOwner) {
+            throw new Error('The review owner cannot wish that book!')
+        }
+
+        res.locals.product.wishingList
+            .push(req.user._id)
+
+        await res.locals.product.save();
+        res.locals.product = res.locals.product.toObject();
+        res.redirect(`/product/details/${req.params.id}`);
+    } catch (err) {
+        res.locals.product = res.locals.product.toObject();
+        res.render('details', {
+            title: 'Details Page',
+            error: parseError(err)
+        })
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)
@@ -86,8 +105,7 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 // User State for locals if needed;
 function userStates(req, res) {
     res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isAlredyWhished = res.locals.product.wishingList.some(x => x.toString() == req.user._id.toString());
 }
 
 module.exports = productController;
