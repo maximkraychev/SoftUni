@@ -17,7 +17,7 @@ async function register({ username, email, password, rePassword }) {
         throw new Error('Email is already taken');
     }
 
-    if (password.length < 4) {
+    if (password.length < 3) {
         throw new Error('The password should be at least four characters long');
     }
 
