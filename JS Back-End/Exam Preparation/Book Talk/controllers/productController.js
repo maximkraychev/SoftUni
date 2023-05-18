@@ -5,9 +5,8 @@ const { createProduct, deleteProduct } = require('../services/product');
 const parseError = require('../utils/parsers');
 
 //Create
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
 productController.get('/create', isUser(), async (req, res) => {
-    res.render('create', { title: '' });
+    res.render('create', { title: 'Create Page' });
 });
 
 //TODO... Change: (Path), (Guards), (Redirect);
@@ -16,9 +15,9 @@ productController.post('/create', isUser(), async (req, res) => {
         await createProduct(req.body, req.user._id);
         res.redirect('/catalog');
     } catch (err) {
-        //TODO... Change: (name of the Template), (Title)
         res.render('create', {
-            title: '',
+            title: 'Create Page',
+            body: req.body,
             error: parseError(err)
         });
     }
