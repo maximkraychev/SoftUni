@@ -1,6 +1,5 @@
 const Product = require("../models/product");
 
-//TODO... Chnage the properties for destructuring;
 async function createProduct({ title, author, image, bookReview, genre, stars }, owner) {
 
     return Product.create({
@@ -30,16 +29,13 @@ async function deleteProduct(id) {
     return Product.findByIdAndDelete(id);
 }
 
-//TODO... Chnage the properties for destructuring
-//TODO... Chnage the search
-async function findProductBySearch({ search, platform }) {
-    const games = await Product
+async function findWishedProductsByUser(id) {
+    const products = await Product
         .find({
-            name: { $regex: search, $options: 'i' },
-            platform: { $regex: platform, $options: 'i' }
+            wishingList: {$in: [id]}
         })
         .lean();
-    return games;
+    return products;
 }
 
 module.exports = {
@@ -48,5 +44,5 @@ module.exports = {
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch
+    findWishedProductsByUser
 }
