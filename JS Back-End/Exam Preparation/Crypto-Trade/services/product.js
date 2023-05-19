@@ -1,10 +1,17 @@
 const Product = require("../models/product");
 
-//TODO... Chnage the properties for destructuring;
-async function createProduct({ name }, owner) {
+async function createProduct({ name, image, price, description, payment }, owner) {
+
+    if (isNaN(price)) {
+        throw new Error('Price should be a positive number!');
+    }
 
     return Product.create({
         name,
+        image,
+        price,
+        description,
+        payment,
         owner
     });
 }
