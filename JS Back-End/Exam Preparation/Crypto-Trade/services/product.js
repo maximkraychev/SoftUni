@@ -32,16 +32,14 @@ async function deleteProduct(id) {
     return Product.findByIdAndDelete(id);
 }
 
-//TODO... Chnage the properties for destructuring
-//TODO... Chnage the search
-async function findProductBySearch({ search, platform }) {
-    const games = await Product
+async function findProductBySearch({ search, payment }) {
+    const products = await Product
         .find({
             name: { $regex: search, $options: 'i' },
-            platform: { $regex: platform, $options: 'i' }
+            payment: { $regex: payment, $options: 'i' }
         })
         .lean();
-    return games;
+    return products;
 }
 
 module.exports = {
