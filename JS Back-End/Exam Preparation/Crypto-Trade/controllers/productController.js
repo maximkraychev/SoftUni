@@ -24,22 +24,35 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: ''});
+    if (req.user) {
+        userStates(req, res);
+    }
+    res.render('details', { title: 'Details Page' });
 });
 
 //Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
+    userStates(req, res);
+    try {
+        if (res.locals.isOwner) {
+            throw new Error('You are the owner and cannot buy this crypto!')
+        }
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+        res.locals.product.buyCrypto
+            .push(req.user._id)
+
+        await res.locals.product.save();
+        res.locals.product = res.locals.product.toObject();
+        res.redirect(`/product/details/${req.params.id}`);
+    } catch (err) {
+        res.locals.product = res.locals.product.toObject();
+        res.render('details', {
+            title: 'Details Page',
+            error: parseError(err)
+        });
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)
@@ -86,8 +99,7 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 // User State for locals if needed;
 function userStates(req, res) {
     res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isAlredyBought = res.locals.product.buyCrypto.some(x => x.toString() == req.user._id.toString());
 }
 
 module.exports = productController;
