@@ -13,10 +13,10 @@
             <textarea id="description" name="description" placeholder="Introduce your coins...">{{body.description}}</textarea>
             <label>Payment method:</label>
             <select id="payment" name="payment">
-                <option value="crypto-wallet" {{#if body['crypto-wallet']}}slected{{/if}}>Crypto Wallet</option>
-                <option value="credit-card" {{#if body['credit-card']}}slected{{/if}}>Credit Card</option>
-                <option value="debit-card" {{#if body['debit-card']}}slected{{/if}}>Debit Card</option>
-                <option value="paypal" {{#if body['paypal']}}slected{{/if}}>PayPal</option>
+                <option value="crypto-wallet" {{returnSelectedIfEqual body.payment 'crypto-wallet'}}>Crypto Wallet</option>
+                <option value="credit-card" {{returnSelectedIfEqual body.payment 'credit-card'}}>Credit Card</option>
+                <option value="debit-card" {{returnSelectedIfEqual body.payment 'debit-card'}}>Debit Card</option>
+                <option value="paypal" {{returnSelectedIfEqual body.payment 'paypal'}}>PayPal</option>
             </select>
             <input type="submit" id="btn" value="TRADE"></input>
         </form>

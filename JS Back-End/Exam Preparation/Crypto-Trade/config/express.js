@@ -1,10 +1,15 @@
 const express = require('express');
-const hbs = require('express-handlebars').create({
-    extname: 'hbs'
-});
+const { returnSelectedIfEqual } = require('../utils/customHelpers');
 const cookieParser = require('cookie-parser');
 const bodyTrimmer = require('../middlewares/bodyTrimmer');
 const session = require('../middlewares/session');
+
+const hbs = require('express-handlebars').create({
+    extname: 'hbs',
+    helpers: {
+        returnSelectedIfEqual: returnSelectedIfEqual
+    }
+});
 
 module.exports = (app) => {
 
