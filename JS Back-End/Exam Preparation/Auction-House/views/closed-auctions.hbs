@@ -3,28 +3,32 @@
     <h1 class="item">Closed Auctions</h1>
 
     <!-- List of closed auctions for the current user -->
+    {{#if products}}
     <ul class="catalog cards">
+        {{#each products}}
         <li class="item">
             <header class="pad-med">
-                <h2>Fishing Boat</h2>
+                <h2>{{title}}</h2>
             </header>
 
             <div class="align-center">
 
-                <img class="img-thumb" src="/static/assets/boat.jpg">
+                <img class="img-thumb" src="{{imageUrl}}">
 
             </div>
 
             <footer class="align-center pad-med">
-                <p>Closing price: <strong>$5500</strong></p>
-                from John Maclane
+                <p>Closing price: <strong>${{price}}</strong></p>
+                from {{bidder.firstName}} {{bidder.lastName}}
             </footer>
         </li>
+        {{/each}}
     </ul>
-
+    {{else}}
     <!-- If the current user doesn't have closed auctions -->
     <div class="item pad-large align-center">
         <p>You haven't closed any auctions yet.</p>
     </div>
+    {{/if}}
 
 </section>

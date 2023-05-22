@@ -1,11 +1,11 @@
 const catalogCotroller = require('express').Router();
-const { getAllProducts } = require('../services/product');
+const { getAllActiveProducts } = require('../services/product');
 const parseError = require('../utils/parsers');
 
 catalogCotroller.get('/', async (req, res) => {
 
     try {
-        const products = await getAllProducts();
+        const products = await getAllActiveProducts();
         res.render('browse', {
             title: 'Browse Auctions',
             products,

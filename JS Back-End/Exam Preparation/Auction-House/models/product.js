@@ -14,7 +14,8 @@ const productSchema = new Schema({
     imageUrl: { type: String },
     price: { type: Number, required: [true, 'Price is required!'], min: [0, 'The price cannot be negative'] },
     author: { type: Types.ObjectId, ref: 'User', required: true },
-    bidder: { type: Types.ObjectId, ref: 'User' }
+    bidder: { type: Types.ObjectId, ref: 'User' },
+    closed: {type: Boolean, default: false},
 });
 
 const Product = model('Product', productSchema);

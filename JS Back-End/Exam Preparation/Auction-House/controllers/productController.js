@@ -1,9 +1,10 @@
 const productController = require('express').Router();
-const { isOwner, isUser } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
+const stopAccesToClosedOffers = require('../middlewares/stopAccesToClosedOffers');
+const parseError = require('../utils/parsers');
+const { isOwner, isUser } = require('../middlewares/guards');
 const { createProduct, deleteProduct } = require('../services/product');
 const { categoryParser } = require('../utils/categoryParser');
-const parseError = require('../utils/parsers');
 
 //Create
 
@@ -25,13 +26,13 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-productController.get('/details/:id', preloader(), async (req, res) => {
+productController.get('/details/:id', preloader(), stopAccesToClosedOffers(), async (req, res) => {
     const template = detailsTemplate(req, res);
     res.render(template, { title: 'Auction Details' });
 });
 
 //Bid
-productController.post('/details/:id/bid', isUser(), preloader(true), async (req, res) => {
+productController.post('/details/:id/bid', isUser(), preloader(true), stopAccesToClosedOffers(), async (req, res) => {
     try {
         if(req.user._id.toString() == res.locals.product.author._id.toString()) {
             throw new Error('You are the author of this offer and cannot bid on it!')
@@ -56,7 +57,7 @@ productController.post('/details/:id/bid', isUser(), preloader(true), async (req
 });
 
 //Delete
-productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), async (req, res) => {
+productController.get('/details/:id/delete', isUser(), preloader(), stopAccesToClosedOffers(), isOwner(), async (req, res) => {
     try {
         await deleteProduct(req.params.id);
         res.redirect('/catalog');
@@ -70,13 +71,13 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
 });
 
 //Edit
-productController.get('/details/:id/edit', isUser(), preloader(), isOwner(), (req, res) => {
+productController.get('/details/:id/edit', isUser(), preloader(), stopAccesToClosedOffers(), isOwner(), (req, res) => {
     res.render('edit', {
         title: 'Edit Auction',
     })
 });
 
-productController.post('/details/:id/edit', isUser(), preloader(true), isOwner(), async (req, res) => {
+productController.post('/details/:id/edit', isUser(), preloader(true), stopAccesToClosedOffers(), isOwner(), async (req, res) => {
     try {
 
         const product = res.locals.product;
@@ -99,11 +100,21 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
     }
 });
 
-// User State for locals if needed;
-function userStates(req, res) {
-    res.locals.isOwner = req.user && res.locals.product.owner.toString() == req.user._id.toString();
-    res.locals.currentBidder = res.locals.product.bidder?.toString() == req.user._id.toString();
-}
+productController.get('/details/:id/closed', isUser(), preloader(true), stopAccesToClosedOffers(), isOwner(), (req ,res) =>{
+    try {
+        res.locals.product.closed = true;
+        res.locals.product.save();
+        res.redirect('/closedAuctions');
+    } catch(err) {
+        res.locals.product = res.locals.product.toObject();
+        const template = detailsTemplate(req, res);
+        res.render(template, {
+            title: 'Details Page',
+            error: parseError(err)
+        });
+    }
+    
+});
 
 function detailsTemplate(req, res) {
     if (req.user && req.user._id.toString() == res.locals.product.author._id.toString()) {

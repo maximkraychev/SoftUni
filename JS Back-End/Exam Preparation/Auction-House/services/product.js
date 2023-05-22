@@ -19,8 +19,8 @@ async function createProduct({ title, category, imageUrl, price, description }, 
     });
 }
 
-async function getAllProducts() {
-    return Product.find({}).lean();
+async function getAllActiveProducts() {
+    return Product.find({ closed: false }).lean();
 }
 
 async function getProductRow(id) {
@@ -34,6 +34,14 @@ async function getProduct(id) {
 async function deleteProduct(id) {
     return Product.findByIdAndDelete(id);
 }
+
+async function getAllClosedProductByUserId(id) {
+    return Product.find({
+        closed: true,
+        author: id
+    }).populate('bidder').lean();
+}
+
 
 //TODO... Chnage the properties for destructuring
 //TODO... Chnage the search
@@ -49,9 +57,10 @@ async function findProductBySearch({ search, platform }) {
 
 module.exports = {
     createProduct,
-    getAllProducts,
+    getAllActiveProducts,
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch
+    findProductBySearch,
+    getAllClosedProductByUserId
 }
