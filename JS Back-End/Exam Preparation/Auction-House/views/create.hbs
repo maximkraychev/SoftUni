@@ -13,11 +13,11 @@
                 <label>
                     <span>Category</span>
                     <select name="category">
-                        <option value="estate" {{#if (isEqual body.category 'estate' )}}selected{{/if}} >Real Estate</option>
-                        <option value="vehicles" {{#if (isEqual body.category 'vehicles' )}}selected{{/if}} >Vehicles</option>
-                        <option value="furniture" {{#if (isEqual body.category 'furniture' )}}selected{{/if}} >Furniture</option>
-                        <option value="electronics" {{#if (isEqual body.category 'electronics' )}}selected{{/if}} >Electronics</option>
-                        <option value="other" {{#if (isEqual body.category 'other' )}}selected{{/if}} >Other</option>
+                        <option value="estate" {{#if (isContain body.category 'estate' )}}selected{{/if}} >Real Estate</option>
+                        <option value="vehicles" {{#if (isContain body.category 'vehicles' )}}selected{{/if}} >Vehicles</option>
+                        <option value="furniture" {{#if (isContain body.category 'furniture' )}}selected{{/if}} >Furniture</option>
+                        <option value="electronics" {{#if (isContain body.category 'electronics' )}}selected{{/if}} >Electronics</option>
+                        <option value="other" {{#if (isContain body.category 'other' )}}selected{{/if}} >Other</option>
                     </select>
                 </label>
                 <label>

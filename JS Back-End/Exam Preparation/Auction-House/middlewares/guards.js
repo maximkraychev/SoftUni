@@ -11,7 +11,7 @@ function isUser() {
 //Must be used after preloader
 function isOwner() {
     return (req, res, next) => {
-        if (res.locals.product.owner.toString() == req.user._id.toString()) {
+        if (res.locals.product.author._id.toString() == req.user._id.toString()) {
             next();
             return;
         }

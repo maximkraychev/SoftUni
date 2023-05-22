@@ -1,12 +1,5 @@
 const Product = require("../models/product");
-
-const categories = {
-    estate: 'Real Estate',
-    vehicles: 'Vehicles',
-    furniture: 'Furniture',
-    electronics: 'Electronics',
-    other: 'Other',
-}
+const { categoryParser } = require("../utils/categoryParser");
 
 async function createProduct({ title, category, imageUrl, price, description }, author) {
 
@@ -14,7 +7,7 @@ async function createProduct({ title, category, imageUrl, price, description }, 
         throw new Error('Price must be a number!');
     }
 
-    category = categories[category];
+    category = categoryParser(category);
 
     return Product.create({
         title,
