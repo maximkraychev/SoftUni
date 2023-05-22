@@ -12,7 +12,6 @@ productController.get('/create', isUser(), async (req, res) => {
 
 productController.post('/create', isUser(), async (req, res) => {
     try {
-        console.log(req.body);
         await createProduct(req.body, req.user._id);
         res.redirect('/catalog');
     } catch (err) {
@@ -25,22 +24,33 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
+
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: ''});
+    console.log(res.locals.product);
+    const template = detailsTemplate(req, res);
+    res.render(template, { title: 'Auction Details' });
 });
 
-//Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Bid
+productController.post('/details/:id/bid', isUser(), preloader(true), async (req, res) => {
+    try {
+        if (req.body.bidPrice < res.locals.product.price) {
+            throw new Error('The bid price must be larger then the current price!')
+        }
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+        res.locals.product.price = req.body.bidPrice;
+        res.locals.product.bidder = req.user._id;
+        await res.locals.product.save();
+        res.redirect(`/product/details/${req.params.id}`);
+    } catch (err) {
+        const template = detailsTemplate(req, res);
+        res.locals.product = res.locals.product.toObject();
+        res.render(template, {
+            title: 'Details Page',
+            error: parseError(err)
+        });
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)
@@ -51,10 +61,10 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
     } catch (err) {
         //TODO... Chnage (name of the Template), (Title)
         userStates(req, res);
-        res.render('details', { 
+        res.render('details', {
             title: '',
             error: parseError(err)
-         });
+        });
 
         //TODO.. Or redirect
         console.error(err);
@@ -93,9 +103,17 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 
 // User State for locals if needed;
 function userStates(req, res) {
-    res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isOwner = req.user && res.locals.product.owner.toString() == req.user._id.toString();
+    res.locals.currentBidder = res.locals.product.bidder?.toString() == req.user._id.toString();
+}
+
+function detailsTemplate(req, res) {
+    if (req.user && req.user._id.toString() == res.locals.product.author._id.toString()) {
+        return 'details-owner';
+    } else {
+        res.locals.currentBidder = req.user && (res.locals.product.bidder?._id.toString() == req.user._id.toString());
+        return 'details';
+    }
 }
 
 module.exports = productController;

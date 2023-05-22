@@ -31,11 +31,11 @@ async function getAllProducts() {
 }
 
 async function getProductRow(id) {
-    return Product.findById(id);
+    return Product.findById(id).populate('author').populate('bidder');
 }
 
 async function getProduct(id) {
-    return Product.findById(id).lean();
+    return Product.findById(id).populate('author').populate('bidder').lean();
 }
 
 async function deleteProduct(id) {
