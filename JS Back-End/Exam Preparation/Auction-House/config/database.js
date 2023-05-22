@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-//TODO... Chnage the name of the Database
-const connStr = process.env.DATABASE_CONNECTION_STRING || 'mongodb://localhost:27017/testovName';
+const connStr = process.env.DATABASE_CONNECTION_STRING || 'mongodb://localhost:27017/auctionHouse';
 
 module.exports = async (app) => {
     try {

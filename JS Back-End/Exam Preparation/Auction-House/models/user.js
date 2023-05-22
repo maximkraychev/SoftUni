@@ -1,18 +1,18 @@
 const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
-    //TODO... Add or remove properties
-    username: { type: String, required: true, unique: true, minLength: [5, 'The username should be at least five characters long'] },
-    email: { type: String, required: true, unique: true, minLength: [10, 'The email should be at least ten character long'] },
+    email: {
+        type: String,
+        required: [true, 'Email is required'],
+        unique: true,
+        validate: {
+            validator: (value) => /^[a-z]+@[a-z]+\.[a-z]+$/gi.test(value),
+            message: 'The email is invalid!'
+        }
+    },
+    firstName: { type: String, required: [true, 'First Name is required'] },
+    lastName: { type: String, required: [true, 'Last Name is required'] },
     hashedPassword: { type: String, required: true },
-});
-
-//TODO... add ore removed indexs
-userSchema.index({ username: 1 }, {
-    collation: {
-        locale: 'en',
-        strength: 2
-    }
 });
 
 userSchema.index({ email: 1 }, {
