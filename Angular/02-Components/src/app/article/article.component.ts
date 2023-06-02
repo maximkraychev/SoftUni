@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './models.component.html',
   styleUrls: ['./models.component.css']
 })
-export class ModelsComponent {
+export class ArticleComponent {
   constructor(
     public title: string,
     public description: string,
