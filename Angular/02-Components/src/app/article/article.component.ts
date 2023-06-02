@@ -1,15 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-models',
-  templateUrl: './models.component.html',
-  styleUrls: ['./models.component.css']
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.css']
 })
 export class ArticleComponent {
-  constructor(
-    public title: string,
-    public description: string,
-    public author: string,
-    public imageUrl: string
-  ) {}
 }
