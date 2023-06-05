@@ -34,12 +34,12 @@ export class ArticleComponent {
     }
   }
 
-  ToggleImage(): void {
+  toggleImage(): void {
     this.imageIsShown = !this.imageIsShown;
     this.imageButtonTitle = this.imageButtonTitle == 'Show Image' ? 'Hide Image' : 'Show Image';
   }
 
-  HideDesc(): void {
+  hideDesc(): void {
     this.descToShow = '';
     this.articleDescLen = 0;
     this.showHideBtn = false;
