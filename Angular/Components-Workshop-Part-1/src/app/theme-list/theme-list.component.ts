@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
+import { ITheme } from '../interfaces/theme';
 
 @Component({
   selector: 'app-theme-list',
@@ -8,11 +9,18 @@ import { ApiService } from '../api.service';
 })
 export class ThemeListComponent {
 
+  themeList: ITheme[] | null = null;
+
   constructor(private apiService: ApiService) {
 
-    this.apiService.loadThemes().subscribe((value) => {
-      console.log(value);
+    this.apiService.loadThemes().subscribe({
+      next: (value) => {
+        this.themeList = value;
+      },
+      error: (err) => {
+        console.log(err);
+      }
     })
-    
+
   }
 }

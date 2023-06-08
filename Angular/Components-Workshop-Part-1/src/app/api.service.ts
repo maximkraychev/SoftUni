@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ITheme } from './interfaces/theme';
+import { IPost } from './interfaces/post';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +13,10 @@ export class ApiService {
   constructor(private httpClient: HttpClient) { }
 
   loadThemes() {
-    return this.httpClient.get(`${this.host}/themes`);
+    return this.httpClient.get<ITheme[]>(`${this.host}/themes`);
   }
 
   loadPosts(limit?: number) {
-    return this.httpClient.get(`${this.host}/posts${limit ? `?limit=${limit}`: ``}`);
+    return this.httpClient.get<IPost[]>(`${this.host}/posts${limit ? `?limit=${limit}`: ``}`);
   }
 }
