@@ -18,7 +18,7 @@ import { MainComponent } from './main/main.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    //AppRoutingModule,
     CoreModule,
     HttpClientModule
   ],
