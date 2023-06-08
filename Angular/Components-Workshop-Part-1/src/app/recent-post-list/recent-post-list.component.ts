@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-recent-post-list',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./recent-post-list.component.css']
 })
 export class RecentPostListComponent {
+  constructor(private apiService: ApiService) {
 
+    this.apiService.loadPosts(5).subscribe((value) => {
+      console.log(value);
+    })
+    
+  }
 }
