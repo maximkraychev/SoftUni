@@ -19,8 +19,19 @@ function isOwner() {
     }
 }
 
+function notOwner() {
+    return (req, res, next) => {
+        if (res.locals.product.author._id.toString() !== req.user._id.toString()) {
+            next();
+            return;
+        }
+        res.redirect('/auth/login');
+    }
+}
+
 
 module.exports = {
     isUser,
-    isOwner
+    isOwner,
+    notOwner
 }

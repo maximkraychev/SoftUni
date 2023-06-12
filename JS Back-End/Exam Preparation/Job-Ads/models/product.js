@@ -9,14 +9,6 @@ const productSchema = new Schema({
     usersApplied: {type: [Types.ObjectId], ref: 'User', default: []}, 
 });
 
-//TODO chek if it works with ObjectId
-productSchema.index({author: 1}, {
-    collation: {
-        locale: 'en',
-        strength: 2
-    }
-})
-
 const Product = model('Product', productSchema);
 
 module.exports = Product;

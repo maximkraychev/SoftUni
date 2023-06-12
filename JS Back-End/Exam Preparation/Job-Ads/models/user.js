@@ -1,4 +1,4 @@
-const { Schema, model, default: mongoose } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const userSchema = new Schema({
     email: {
@@ -12,6 +12,7 @@ const userSchema = new Schema({
     },
     description: { type: String, required: true, maxLength: [40, 'The description of skills should be a maximum of 40 characters long!'] },
     hashedPassword: { type: String, required: true },
+    myAds: {type: [Types.ObjectId], ref: 'Product', default: []}
 });
 
 userSchema.index({ email: 1 }, {

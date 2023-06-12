@@ -1,5 +1,5 @@
 const productController = require('express').Router();
-const { isOwner, isUser } = require('../middlewares/guards');
+const { isOwner, isUser, notOwner } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
 const { createProduct, deleteProduct } = require('../services/product');
 const parseError = require('../utils/parsers');
@@ -30,7 +30,7 @@ productController.get('/details/:id', preloader(), async (req, res) => {
 });
 
 //Aplay
-productController.get('/details/:id/applay', isUser(), preloader(true), async (req, res) => {
+productController.get('/details/:id/applay', isUser(), preloader(true), notOwner(), async (req, res) => {
     try {
         res.locals.product.usersApplied
             .push(req.user._id)
@@ -47,7 +47,7 @@ productController.get('/details/:id/applay', isUser(), preloader(true), async (r
 //Delete
 productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), async (req, res) => {
     try {
-        await deleteProduct(req.params.id);
+        await deleteProduct(req.user._id, req.params.id);
         res.redirect('/catalog');
     } catch (err) {
         userStates(req, res);
