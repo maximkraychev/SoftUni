@@ -8,7 +8,7 @@ catalogCotroller.get('/', async (req, res) => {
     try {
         const products = await getAllProducts();
         res.render('catalog', {
-            title: '',
+            title: 'All-Ads Page',
             products,
             user: req.user
         });
