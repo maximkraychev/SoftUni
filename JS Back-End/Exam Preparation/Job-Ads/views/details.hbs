@@ -23,8 +23,8 @@
                     {{#if isAlredyApplied}}
                         <p class="already-applied">You have already applied!</p>
                         {{else}}
-                        <a href="#" class="btn-apply">Apply now!</a>
-                        <p class="applied-people">Hurry up, {{numberOFApplied}} people have already applied.</p>
+                        <a href="/product/details/{{product._id}}/applay" class="btn-apply">Apply now!</a>
+                        <p class="applied-people">Hurry up, {{numberOfApplied}} people have already applied.</p>
                     {{/if}}
                 {{/if}}
             </article>

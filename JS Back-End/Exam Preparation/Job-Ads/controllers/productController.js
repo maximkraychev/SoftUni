@@ -26,21 +26,23 @@ productController.post('/create', isUser(), async (req, res) => {
 //Details
 productController.get('/details/:id', preloader(), async (req, res) => {
     userStates(req, res);
-    res.locals.numberOFApplied = res.locals.product.usersApplied.length;
     res.render('details', { title: 'Details Page' });
 });
 
-//Applay
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Aplay
+productController.get('/details/:id/applay', isUser(), preloader(true), async (req, res) => {
+    try {
+        res.locals.product.usersApplied
+            .push(req.user._id)
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+        await res.locals.product.save();
+        userStates(req, res);
+        res.locals.product = res.locals.product.toObject();
+        res.render('details', { title: 'Details Page', });
+    } catch (err) {
+        res.render('/', {title: 'Home Page', error: ['Someting went wrong please try again later']} )
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)
@@ -92,7 +94,8 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 // User State for locals if needed;
 function userStates(req, res) {
     res.locals.isOwner = req.user && res.locals.product.author._id.toString() == req.user._id.toString();
-    res.locals.isAlredyApplied = req.user && res.locals.product.usersApplied.some(x => x.toString() == req.user._id.toString());
+    res.locals.isAlredyApplied = req.user && res.locals.product.usersApplied.some(x => x._id.toString() == req.user._id.toString());
+    res.locals.numberOfApplied = res.locals.product.usersApplied.length;
 }
 
 module.exports = productController;

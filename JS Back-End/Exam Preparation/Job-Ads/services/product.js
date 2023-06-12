@@ -16,7 +16,7 @@ async function getAllProducts() {
 }
 
 async function getProductRow(id) {
-    return Product.findById(id);
+    return Product.findById(id).populate('author').populate('usersApplied');
 }
 
 async function getProduct(id) {
