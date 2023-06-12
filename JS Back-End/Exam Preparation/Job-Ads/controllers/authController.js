@@ -41,7 +41,6 @@ authController.post('/login', async (req, res) => {
     }
 });
 
-//TODO... chnage the name of the template and redirect 
 authController.get('/logout', (req, res) => {
     res.clearCookie('token');
     res.redirect('/');
