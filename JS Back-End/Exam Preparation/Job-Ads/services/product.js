@@ -27,6 +27,10 @@ async function deleteProduct(id) {
     return Product.findByIdAndDelete(id);
 }
 
+async function findFirstThree() {
+    return Product.find().sort({_id: 1}).limit(3).lean();
+}
+
 //TODO... Chnage the properties for destructuring
 //TODO... Chnage the search
 async function findProductBySearch({ search, platform }) {
@@ -45,5 +49,6 @@ module.exports = {
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch
+    findProductBySearch,
+    findFirstThree
 }
