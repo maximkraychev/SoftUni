@@ -13,9 +13,13 @@
 
         <!-- In case of error, you should display div with class "error-box" -->
         <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-        <!--<div class="error-box">
-            <p>Error</p>
-        </div>-->
+        {{#if error}}
+        <div class="error-box">
+            {{#each error.messages}}
+            <p>{{this}}</p>
+            {{/each}}
+        </div>
+        {{/if}}
 
         <header class="header">
             <article class="header-logo">
@@ -25,29 +29,29 @@
                 <ul class="header-nav-list">
 
                     <li class="header-nav-list-item active">
-                        <a href="#" class="header-nav-list-item-link active">Home Page</a>
+                        <a href="/" class="header-nav-list-item-link active">Home Page</a>
                     </li>
 
                     <li class="header-nav-list-item">
-                        <a href="#" class="header-nav-list-item-link">All ads</a>
+                        <a href="/catalog" class="header-nav-list-item-link">All ads</a>
                     </li>
                     <!-- Logged users -->
                     <li class="header-nav-list-item">
-                        <a href="#" class="header-nav-list-item-link">Create Ad</a>
+                        <a href="/product/create" class="header-nav-list-item-link">Create Ad</a>
                     </li>
                     <li class="header-nav-list-item">
                         <a href="#" class="header-nav-list-item-link">Search</a>
                     </li>
                     <li class="header-nav-list-item">
-                        <a href="#" class="header-nav-list-item-link">Logout</a>
+                        <a href="/auth/logout" class="header-nav-list-item-link">Logout</a>
                     </li>
 
                     <!-- Guest users -->
                     <li class="header-nav-list-item">
-                        <a href="#" class="header-nav-list-item-link">Register</a>
+                        <a href="/auth/register" class="header-nav-list-item-link">Register</a>
                     </li>
                     <li class="header-nav-list-item">
-                        <a href="#" class="header-nav-list-item-link">Login</a>
+                        <a href="/auth/login" class="header-nav-list-item-link">Login</a>
                     </li>
                 </ul>
             </nav>
