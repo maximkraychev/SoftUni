@@ -20,7 +20,7 @@ async function getProductRow(id) {
 }
 
 async function getProduct(id) {
-    return Product.findById(id).lean();
+    return Product.findById(id).populate('author').populate('usersApplied').lean();
 }
 
 async function deleteProduct(id) {

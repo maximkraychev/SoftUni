@@ -24,12 +24,13 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: ''});
+    userStates(req, res);
+    res.locals.numberOFApplied = res.locals.product.usersApplied.length;
+    res.render('details', { title: 'Details Page' });
 });
 
-//Buy
+//Applay
 //For example if needed!!!!
 // productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
 //     res.locals.game.boughtBy
@@ -50,10 +51,10 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
     } catch (err) {
         //TODO... Chnage (name of the Template), (Title)
         userStates(req, res);
-        res.render('details', { 
+        res.render('details', {
             title: '',
             error: parseError(err)
-         });
+        });
 
         //TODO.. Or redirect
         console.error(err);
@@ -90,9 +91,8 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 
 // User State for locals if needed;
 function userStates(req, res) {
-    res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isOwner = req.user && res.locals.product.author._id.toString() == req.user._id.toString();
+    res.locals.isAlredyApplied = req.user && res.locals.product.usersApplied.some(x => x.toString() == req.user._id.toString());
 }
 
 module.exports = productController;
