@@ -22,21 +22,19 @@ authController.post('/register', async (req, res) => {
     }
 });
 
-//TODO... chnage the title and name of the template
+
 authController.get('/login', (req, res) => {
-    res.render('login', { title: '' });
+    res.render('login', { title: 'Login Page' });
 });
 
-//TODO... chnage the name of the template and redirect
 authController.post('/login', async (req, res) => {
     try {
         const token = await login(req.body);
         res.cookie('token', token);
         res.redirect('/');
     } catch (err) {
-        //TODO... chnage the title and name of the template
         res.render('login', {
-            title: '',
+            title: 'Login Page',
             body: req.body,
             error: parseError(err)
         });
