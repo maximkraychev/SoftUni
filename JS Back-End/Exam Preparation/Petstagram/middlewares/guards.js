@@ -12,7 +12,17 @@ function isUser() {
 function isOwner() {
     return (req, res, next) => {
         //TODO change owner with the property that is used to save ownerID in product
-        if (res.locals.product.owner.toString() == req.user._id.toString()) {
+        if (res.locals.product.owner._id.toString() == req.user._id.toString()) {
+            next();
+            return;
+        }
+        res.redirect('/auth/login');
+    }
+}
+
+function notOwner() {
+    return (req, res, next) => {
+        if(req.user && res.locals.product.owner._id.toString() !== req.user._id.toString()) {
             next();
             return;
         }
@@ -23,5 +33,6 @@ function isOwner() {
 
 module.exports = {
     isUser,
-    isOwner
+    isOwner,
+    notOwner
 }
