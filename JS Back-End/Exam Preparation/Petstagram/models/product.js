@@ -30,13 +30,17 @@ const productSchema = new Schema({
         maxLength: [50, 'Description should have length between 5 and 50 characters']
     },
     commentList: {
-        type: [{
-            userId: { type: Types.ObjectId },
-            comments: { type: String }
-        }],
-        ref: 'User',
+        type: [
+          {
+            userId: {
+              type: Schema.Types.ObjectId,
+              ref: 'User'
+            },
+            comment: String
+          }
+        ],
         default: []
-    },
+      },
     owner: {
         type: Types.ObjectId,
         ref: 'User',

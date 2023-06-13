@@ -84,7 +84,7 @@
                                 </div>
 
                                 <!--User's username-->
-                                <p><b>{{userId.username}}</b>- {{comments}}</p>
+                                <p><b>{{userId.username}}</b>- {{comment}}</p>
                             </div>
                         </div>
                         {{/each}}
@@ -94,7 +94,7 @@
             {{#if canComment}}
             <div class="addComments">
                 <!-- Start Add Comments Form -->
-                <form method="post" action="/product/comment">
+                <form method="post" action="/product/details/{{product._id}}/comment">
                     <textarea id="comment-textarea" name="comment" cols="40" rows="10" placeholder="Add comment..."></textarea>
                     <!-- Post Comments Button -->
                     <button type="submit">Post</button>

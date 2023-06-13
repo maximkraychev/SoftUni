@@ -1,5 +1,5 @@
 const productController = require('express').Router();
-const { isOwner, isUser } = require('../middlewares/guards');
+const { isOwner, isUser, notOwner } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
 const { createProduct, deleteProduct } = require('../services/product');
 const parseError = require('../utils/parsers');
@@ -28,17 +28,24 @@ productController.get('/details/:id', preloader(), async (req, res) => {
     res.render('details');
 });
 
-//Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Comment
+productController.post('/details/:id/comment', isUser(), preloader(true), notOwner(), async (req, res) => {
+    try {
+        res.locals.product.commentList
+            .push({
+                userId: req.user._id,
+                comment: req.params.comment
+            })
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+        await res.locals.product.save();
+        userStates(req, res);
+        res.locals.product = res.locals.product.toObject();
+        res.render('details');
+    } catch (err) {
+        res.locals.product = res.locals.product.toObject();
+        res.render('details', { error: parseError(err) });
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)

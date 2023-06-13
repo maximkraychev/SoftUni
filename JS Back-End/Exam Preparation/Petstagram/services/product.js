@@ -17,7 +17,7 @@ async function getAllProducts() {
 }
 
 async function getProductRow(id) {
-    return Product.findById(id);
+    return Product.findById(id).populate('owner').populate('commentList');
 }
 
 async function getProduct(id) {
