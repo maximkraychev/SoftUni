@@ -13,7 +13,7 @@ async function createProduct({ name, age, description, location, image}, owner) 
 }
 
 async function getAllProducts() {
-    return Product.find({}).lean();
+    return Product.find({}).populate('owner').lean();
 }
 
 async function getProductRow(id) {
