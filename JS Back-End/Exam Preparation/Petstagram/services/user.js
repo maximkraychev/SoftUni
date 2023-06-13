@@ -34,8 +34,8 @@ async function register({ username, email, password, rePassword }) {
     return createSession(user);
 }
 
-async function login({email, password}) {
-    const user = await User.findOne({email}).collation({locale: 'en', strength: 2});
+async function login({username, password}) {
+    const user = await User.findOne({username}).collation({locale: 'en', strength: 2});
     if(!user) {
         throw new Error('Wrong email or password');
     }
