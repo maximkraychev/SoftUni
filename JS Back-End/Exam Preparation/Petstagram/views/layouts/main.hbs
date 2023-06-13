@@ -12,12 +12,15 @@
 
 <body>
     <!--Error Container-->
-
-    <!-- <div>
+    {{#if error}}
+    <div>
         <div class="errorContainer">
-            <p>Error</p>
+        {{#each error.messages}}
+            <p>{{this}}</p>
+        {{/each}}
         </div>
-    </div> -->
+    </div>
+    {{/if}}
 
     <!-- Starts Header Section with Navigation Bar -->
     <header>
@@ -25,11 +28,11 @@
             <div class="container">
                 <div class="logo">
                     <!-- Link to Home Page -->
-                    <a href="#">
+                    <a href="/">
                         <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
                     </a>
                     <!-- Link to Home Page -->
-                    <a class="home" href="#">
+                    <a class="home" href="/">
                         <i>Petstagram</i>
                     </a>
                 </div>
@@ -38,29 +41,15 @@
                     <ul class="nav-group">
                         <li class="nav-item">
                             <!-- Link to Catalog Page -->
-                            <a href="#">
+                            <a href="/catalog">
                                 <i>Catalog</i>
                             </a>
                         </li>
-
-                        <!--For Guest User-->
-                        <li class="nav-item">
-                            <!-- Link to Login Page -->
-                            <a href="#">
-                                <i>Login</i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link to Register Page -->
-                            <a href="#">
-                                <i>Register</i>
-                            </a>
-                        </li>
-
+                        {{#if user}}
                         <!--For login users-->
                         <li class="nav-item">
                             <!-- Link to Add Photo Page -->
-                            <a href="#">
+                            <a href="/product/create">
                                 <i>Add Photo</i>
                             </a>
                         </li>
@@ -74,10 +63,26 @@
 
                         <li class="nav-item">
                             <!-- Link to Logout Page -->
-                            <a href="#">
+                            <a href="/auth/logout">
                                 <i>Logout</i>
                             </a>
                         </li>
+                        {{else}}
+                        <!--For Guest User-->
+                        <li class="nav-item">
+                            <!-- Link to Login Page -->
+                            <a href="/auth/login">
+                                <i>Login</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link to Register Page -->
+                            <a href="/auth/register">
+                                <i>Register</i>
+                            </a>
+                        </li>
+
+                        {{/if}}
                     </ul>
                 </div>
             </div>
