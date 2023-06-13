@@ -1,13 +1,12 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const userSchema = new Schema({
-    //TODO... Add or remove properties
-    username: { type: String, required: true, unique: true, minLength: [5, 'The username should be at least five characters long'] },
+    username: { type: String, required: true, unique: true, minLength: [2, 'The username should be at least two characters long'] },
     email: { type: String, required: true, unique: true, minLength: [10, 'The email should be at least ten character long'] },
     hashedPassword: { type: String, required: true },
+    uploadedPhoto: {type: [Types.ObjectId], ref: 'Product', default: []}
 });
 
-//TODO... add ore removed indexs
 userSchema.index({ username: 1 }, {
     collation: {
         locale: 'en',
