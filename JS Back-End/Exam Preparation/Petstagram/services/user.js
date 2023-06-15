@@ -37,12 +37,12 @@ async function register({ username, email, password, rePassword }) {
 async function login({ username, password }) {
     const user = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
     if (!user) {
-        throw new Error('Wrong email or password');
+        throw new Error('Wrong username or password');
     }
 
     const match = await bcrypt.compare(password, user.hashedPassword);
     if (!match) {
-        throw new Error('Wrong email or password');
+        throw new Error('Wrong username or password');
     }
 
     return createSession(user);
