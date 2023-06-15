@@ -11,7 +11,6 @@ function isUser() {
 //Must be used after preloader
 function isOwner() {
     return (req, res, next) => {
-        //TODO change owner with the property that is used to save ownerID in product
         if (res.locals.product.owner._id.toString() == req.user._id.toString()) {
             next();
             return;
