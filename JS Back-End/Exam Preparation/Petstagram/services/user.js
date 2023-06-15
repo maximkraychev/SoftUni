@@ -52,6 +52,10 @@ async function getUserById(userId) {
     return User.findById(userId);
 }
 
+async function getUserByIdPopulated(userId) {
+    return User.findById(userId).populate('uploadedPhoto').lean();
+}
+
 function createSession({ _id, username, email }) {
     const payload = {
         _id,
@@ -71,4 +75,5 @@ module.exports = {
     login,
     verifyToken,
     getUserById,
+    getUserByIdPopulated,
 }
