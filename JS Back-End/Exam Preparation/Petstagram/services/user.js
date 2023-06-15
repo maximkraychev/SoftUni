@@ -24,7 +24,7 @@ async function register({ username, email, password, rePassword }) {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
- 
+
     const user = await User.create({
         username,
         email,
@@ -34,24 +34,28 @@ async function register({ username, email, password, rePassword }) {
     return createSession(user);
 }
 
-async function login({username, password}) {
-    const user = await User.findOne({username}).collation({locale: 'en', strength: 2});
-    if(!user) {
+async function login({ username, password }) {
+    const user = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
+    if (!user) {
         throw new Error('Wrong email or password');
     }
 
     const match = await bcrypt.compare(password, user.hashedPassword);
-    if(!match) {
+    if (!match) {
         throw new Error('Wrong email or password');
     }
 
     return createSession(user);
 }
 
-function createSession({_id, username, email}) {
+async function getUserById(userId) {
+    return User.findById(userId);
+}
+
+function createSession({ _id, username, email }) {
     const payload = {
         _id,
-        username, 
+        username,
         email
     }
 
@@ -65,5 +69,6 @@ function verifyToken(token) {
 module.exports = {
     register,
     login,
-    verifyToken
+    verifyToken,
+    getUserById,
 }

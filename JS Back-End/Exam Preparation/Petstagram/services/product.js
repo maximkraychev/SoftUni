@@ -17,15 +17,15 @@ async function getAllProducts() {
 }
 
 async function getProductRow(id) {
-    return Product.findById(id).populate('owner').populate('commentList');
+    return Product.findById(id).populate('owner').populate('commentList.userId');
 }
 
 async function getProduct(id) {
-    return Product.findById(id).populate('owner').populate('commentList').lean();
+    return Product.findById(id).populate('owner').populate('commentList.userId').lean();
 }
 
-async function deleteProduct(id) {
-    return Product.findByIdAndDelete(id);
+async function deleteProduct(productId) {
+    return Product.findByIdAndDelete(productId);
 }
 
 //TODO... Chnage the properties for destructuring

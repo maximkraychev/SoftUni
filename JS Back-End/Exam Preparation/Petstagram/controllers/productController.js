@@ -2,6 +2,7 @@ const productController = require('express').Router();
 const { isOwner, isUser, notOwner } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
 const { createProduct, deleteProduct } = require('../services/product');
+const { getUserById } = require('../services/user');
 const parseError = require('../utils/parsers');
 
 //Create
@@ -12,7 +13,9 @@ productController.get('/create', isUser(), async (req, res) => {
 
 productController.post('/create', isUser(), async (req, res) => {
     try {
-        await createProduct(req.body, req.user._id);
+        const [photo, user] = await Promise.all([createProduct(req.body, req.user._id), getUserById(req.user._id)]);
+        user.uploadedPhoto.push(photo._id);
+        await user.save();
         res.redirect('/catalog');
     } catch (err) {
         res.render('create', {
@@ -34,36 +37,36 @@ productController.post('/details/:id/comment', isUser(), preloader(true), notOwn
         res.locals.product.commentList
             .push({
                 userId: req.user._id,
-                comment: req.params.comment
+                comment: req.body.comment
             })
 
         await res.locals.product.save();
-        userStates(req, res);
-        res.locals.product = res.locals.product.toObject();
-        res.render('details');
+        res.redirect(`/product/details/${req.params.id}`);
     } catch (err) {
+        res.locals.product.commentList.pop();
+        userStates(req, res);
         res.locals.product = res.locals.product.toObject();
         res.render('details', { error: parseError(err) });
     }
 });
 
 //Delete
-//TODO... Change: (Path), (Guards), (Redirect)
 productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), async (req, res) => {
     try {
-        await deleteProduct(req.params.id);
+        const [deletedPhoto, user] = await Promise.all([deleteProduct(req.params.id), getUserById(req.user._id)]);
+        const indexOfPhoto = user.uploadedPhoto.findIndex(x => x.toString() == deletedPhoto._id.toString());
+        if (Number.isInteger(indexOfPhoto)) {
+            user.uploadedPhoto.splice(indexOfPhoto, 1);
+            await user.save();
+        } else {
+            throw new Error('Deleted photo is missing in profile photos')
+        }
         res.redirect('/catalog');
     } catch (err) {
-        //TODO... Chnage (name of the Template), (Title)
         userStates(req, res);
         res.render('details', {
-            title: '',
             error: parseError(err)
         });
-
-        //TODO.. Or redirect
-        console.error(err);
-        res.redirect(`product/details/${req.params.id}`);
     }
 });
 
