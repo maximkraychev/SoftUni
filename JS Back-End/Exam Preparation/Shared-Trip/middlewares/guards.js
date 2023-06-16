@@ -19,8 +19,18 @@ function isOwner() {
     }
 }
 
+function isGuest() {
+    return (req, res, next) => {
+        if (req.user) {
+            res.clearCookie('token');
+            return res.redirect('/auth/login');
+        }
+        next();
+    }
+}
 
 module.exports = {
     isUser,
-    isOwner
+    isOwner,
+    isGuest
 }

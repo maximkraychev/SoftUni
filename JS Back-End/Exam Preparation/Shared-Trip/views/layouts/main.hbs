@@ -12,7 +12,7 @@
     {{#if error}}
     <div class="error">
         {{#each error.messages}}
-            <p>{{this}}</p>
+        <p>{{this}}</p>
         {{/each}}
     </div>
     {{/if}}
@@ -31,18 +31,20 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Shared Trips</a>
+                        <a class="nav-link" href="/catalog">Shared Trips</a>
                     </li>
+                    {{#if user}}
                     <!-- Logged users -->
                     <li class="nav-item">
-                        <a class="nav-link" href="">Offer Trip</a>
+                        <a class="nav-link" href="/product/create">Offer Trip</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Profile</a>
+                        <a class="nav-link" href="/profile">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Logout as [ test@abv.bg ]</a>
+                        <a class="nav-link" href="/auth/logout">Logout as {{user.email}}</a>
                     </li>
+                    {{else}}
                     <!-- Guest users -->
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/login">Login</a>
@@ -50,6 +52,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/auth/register">Register</a>
                     </li>
+                    {{/if}}
                 </ul>
             </div>
         </div>

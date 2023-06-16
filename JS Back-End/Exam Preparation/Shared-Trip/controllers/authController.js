@@ -1,19 +1,20 @@
 const authController = require('express').Router();
+const { isGuest } = require('../middlewares/guards');
 const { register, login } = require('../services/user');
 const parseError = require('../utils/parsers');
 
 
-authController.get('/register', (req, res) => {
-    res.render('register', { title: 'Register Page' });
+authController.get('/register', isGuest(), (req, res) => {
+    res.render('register', { title: 'Register Page', body: { male: true } });
 });
 
-authController.post('/register', async (req, res) => {
+authController.post('/register', isGuest(), async (req, res) => {
     try {
         const token = await register(req.body);
-        res.cookie('token', token);
+        res.cookie('token', token, {httpOnly: true});
         res.redirect('/');
     } catch (err) {
-        console.log(err);
+        req.body.gender == 'male' ? req.body.male = true : req.body.female = true;
         res.render('register', {
             title: 'Register Page',
             body: req.body,
@@ -22,28 +23,26 @@ authController.post('/register', async (req, res) => {
     }
 });
 
-//TODO... chnage the title and name of the template
-authController.get('/login', (req, res) => {
-    res.render('login', { title: '' });
+
+authController.get('/login', isGuest(), (req, res) => {
+    res.render('login', { title: 'Login Page' });
 });
 
-//TODO... chnage the name of the template and redirect
-authController.post('/login', async (req, res) => {
+
+authController.post('/login', isGuest(), async (req, res) => {
     try {
         const token = await login(req.body);
-        res.cookie('token', token);
+        res.cookie('token', token, {httpOnly: true});
         res.redirect('/');
     } catch (err) {
-        //TODO... chnage the title and name of the template
         res.render('login', {
-            title: '',
+            title: 'Login Page',
             body: req.body,
             error: parseError(err)
         });
     }
 });
 
-//TODO... chnage the name of the template and redirect 
 authController.get('/logout', (req, res) => {
     res.clearCookie('token');
     res.redirect('/');

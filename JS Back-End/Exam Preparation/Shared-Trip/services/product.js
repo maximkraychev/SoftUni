@@ -1,10 +1,17 @@
 const Product = require("../models/product");
 
-//TODO... Chnage the properties for destructuring;
-async function createProduct({ name }, owner) {
 
+async function createProduct({ startPoint, endPoint, date, time, carImage, carBrand, seats, price, description }, owner) {
     return Product.create({
-        name,
+        startPoint,
+        endPoint,
+        date,
+        time,
+        carImage,
+        carBrand,
+        seats,
+        price,
+        description,
         owner
     });
 }
