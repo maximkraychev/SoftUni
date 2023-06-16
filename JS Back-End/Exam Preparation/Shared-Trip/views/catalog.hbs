@@ -1,0 +1,36 @@
+<section class="container" id="shared-trips-page">
+    <header class="trip">
+        <h1>Welcome Sharetripers!</h1>
+        <p class="lead">Sharedtrip is the best way to road across the country.</p>
+        <p class="lead">Find yours Sharedtrip's buddies, when you share with us yours trip plans and let the
+            exploration begin!</p>
+    </header>
+    <div class="row text-center">
+        {{#each products}}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top"
+                    src="{{carImage}}"
+                    alt="">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-route"></i> <span>{{startPoint}}</span> -
+                        <span>{{endPoint}}</span>
+                    </h5>
+                    <h5 class="mt-4 card-info"><i class="far fa-calendar-alt"></i> Date: <span>{{date}}</span>
+                    </h5>
+                    <h5 class="mt-4 card-info"><i class="far fa-clock"></i> Time: <span>{{time}}</span></h5>
+                    <h5 class="mt-4"><i class="fas fa-hand-holding-usd"></i> Price: <span>{{price}}</span> BGN</h5>
+                </div>
+                <div class="card-footer">
+                    <a href="/product/details/{{_id}}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="no-trips">
+            <img src="https://www.stagweb.co.uk/img/activities/big/sexyhitchhiker1.jpg" />
+            <p class="lead">Hitchhiker time...</p>
+        </div>
+        {{/each}}
+    </div>
+</section>

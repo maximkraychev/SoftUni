@@ -1,7 +1,7 @@
 const productController = require('express').Router();
 const { isOwner, isUser } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
-const { createProduct, deleteProduct } = require('../services/product');
+const { createProduct, deleteProduct, takeSeat } = require('../services/product');
 const parseError = require('../utils/parsers');
 
 //Create
@@ -24,20 +24,32 @@ productController.post('/create', isUser(), async (req, res) => {
 
 //Details
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: 'Details Trip'});
+    userStates(req, res);
+    res.render('details', { title: 'Details Trip' });
 });
 
-//Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Join
+productController.get('/details/:id/join', isUser(), preloader(), async (req, res) => {
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+    try {
+        if (res.locals.product.seats < 1) {
+            throw new Error('There are no free seats left!')
+        }
+
+        if (res.locals.product.buddies.some(x => x._id.toString() == req.user._id.toString())) {
+            throw new Error('You already have a seat!');
+        }
+
+        await takeSeat(req.params.id, req.user._id);
+        res.redirect(`/product/details/${req.params.id}`);
+    } catch (err) {
+        userStates(req, res);
+        res.render('details', {
+            title: 'Details Page',
+            error: parseError(err)
+        });
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)
@@ -83,9 +95,10 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 
 // User State for locals if needed;
 function userStates(req, res) {
-    res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isOwner = req.user && res.locals.product.owner.toString() == req.user._id.toString();
+    res.locals.isAlreadyJoined = req.user && res.locals.product.buddies.some(x => x._id.toString() == req.user._id.toString());
+    res.locals.isThereFreeSeats = res.locals.product.seats > 0;
+    res.locals.product.buddies = res.locals.product.buddies.map(x => x.email).join(', ');
 }
 
 module.exports = productController;

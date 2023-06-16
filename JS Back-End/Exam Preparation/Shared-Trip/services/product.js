@@ -21,15 +21,28 @@ async function getAllProducts() {
 }
 
 async function getProductRow(id) {
-    return Product.findById(id);
+    return Product.findById(id).populate('owner buddies');
 }
 
 async function getProduct(id) {
-    return Product.findById(id).lean();
+    return Product.findById(id).populate('owner buddies').lean();
 }
 
 async function deleteProduct(id) {
     return Product.findByIdAndDelete(id);
+}
+
+async function takeSeat(productId, userId) {
+    return Product.findOneAndUpdate(
+        { _id: productId },
+        {
+            $inc: {
+                seats: -1
+            },
+            $push: {
+                buddies: userId
+            }
+        });
 }
 
 //TODO... Chnage the properties for destructuring
@@ -50,5 +63,6 @@ module.exports = {
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch
+    findProductBySearch,
+    takeSeat
 }
