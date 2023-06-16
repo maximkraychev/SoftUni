@@ -2,21 +2,20 @@ const authController = require('express').Router();
 const { register, login } = require('../services/user');
 const parseError = require('../utils/parsers');
 
-//TODO... Add title and name of template
+
 authController.get('/register', (req, res) => {
-    res.render('register', { title: '' });
+    res.render('register', { title: 'Register Page' });
 });
 
-//TODO... chnage the name of the template and redirect 
 authController.post('/register', async (req, res) => {
     try {
         const token = await register(req.body);
         res.cookie('token', token);
         res.redirect('/');
     } catch (err) {
-        //TODO.. Chnage the title and name of template
+        console.log(err);
         res.render('register', {
-            title: '',
+            title: 'Register Page',
             body: req.body,
             error: parseError(err)
         })
