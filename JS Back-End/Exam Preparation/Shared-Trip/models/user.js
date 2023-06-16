@@ -1,26 +1,32 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 
 const userSchema = new Schema({
-    //TODO... Add or remove properties
-    username: { type: String, required: true, unique: true, minLength: [5, 'The username should be at least five characters long'] },
-    email: { type: String, required: true, unique: true, minLength: [10, 'The email should be at least ten character long'] },
+    email: {
+        type: String,
+        required: true,
+        validate: {
+            validator: (value) => /[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+/.test(value),
+            message: 'Email is invalid!'
+        }
+    },
+    gender: {
+        type: String,
+        enum: {
+            values: ['male', 'female'],
+            message: '{VALUE} is invalid!'
+        },
+        required: [true, 'Gender is required!']
+    },
     hashedPassword: { type: String, required: true },
+    tripsHistory: { type: [Types.ObjectId], ref: 'Product', default: [] }
 });
 
-//TODO... add ore removed indexs
-userSchema.index({ username: 1 }, {
-    collation: {
-        locale: 'en',
-        strength: 2
-    }
-});
-
-userSchema.index({ email: 1 }, {
-    collation: {
-        locale: 'en',
-        strength: 2
-    }
-});
+// userSchema.index({ email: 1 }, {
+//     collation: {
+//         locale: 'en',
+//         strength: 2
+//     }
+// });
 
 const User = model('User', userSchema);
 
