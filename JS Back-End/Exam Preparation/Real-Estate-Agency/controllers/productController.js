@@ -1,7 +1,7 @@
 const productController = require('express').Router();
 const { isOwner, isUser } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
-const { createProduct, deleteProduct } = require('../services/product');
+const { createProduct, deleteProduct, rendHouse } = require('../services/product');
 const parseError = require('../utils/parsers');
 
 //Create
@@ -28,17 +28,27 @@ productController.get('/details/:id', preloader(), async (req, res) => {
     res.render('details', { title: 'Details Page' });
 });
 
-//Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Rent
+productController.get('/details/:id/rent', isUser(), preloader(), async (req, res) => {
+    try {
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+        if (res.locals.product.rentedHome.some(x => x._id.toString() == req.user._id.toString())) {
+            throw new Error('You have already rented that home');
+        }
+
+        if(res.locals.product.availablePieces < 1) {
+            throw new Error('There are no space left');
+        }
+
+        await rendHouse(req.params.id, req.user._id);
+        res.redirect(`/product/details/${req.params.id}`);
+    } catch (err) {
+        res.render('404', {
+            title: 'Not Found Page',
+            error: parseError(err)
+        })
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)

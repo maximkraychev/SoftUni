@@ -42,11 +42,21 @@ async function findProductBySearch({ search, platform }) {
     return games;
 }
 
+async function rendHouse(houseId, userId) {
+    return Product.findByIdAndUpdate(
+        { _id: houseId },
+        {
+            $push: { rentedHome: userId },
+            $inc: { availablePieces: -1 }
+        });
+}
+
 module.exports = {
     createProduct,
     getAllProducts,
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch
+    findProductBySearch,
+    rendHouse
 }
