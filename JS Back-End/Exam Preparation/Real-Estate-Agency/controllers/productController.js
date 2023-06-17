@@ -36,8 +36,12 @@ productController.get('/details/:id/rent', isUser(), preloader(), async (req, re
             throw new Error('You have already rented that home');
         }
 
-        if(res.locals.product.availablePieces < 1) {
+        if (res.locals.product.availablePieces < 1) {
             throw new Error('There are no space left');
+        }
+
+        if (res.locals.product.owner.toString() == req.user._id.toString()) {
+            throw new Error('You are the owner and cannot book this estate');
         }
 
         await rendHouse(req.params.id, req.user._id);
