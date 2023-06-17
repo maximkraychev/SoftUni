@@ -66,28 +66,31 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
 });
 
 //Edit
-//TODO... Change: (Path), (Guards), (Name of the Template), (Title)
 productController.get('/details/:id/edit', isUser(), preloader(), isOwner(), (req, res) => {
     res.render('edit', {
-        title: '',
+        title: 'Edit Trip',
         body: res.locals.product
-
     })
 });
 
-//TODO... Change: (Path), (Guards), (Redirect)
 productController.post('/details/:id/edit', isUser(), preloader(true), isOwner(), async (req, res) => {
     try {
-        //TODO... transfer the data from req.body to product
         const product = res.locals.product;
-        //product.name = req.body.name  //EXAMPLE  
+        product.startPoint = req.body.startPoint; 
+        product.endPoint = req.body.endPoint; 
+        product.date = req.body.date; 
+        product.time = req.body.time; 
+        product.carImage = req.body.carImage; 
+        product.carBrand = req.body.carBrand; 
+        product.seats = req.body.seats; 
+        product.price = req.body.price; 
+        product.description = req.body.description; 
         await product.save();
         res.redirect(`/product/details/${req.params.id}`);
     } catch (err) {
-        //TODO... Change: (Name of the Template), (Title)
         res.locals.product = res.locals.product.toObject();
         res.render('edit', {
-            title: '',
+            title: 'Edit Trip',
             body: res.locals.product,
             error: parseError(err)
         });
