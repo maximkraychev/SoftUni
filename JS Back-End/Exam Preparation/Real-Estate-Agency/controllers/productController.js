@@ -23,9 +23,9 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: ''});
+    userStates(req, res);
+    res.render('details', { title: 'Details Page' });
 });
 
 //Buy
@@ -47,17 +47,17 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
         await deleteProduct(req.params.id);
         res.redirect('/catalog');
     } catch (err) {
-       //TODO... Chnage (name of the Template), (Title)
-       userStates(req, res);
-       res.render('details', { 
-           title: '',
-           error: parseError(err)
+        //TODO... Chnage (name of the Template), (Title)
+        userStates(req, res);
+        res.render('details', {
+            title: '',
+            error: parseError(err)
         });
 
-       //TODO.. Or redirect
-       console.error(err);
-       res.redirect(`product/details/${req.params.id}`);
-   }
+        //TODO.. Or redirect
+        console.error(err);
+        res.redirect(`product/details/${req.params.id}`);
+    }
 });
 
 //Edit
@@ -91,9 +91,10 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 
 // User State for locals if needed;
 function userStates(req, res) {
-    res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isOwner = req.user && res.locals.product.owner.toString() == req.user._id.toString();
+    res.locals.isAlreadyRented = req.user && res.locals.product.rentedHome.some(x => x._id.toString() == req.user._id.toString());
+    res.locals.isFreeSpaceLeft = res.locals.product.availablePieces > 0;
+    res.locals.tenants = res.locals.product.rentedHome.length != 0 ? res.locals.product.rentedHome.map(x => x.name).join(', ') : false;
 }
 
 module.exports = productController;

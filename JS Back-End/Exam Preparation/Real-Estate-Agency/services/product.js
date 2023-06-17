@@ -23,7 +23,7 @@ async function getProductRow(id) {
 }
 
 async function getProduct(id) {
-    return Product.findById(id).lean();
+    return Product.findById(id).populate('rentedHome').lean();
 }
 
 async function deleteProduct(id) {
