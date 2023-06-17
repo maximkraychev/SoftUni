@@ -4,7 +4,6 @@ const homeController = require("../controllers/homeController");
 const productController = require("../controllers/productController");
 const profileController = require("../controllers/profileController");
 
-//TODO.. Add controllers
 module.exports = (app) => {
     app.use('/', homeController);
     app.use('/auth', authController);

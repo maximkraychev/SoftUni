@@ -49,18 +49,6 @@ async function takeSeat(productId, userId) {
         });
 }
 
-//TODO... Chnage the properties for destructuring
-//TODO... Chnage the search
-async function findProductBySearch({ search, platform }) {
-    const games = await Product
-        .find({
-            name: { $regex: search, $options: 'i' },
-            platform: { $regex: platform, $options: 'i' }
-        })
-        .lean();
-    return games;
-}
-
 module.exports = {
     createProduct,
     getAllProducts,
