@@ -1,5 +1,5 @@
 const authController = require('express').Router();
-const { isGuest } = require('../middlewares/guards');
+const { isGuest, isUser } = require('../middlewares/guards');
 const { register, login } = require('../services/user');
 const parseError = require('../utils/parsers');
 
@@ -43,7 +43,7 @@ authController.post('/login', isGuest(), async (req, res) => {
     }
 });
 
-authController.get('/logout', (req, res) => {
+authController.get('/logout', isUser(), (req, res) => {
     res.clearCookie('token');
     res.redirect('/');
 });

@@ -54,7 +54,7 @@ productController.get('/details/:id/join', isUser(), preloader(), async (req, re
 //Delete
 productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), async (req, res) => {
     try {
-        await deleteProduct(req.params.id);
+        await deleteProduct(req.params.id , req.user._id);
         res.redirect('/catalog');
     } catch (err) {
         userStates(req, res);

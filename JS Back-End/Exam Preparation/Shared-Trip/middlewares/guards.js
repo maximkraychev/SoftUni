@@ -23,7 +23,7 @@ function isGuest() {
     return (req, res, next) => {
         if (req.user) {
             res.clearCookie('token');
-            return res.redirect('/auth/login');
+            return res.redirect('/');
         }
         next();
     }

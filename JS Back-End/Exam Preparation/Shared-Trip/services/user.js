@@ -59,8 +59,14 @@ function verifyToken(token) {
     return jwt.verify(token, JWT_SECRET);
 }
 
+
+async function getUserById(userId) {
+    return User.findById(userId).populate('tripsHistory', ['startPoint', 'endPoint', 'date', 'time']).lean();
+}
+
 module.exports = {
     register,
     login,
-    verifyToken
+    verifyToken,
+    getUserById
 }

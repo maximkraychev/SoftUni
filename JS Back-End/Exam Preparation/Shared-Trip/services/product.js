@@ -1,8 +1,9 @@
 const Product = require("../models/product");
+const User = require("../models/user");
 
 
 async function createProduct({ startPoint, endPoint, date, time, carImage, carBrand, seats, price, description }, owner) {
-    return Product.create({
+    const newProduct = await Product.create({
         startPoint,
         endPoint,
         date,
@@ -14,6 +15,9 @@ async function createProduct({ startPoint, endPoint, date, time, carImage, carBr
         description,
         owner
     });
+
+    await User.updateOne({ _id: owner }, { $push: { tripsHistory: newProduct._id } });
+    return newProduct;
 }
 
 async function getAllProducts() {
@@ -28,8 +32,8 @@ async function getProduct(id) {
     return Product.findById(id).populate('owner buddies').lean();
 }
 
-async function deleteProduct(id) {
-    return Product.findByIdAndDelete(id);
+async function deleteProduct(productId, userId) {
+   return Promise.all([Product.findByIdAndDelete(productId), User.findOneAndUpdate({ _id: userId }, { $pull: { tripsHistory: productId } })]);
 }
 
 async function takeSeat(productId, userId) {
