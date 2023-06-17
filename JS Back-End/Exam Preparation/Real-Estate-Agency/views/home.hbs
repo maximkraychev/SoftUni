@@ -13,31 +13,17 @@
     <h1>Top Houses</h1>
     <div class="houses">
 
-
+        {{#each products}}
         <div class="card-home">
-            <h2>Real House Luxury Villa</h2>
-            <div class="cta-container"><a href="#" class="details-link">Details</a></div>
-            <div class="card_image"><img src="./static/images/5.jpg"></div>
-
+            <h2>{{name}}</h2>
+            <div class="cta-container"><a href="/product/details/{{_id}}" class="details-link">Details</a></div>
+            <div class="card_image"><img src="{{homeImage}}"></div>
         </div>
-
-        <div class="card-home">
-            <h2>House Take Away</h2>
-            <div class="cta-container"><a href="#" class="details-link">Details</a></div>
-            <div class="card_image"><img src="./static/images/house2.jpg"></div>
-
-        </div>
-
-        <div class="card-home">
-            <h2>Sunhouse C21</h2>
-            <div class="cta-container"><a href="#" class="details-link">Details</a></div>
-            <div class="card_image"><img src="./static/images/apartments.jpg"></div>
-
-        </div>
-
+        {{else}}
         <!-- If there are still no offers for housing in the database display: -->
-        <!--<div class="no-data-container">
-                        <p class="no-data">There are no housing offers found...</p>
-                    </div>-->
+        <div class="no-data-container">
+            <p class="no-data">There are no housing offers found...</p>
+        </div>
+        {{/each}}
     </div>
 </section>

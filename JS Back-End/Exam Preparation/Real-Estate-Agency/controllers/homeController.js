@@ -1,7 +1,14 @@
+const { getLastThreeAdded } = require('../services/product');
+
 const homeController = require('express').Router();
-//TODO... Change: (Path), (Name of the template), (Title)
-homeController.get('/', (req, res) => {
+
+homeController.get('/', async (req, res) => {
+    try {
+    res.locals.products = await getLastThreeAdded();
     res.render('home', {title: 'Home Page'});
+    } catch (err) {
+
+    }
 });
 
 

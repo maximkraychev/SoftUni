@@ -37,7 +37,7 @@ async function getBySearch(search) {
             type: { $regex: search, $options: 'i' }
         })
         .lean();
-    
+
 }
 
 async function rendHouse(houseId, userId) {
@@ -49,6 +49,10 @@ async function rendHouse(houseId, userId) {
         });
 }
 
+async function getLastThreeAdded() {
+    return Product.find({}).sort({ _id: -1 }).limit(3).lean();
+}
+
 module.exports = {
     createProduct,
     getAllProducts,
@@ -56,5 +60,6 @@ module.exports = {
     getProduct,
     deleteProduct,
     getBySearch,
-    rendHouse
+    rendHouse,
+    getLastThreeAdded
 }
