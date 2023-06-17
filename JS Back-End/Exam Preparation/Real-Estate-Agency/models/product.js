@@ -25,7 +25,7 @@ const productSchema = new Schema({
     homeImage: {
         type: String,
         required: [true, 'Home Image is required!'],
-        math: [/^https?:\/\//i, 'The Home Image should starts with http:// or https://']
+        match: [/^https?:\/\//i, 'The Home Image should starts with http:// or https://']
     },
     propertyDescription: {
         type: String,
@@ -39,7 +39,7 @@ const productSchema = new Schema({
         max: [10, 'The Available Pieces should be positive number (from 0 to 10)']
     },
     rentedHome: {
-        type: Types.ObjectId,
+        type: [Types.ObjectId],
         ref: 'User',
         default: []
     },

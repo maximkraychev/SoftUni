@@ -12,11 +12,11 @@
     <div id="box">
         {{#if error}}
         <div>
-            {{#each error.messages}}
             <div class="errorContainer">
+            {{#each error.messages}}
                 <p>{{this}}</p>
-            </div>
             {{/each}}
+            </div>
         </div>
         {{/if}}
 
