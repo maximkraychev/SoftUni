@@ -2,14 +2,7 @@
     <h1>Apartments for recents</h1>
     <!-- If there are offers for housing in the database display each of them -->
     {{#each products}}
-    <div class="card">
-        <h3>{{name}}</h3>
-        <p>{{propertyDescription}}</p>
-
-        <div class="cta-container"><a href="/product/details/{{_id}}" class="det-link">Details</a></div>
-        <div class="card_circle"><img src="{{homeImage}}"></div>
-
-    </div>
+    {{> houseCard}}
     {{else}}
     <div class="no-data-listing">
         <p class="no-offer">There are no housing offers found...</p>
