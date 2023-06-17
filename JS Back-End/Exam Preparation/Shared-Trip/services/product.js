@@ -55,6 +55,5 @@ module.exports = {
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch,
     takeSeat
 }
