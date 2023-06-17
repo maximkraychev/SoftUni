@@ -52,15 +52,16 @@ productController.get('/details/:id/join', isUser(), preloader(), async (req, re
 });
 
 //Delete
-//TODO... Change: (Path), (Guards), (Redirect)
 productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), async (req, res) => {
     try {
         await deleteProduct(req.params.id);
         res.redirect('/catalog');
     } catch (err) {
-        //TODO... Chnage (Redirect) or logic if there is error;
-        console.error(err);
-        res.redirect(`/details/${req.params.id}`);
+        userStates(req, res);
+        res.render(`details`, {
+            title: 'Details Trip',
+            error: parseError(err)
+        });
     }
 });
 
@@ -95,7 +96,7 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 
 // User State for locals if needed;
 function userStates(req, res) {
-    res.locals.isOwner = req.user && res.locals.product.owner.toString() == req.user._id.toString();
+    res.locals.isOwner = req.user && res.locals.product.owner._id.toString() == req.user._id.toString();
     res.locals.isAlreadyJoined = req.user && res.locals.product.buddies.some(x => x._id.toString() == req.user._id.toString());
     res.locals.isThereFreeSeats = res.locals.product.seats > 0;
     res.locals.product.buddies = res.locals.product.buddies.map(x => x.email).join(', ');
