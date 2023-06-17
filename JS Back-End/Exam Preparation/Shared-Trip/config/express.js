@@ -1,6 +1,9 @@
 const express = require('express');
 const hbs = require('express-handlebars').create({
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+        isEqual: (a, b) => a == b
+    }
 });
 const cookieParser = require('cookie-parser');
 const bodyTrimmer = require('../middlewares/bodyTrimmer');
