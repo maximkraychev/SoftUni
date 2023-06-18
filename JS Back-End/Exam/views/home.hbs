@@ -9,26 +9,16 @@
     </section>
 
     <section id="last-added">
+        {{#each products}}
         <div>
-            <img src="./static/images/animal4.jpg">
-            <p>Name: Blue</p>
-            <p>Need of: Medicine</p>
-            <a class="details-btn" href="#">Details</a>
+            <img src="{{image}}">
+            <p>Name: {{name}}</p>
+            <p>Need of: {{need}}</p>
+            <a class="details-btn" href="/product/details/{{_id}}">Details</a>
         </div>
-        <div>
-            <img src="./static/images/animal5.webp">
-            <p>Name: Rikky</p>
-            <p>Need of: Food</p>
-            <a class="details-btn" href="#">Details</a>
-        </div>
-        <div>
-            <img src="./static/images/animla6.jpg">
-            <p>Name: Wenny</p>
-            <p>Need of: Money for operation</p>
-            <a class="details-btn" href="#">Details</a>
-        </div>
-
-        <!--  <p class="no-post">There are no animals in need!</p> -->
+        {{else}}
+        <p class="no-post">There are no animals in need!</p>
+        {{/each}}
 
     </section>
 </main>

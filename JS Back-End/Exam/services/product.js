@@ -39,6 +39,10 @@ async function donate(animalId, userId) {
     );
 }
 
+async function getLastThreeAdded() {
+    return Product.find({}).sort({ _id: -1 }).limit(3).lean();
+}
+
 
 //TODO... Chnage the properties for destructuring
 //TODO... Chnage the search
@@ -59,5 +63,6 @@ module.exports = {
     getProduct,
     deleteProduct,
     findProductBySearch,
-    donate
+    donate,
+    getLastThreeAdded
 }
