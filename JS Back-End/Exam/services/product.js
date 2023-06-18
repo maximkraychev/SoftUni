@@ -43,17 +43,13 @@ async function getLastThreeAdded() {
     return Product.find({}).sort({ _id: -1 }).limit(3).lean();
 }
 
-
-//TODO... Chnage the properties for destructuring
-//TODO... Chnage the search
-async function findProductBySearch({ search, platform }) {
-    const games = await Product
+async function getBySearch(search) {
+    return await Product
         .find({
-            name: { $regex: search, $options: 'i' },
-            platform: { $regex: platform, $options: 'i' }
+            location: { $regex: search, $options: 'i' }
         })
         .lean();
-    return games;
+
 }
 
 module.exports = {
@@ -62,7 +58,7 @@ module.exports = {
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch,
     donate,
-    getLastThreeAdded
+    getLastThreeAdded,
+    getBySearch
 }

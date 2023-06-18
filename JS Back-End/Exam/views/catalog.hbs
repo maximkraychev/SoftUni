@@ -4,17 +4,7 @@
         <ul class="card-wrapper">
             <!-- Display a li with information about every post (if any)-->
             {{#each products}}
-            <li class="card">
-                <img src="{{image}}" />
-                <p>
-                    <strong>Name: </strong><span class="name">{{name}}</span>
-                </p>
-                <p>
-                    <strong>Location: </strong><span class="location">{{location}}</span>
-                </p>
-                <p><strong>Need of:</strong><span class="need-of">{{need}}</span></p>
-                <a class="details-btn" href="/product/details/{{_id}}">Details</a>
-            </li>
+            {{> animalCard}}
             {{/each}}
         </ul>
         {{#if noProducts}}

@@ -43,8 +43,9 @@ productController.get('/details/:id/donate', isUser(), preloader(), async (req, 
         res.redirect(`/product/details/${req.params.id}`);
         
     } catch (err) {
-        res.render('404', {
-            title: '404 Page',
+        userStates(req, res);
+        res.render('details', {
+            title: 'Details Page',
             error: parseError(err)
         })
     }
