@@ -9,4 +9,5 @@ module.exports = (app) => {
     app.use('/auth', authController);
     app.use('/catalog', catalogCotroller);
     app.use('/product', productController);
+    app.all('*', (req, res) => res.render('404', {title: '404 Page'}));
 }
