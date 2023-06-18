@@ -65,28 +65,29 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
 });
 
 //Edit
-//TODO... Change: (Path), (Guards), (Name of the Template), (Title)
 productController.get('/details/:id/edit', isUser(), preloader(), isOwner(), (req, res) => {
     res.render('edit', {
-        title: '',
+        title: 'Edit Page',
         body: res.locals.product
-
     })
 });
 
-//TODO... Change: (Path), (Guards), (Redirect)
 productController.post('/details/:id/edit', isUser(), preloader(true), isOwner(), async (req, res) => {
     try {
-        //TODO... transfer the data from req.body to product
-        const product = res.locals.product;
-        //product.name = req.body.name  //EXAMPLE  
+        const product = res.locals.product; // for shorter name;
+        product.name = req.body.name;
+        product.years = req.body.years;
+        product.kind = req.body.kind;
+        product.image = req.body.image;
+        product.need = req.body.need;
+        product.location = req.body.location;
+        product.description = req.body.description;
         await product.save();
         res.redirect(`/product/details/${req.params.id}`);
     } catch (err) {
-        //TODO... Change: (Name of the Template), (Title)
         res.locals.product = res.locals.product.toObject();
         res.render('edit', {
-            title: '',
+            title: 'Edit Page',
             body: res.locals.product,
             error: parseError(err)
         });
