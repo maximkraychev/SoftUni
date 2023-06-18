@@ -1,7 +1,7 @@
 const productController = require('express').Router();
 const { isOwner, isUser } = require('../middlewares/guards');
 const preloader = require('../middlewares/preloader');
-const { createProduct, deleteProduct } = require('../services/product');
+const { createProduct, deleteProduct, donate } = require('../services/product');
 const parseError = require('../utils/parsers');
 
 //Create
@@ -23,22 +23,32 @@ productController.post('/create', isUser(), async (req, res) => {
 });
 
 //Details
-//TODO... Change: (Path), (Guards), (name of the Template), (Title)
 productController.get('/details/:id', preloader(), async (req, res) => {
-    res.render('details', { title: ''});
+    userStates(req, res);
+    res.render('details', { title: 'Details Page' });
 });
 
-//Buy
-//For example if needed!!!!
-// productController.get('/details/:id/buy', isUser(), preloader(true), async (req, res) => {
-//     res.locals.game.boughtBy
-//         .push(req.user._id)
+//Donate
+productController.get('/details/:id/donate', isUser(), preloader(), async (req, res) => {
+    try {
+        if (res.locals.product.owner.toString() == req.user._id) {
+            throw new Error('You are the owner of the post and cannot donate!');
+        }
 
-//     await res.locals.game.save();
-//     userStates(req, res);
-//     res.locals.game = res.locals.game.toObject();
-//     res.render('details', { title: 'Details Page', });
-// });
+        if (res.locals.product.donations.some(x => x.toString() == req.user._id.toString())) {
+            throw new Error('You have already donated to this post!');
+        }
+
+        await donate(req.params.id, req.user._id);
+        res.redirect(`/product/details/${req.params.id}`);
+        
+    } catch (err) {
+        res.render('404', {
+            title: '404 Page',
+            error: parseError(err)
+        })
+    }
+});
 
 //Delete
 //TODO... Change: (Path), (Guards), (Redirect)
@@ -47,17 +57,17 @@ productController.get('/details/:id/delete', isUser(), preloader(), isOwner(), a
         await deleteProduct(req.params.id);
         res.redirect('/catalog');
     } catch (err) {
-       //TODO... Chnage (name of the Template), (Title)
-       userStates(req, res);
-       res.render('details', { 
-           title: '',
-           error: parseError(err)
+        //TODO... Chnage (name of the Template), (Title)
+        userStates(req, res);
+        res.render('details', {
+            title: '',
+            error: parseError(err)
         });
 
-       //TODO.. Or redirect
-       console.error(err);
-       res.redirect(`product/details/${req.params.id}`);
-   }
+        //TODO.. Or redirect
+        console.error(err);
+        res.redirect(`product/details/${req.params.id}`);
+    }
 });
 
 //Edit
@@ -91,9 +101,8 @@ productController.post('/details/:id/edit', isUser(), preloader(true), isOwner()
 
 // User State for locals if needed;
 function userStates(req, res) {
-    res.locals.isOwner = res.locals.product.owner.toString() == req.user._id.toString();
-    //TODO... Chnage the path to the array if you need that part
-    //res.locals.isAlredyBought = res.locals.product.(CHANGE ME).some(x => x.toString() == req.user._id.toString());
+    res.locals.isOwner = req.user && res.locals.product.owner.toString() == req.user._id.toString();
+    res.locals.isAlreadyDonated = req.user && res.locals.product.donations.some(x => x.toString() == req.user._id.toString());
 }
 
 module.exports = productController;

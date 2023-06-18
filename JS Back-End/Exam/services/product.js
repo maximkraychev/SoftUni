@@ -31,6 +31,15 @@ async function deleteProduct(id) {
     return Product.findByIdAndDelete(id);
 }
 
+async function donate(animalId, userId) {
+    return Product.findByIdAndUpdate(
+        { _id: animalId },
+        { $push: { donations: userId } },
+        { runValidators: true }
+    );
+}
+
+
 //TODO... Chnage the properties for destructuring
 //TODO... Chnage the search
 async function findProductBySearch({ search, platform }) {
@@ -49,5 +58,6 @@ module.exports = {
     getProductRow,
     getProduct,
     deleteProduct,
-    findProductBySearch
+    findProductBySearch,
+    donate
 }
