@@ -10,9 +10,13 @@ import { task } from '../interfaces-types/interfaces-types';
 export class MainComponent implements OnInit {
   public data!: task[];
 
-  constructor (private mockData: MockDataService) {}
+  constructor(private mockData: MockDataService) { }
 
   ngOnInit(): void {
     this.data = this.mockData.getData();
+  }
+
+  addTask(newTaskData: { name: string }): void {
+    this.data.push(newTaskData);
   }
 }
