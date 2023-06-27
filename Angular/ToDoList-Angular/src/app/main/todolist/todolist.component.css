@@ -1,0 +1,13 @@
+.todolist {
+    padding: 20px 0;
+}
+
+.todolist h3 {
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.error-info {
+    margin-top: 20px;
+    color: var(--dark-blue);
+}

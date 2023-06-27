@@ -1,0 +1,7 @@
+.todo {
+    width: 800px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 4px 4px 5px rgba(82, 82, 82, .4);
+    text-align: center;
+}
