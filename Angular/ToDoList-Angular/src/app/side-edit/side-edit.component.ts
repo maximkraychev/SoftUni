@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MockDataService } from '../mock-data.service';
 
 @Component({
@@ -8,11 +8,16 @@ import { MockDataService } from '../mock-data.service';
 })
 export class SideEditComponent {
   @Input() task!: { name: string } | null;
+  @Output() removeEdit = new EventEmitter;
 
   constructor(private mockDataService: MockDataService) { }
 
   edit(name: string): void {
     this.mockDataService.editTask(this.task, { name });
-    
+    this.removeEdit.emit();
+  }
+
+  cancel(): void {
+    this.removeEdit.emit();
   }
 }
