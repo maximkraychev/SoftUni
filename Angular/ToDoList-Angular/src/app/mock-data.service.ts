@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { task } from './interfaces-types/types';
-
-
+import { task } from './interfaces-types/interfaces-types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MockDataService {
-
-  constructor() { }
+  private mockData: task[] = [
+    { name: 'Shopping' },
+    { name: 'Rent Pay' },
+    { name: 'Cleaning' }
+  ];
 
   getData(): task[] {
-    return [
-      { name: 'Shopping' },
-      { name: 'Rent Pay' },
-      { name: 'Cleaning' }
-    ]
+    return this.mockData;
   }
 }

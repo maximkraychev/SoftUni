@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-list-item',
@@ -7,4 +7,14 @@ import { Component, Input } from '@angular/core';
 })
 export class ListItemComponent {
   @Input('task') task!: {name: string};
+  @Output() deleteEvent = new EventEmitter<{name: string}>;
+  isComplete: boolean = false;
+
+  complete(): void {
+    this.isComplete = !this.isComplete;
+  }
+
+  delete(): void {
+    this.deleteEvent.emit(this.task);
+  }
 }
