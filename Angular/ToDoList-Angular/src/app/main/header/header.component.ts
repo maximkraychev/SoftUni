@@ -9,7 +9,12 @@ export class HeaderComponent {
   @Output() inputEvent = new EventEmitter<{name: string}>();
 
   addTask(inputElement: HTMLInputElement): void {
-    this.inputEvent.emit({name: inputElement.value})
-    inputElement.value = '';
+
+    if(inputElement.value != '') {
+      this.inputEvent.emit({name: inputElement.value})
+      inputElement.value = '';
+    } else {
+      console.log('Empty string is not allowed');
+    }
   }
 }
