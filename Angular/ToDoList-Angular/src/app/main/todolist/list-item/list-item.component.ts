@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-list-item',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent {
-
+  @Input('task') task!: {name: string};
 }
