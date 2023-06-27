@@ -14,4 +14,14 @@ export class MockDataService {
   getData(): task[] {
     return this.mockData;
   }
+
+  deleteTask(taskToDelete: {name: string}): void {
+    const index = this.mockData.findIndex(x => x == taskToDelete);
+
+    if (index != -1) {
+      this.mockData.splice(index, 1);
+    } else {
+      console.log('We couldn\'t find that task'); 
+    }
+  }
 }

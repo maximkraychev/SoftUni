@@ -8,14 +8,4 @@ import { task } from '../../interfaces-types/interfaces-types'
 })
 export class TodolistComponent {
   @Input('data') data!: task[];
-
-  deleteTask(taskToBeDeleted: { name: string }): void {
-    const index = this.data.findIndex(x => x == taskToBeDeleted);
-
-    if (index != -1) {
-      this.data.splice(index, 1);
-    } else {
-      console.log('We couldn\'t find that task'); 
-    }
-  }
 }

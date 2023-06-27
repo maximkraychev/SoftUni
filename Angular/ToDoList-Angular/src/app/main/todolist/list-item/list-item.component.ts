@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MockDataService } from 'src/app/mock-data.service';
 
 @Component({
   selector: 'app-list-item',
@@ -6,15 +7,17 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent {
-  @Input('task') task!: {name: string};
-  @Output() deleteEvent = new EventEmitter<{name: string}>;
+  @Input('task') task!: { name: string };
+  @Output() deleteEvent = new EventEmitter<{ name: string }>;
   isComplete: boolean = false;
+
+  constructor(private mockDataServices: MockDataService) { }
 
   complete(): void {
     this.isComplete = !this.isComplete;
   }
 
   delete(): void {
-    this.deleteEvent.emit(this.task);
+    this.mockDataServices.deleteTask(this.task);
   }
 }
