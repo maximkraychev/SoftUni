@@ -15,13 +15,23 @@ export class MockDataService {
     return this.mockData;
   }
 
-  deleteTask(taskToDelete: {name: string}): void {
+  deleteTask(taskToDelete: { name: string }): void {
     const index = this.mockData.findIndex(x => x == taskToDelete);
 
     if (index != -1) {
       this.mockData.splice(index, 1);
     } else {
-      console.log('We couldn\'t find that task'); 
+      console.log('We couldn\'t find that task');
+    }
+  }
+
+  editTask(oldValue: { name: string } | null, newValue: { name: string }): void {
+    const index = this.mockData.findIndex(x => x == oldValue);
+
+    if (index != -1) {
+      this.mockData[index].name = newValue.name;
+    } else {
+      console.log('We couldn\'t find that task');
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MockDataService } from '../mock-data.service';
 import { task } from '../interfaces-types/interfaces-types';
 
@@ -9,6 +9,7 @@ import { task } from '../interfaces-types/interfaces-types';
 })
 export class MainComponent implements OnInit {
   public data!: task[];
+  @Output() editEvent = new EventEmitter<{ name: string }>;
 
   constructor(private mockData: MockDataService) { }
 
@@ -18,5 +19,9 @@ export class MainComponent implements OnInit {
 
   addTask(newTaskData: { name: string }): void {
     this.data.push(newTaskData);
+  }
+
+  editEmitter(taskToEdit: {name: string}): void {
+    this.editEvent.emit(taskToEdit);
   }
 }

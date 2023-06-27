@@ -8,7 +8,7 @@ import { MockDataService } from 'src/app/mock-data.service';
 })
 export class ListItemComponent {
   @Input('task') task!: { name: string };
-  @Output() deleteEvent = new EventEmitter<{ name: string }>;
+  @Output() editEvent = new EventEmitter<{ name: string }>;
   isComplete: boolean = false;
 
   constructor(private mockDataServices: MockDataService) { }
@@ -19,5 +19,9 @@ export class ListItemComponent {
 
   delete(): void {
     this.mockDataServices.deleteTask(this.task);
+  }
+
+  editEmitter(): void {
+    this.editEvent.emit(this.task);
   }
 }

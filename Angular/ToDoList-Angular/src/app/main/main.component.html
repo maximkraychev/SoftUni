@@ -1,4 +1,4 @@
 <div class="todo">
     <app-header (inputEvent)="addTask($event)"></app-header>
-    <app-todolist [data] = "data"></app-todolist>
+    <app-todolist [data] = "data" (editEvent)="editEmitter($event)"></app-todolist>
 </div>
