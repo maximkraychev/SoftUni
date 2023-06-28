@@ -1,6 +1,6 @@
 <div class="todolist">
     <h3>List of Works Todo:</h3>
-    <p class="error-info">adasd</p>
+    <p class="error-info"></p>
     <ul>
         <app-list-item *ngFor="let currTask of data" [task] = "currTask" (editEvent)="editEmitter($event)"></app-list-item>
     </ul>

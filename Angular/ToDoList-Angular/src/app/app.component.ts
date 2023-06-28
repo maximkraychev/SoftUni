@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { task } from './interfaces-types/interfaces-types';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ToDoList-Angular';
   isThereTaskToEdit: boolean = false;
-  taskToEdit: { name: string } | null = null;
+  taskToEdit: task | null = null;
 
-  showEdit(taskToEdit: { name: string }): void {
+  showEdit(taskToEdit: task): void {
     this.isThereTaskToEdit = true;
     this.taskToEdit = taskToEdit;
   }

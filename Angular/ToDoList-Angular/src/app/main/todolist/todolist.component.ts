@@ -8,9 +8,9 @@ import { task } from '../../interfaces-types/interfaces-types'
 })
 export class TodolistComponent {
   @Input('data') data!: task[];
-  @Output() editEvent = new EventEmitter<{name: string}>;
+  @Output() editEvent = new EventEmitter<task>;
 
-  editEmitter(taskToEdit: {name: string}): void {
+  editEmitter(taskToEdit: task): void {
     this.editEvent.emit(taskToEdit);
   }
 }

@@ -1,1 +1,1 @@
-export type task = { name: string };
+export type task = { title: string };

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MockDataService } from 'src/app/mock-data.service';
+import { MockDataService } from 'src/app/api-data.service';
+import { task } from 'src/app/interfaces-types/interfaces-types';
 
 @Component({
   selector: 'app-list-item',
@@ -7,8 +8,8 @@ import { MockDataService } from 'src/app/mock-data.service';
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent {
-  @Input('task') task!: { name: string };
-  @Output() editEvent = new EventEmitter<{ name: string }>;
+  @Input('task') task!: task;
+  @Output() editEvent = new EventEmitter<task>;
   isComplete: boolean = false;
 
   constructor(private mockDataServices: MockDataService) { }

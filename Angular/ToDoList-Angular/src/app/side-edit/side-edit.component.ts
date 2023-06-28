@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MockDataService } from '../mock-data.service';
+import { MockDataService } from '../api-data.service';
+import { task } from '../interfaces-types/interfaces-types';
 
 @Component({
   selector: 'app-side-edit',
@@ -7,13 +8,13 @@ import { MockDataService } from '../mock-data.service';
   styleUrls: ['./side-edit.component.css']
 })
 export class SideEditComponent {
-  @Input() task!: { name: string } | null;
+  @Input() task!: task | null;
   @Output() removeEdit = new EventEmitter;
 
   constructor(private mockDataService: MockDataService) { }
 
-  edit(name: string): void {
-    this.mockDataService.editTask(this.task, { name });
+  edit(title: string): void {
+    this.mockDataService.editTask(this.task, { title });
     this.removeEdit.emit();
   }
 

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MockDataService } from '../mock-data.service';
+import { MockDataService } from '../api-data.service';
 import { task } from '../interfaces-types/interfaces-types';
 
 @Component({
@@ -9,7 +9,7 @@ import { task } from '../interfaces-types/interfaces-types';
 })
 export class MainComponent implements OnInit {
   public data!: task[];
-  @Output() editEvent = new EventEmitter<{ name: string }>;
+  @Output() editEvent = new EventEmitter<task>;
 
   constructor(private mockData: MockDataService) { }
 
@@ -17,11 +17,11 @@ export class MainComponent implements OnInit {
     this.data = this.mockData.getData();
   }
 
-  addTask(newTaskData: { name: string }): void {
+  addTask(newTaskData: task): void {
     this.data.push(newTaskData);
   }
 
-  editEmitter(taskToEdit: {name: string}): void {
+  editEmitter(taskToEdit: task): void {
     this.editEvent.emit(taskToEdit);
   }
 }

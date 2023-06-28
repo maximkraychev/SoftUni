@@ -6,16 +6,16 @@ import { task } from './interfaces-types/interfaces-types';
 })
 export class MockDataService {
   private mockData: task[] = [
-    { name: 'Shopping' },
-    { name: 'Rent Pay' },
-    { name: 'Cleaning' }
+    { title: 'Shopping' },
+    { title: 'Rent Pay' },
+    { title: 'Cleaning' }
   ];
 
   getData(): task[] {
     return this.mockData;
   }
 
-  deleteTask(taskToDelete: { name: string }): void {
+  deleteTask(taskToDelete: task): void {
     const index = this.mockData.findIndex(x => x == taskToDelete);
 
     if (index != -1) {
@@ -25,11 +25,11 @@ export class MockDataService {
     }
   }
 
-  editTask(oldValue: { name: string } | null, newValue: { name: string }): void {
+  editTask(oldValue: task | null, newValue: task): void {
     const index = this.mockData.findIndex(x => x == oldValue);
 
     if (index != -1) {
-      this.mockData[index].name = newValue.name;
+      this.mockData[index].title = newValue.title;
     } else {
       console.log('We couldn\'t find that task');
     }
