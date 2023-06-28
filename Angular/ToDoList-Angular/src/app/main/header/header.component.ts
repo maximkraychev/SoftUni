@@ -11,8 +11,8 @@ export class HeaderComponent {
 
   addTask(inputElement: HTMLInputElement): void {
 
-    if(inputElement.value != '') {
-      this.inputEvent.emit({title: inputElement.value})
+    if (inputElement.value != '') {
+      this.inputEvent.emit({ title: inputElement.value, completed: false });
       inputElement.value = '';
     } else {
       console.log('Empty string is not allowed');

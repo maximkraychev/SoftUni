@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MockDataService } from 'src/app/api-data.service';
+import { ApiService } from 'src/app/api-data.service';
 import { task } from 'src/app/interfaces-types/interfaces-types';
 
 @Component({
@@ -12,14 +12,14 @@ export class ListItemComponent {
   @Output() editEvent = new EventEmitter<task>;
   isComplete: boolean = false;
 
-  constructor(private mockDataServices: MockDataService) { }
+  constructor(private apiService: ApiService) { }
 
   complete(): void {
     this.isComplete = !this.isComplete;
   }
 
   delete(): void {
-    this.mockDataServices.deleteTask(this.task);
+    this.apiService.deleteTask(this.task);
   }
 
   editEmitter(): void {

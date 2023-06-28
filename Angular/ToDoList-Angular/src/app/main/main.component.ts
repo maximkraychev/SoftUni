@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MockDataService } from '../api-data.service';
+import { ApiService } from '../api-data.service';
 import { task } from '../interfaces-types/interfaces-types';
 
 @Component({
@@ -11,10 +11,13 @@ export class MainComponent implements OnInit {
   public data!: task[];
   @Output() editEvent = new EventEmitter<task>;
 
-  constructor(private mockData: MockDataService) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.data = this.mockData.getData();
+    this.apiService.getDataFromAPI().subscribe((data) => {
+      this.data = data;
+      this.apiService.setData(data);
+    })
   }
 
   addTask(newTaskData: task): void {

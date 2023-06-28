@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MockDataService } from '../api-data.service';
+import { ApiService } from '../api-data.service';
 import { task } from '../interfaces-types/interfaces-types';
 
 @Component({
@@ -11,10 +11,10 @@ export class SideEditComponent {
   @Input() task!: task | null;
   @Output() removeEdit = new EventEmitter;
 
-  constructor(private mockDataService: MockDataService) { }
+  constructor(private apiService: ApiService) { }
 
   edit(title: string): void {
-    this.mockDataService.editTask(this.task, { title });
+    this.apiService.editTask(this.task, { title, completed: false });
     this.removeEdit.emit();
   }
 
