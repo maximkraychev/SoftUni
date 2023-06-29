@@ -1,7 +1,0 @@
-<li [class]="isComplete ? 'completed' : ''">{{task.title}}
-    <div class="tools">
-        <button (click)="complete()" [class]="isComplete ? 'completed' : 'complete'"><i class="fas fa-check"></i></button>
-        <button class="edit" (click)="editEmitter()">EDIT</button>
-        <button class="delete" (click)="delete()"><i class="fas fa-times"></i></button>
-    </div>
-</li>
