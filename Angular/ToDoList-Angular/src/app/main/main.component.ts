@@ -18,14 +18,25 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.apiService.getDataFromAPI().subscribe((data) => {
-      this.data = data;
-      this.apiService.setData(data);
-    })
 
     this.errorService.error$.subscribe((error) => {
       this.errorMessage = error;
       setTimeout(() => { this.errorMessage = null }, 3000);
     })
+
+    try {
+
+      this.apiService.getDataFromAPI().subscribe((data) => {
+        this.data = data;
+        this.apiService.setData(data);
+      })
+
+    } catch (err: unknown) {
+      if (typeof err === "string") {
+        this.errorService.setError(err);
+      } else if (err instanceof Error) {
+        this.errorService.setError(err.message);
+      }
+    }
   }
 }
