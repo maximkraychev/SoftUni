@@ -1,7 +1,7 @@
 <div class="popup">
     <h3>Edit your todo:</h3>
     <div class="popup-body">
-        <p class="popup-info"></p>
+        <p class="popup-info" *ngIf="errorMessage">{{errorMessage}}</p>
         <input type="text" class="popup-input" value="{{editService.taskToEdit?.title}}" placeholder="Wprowadź nową treść zadania..." #input>
         <button class="popup-btn accept" (click)="edit(input.value)">Update</button>
         <button class="popup-btn cancel" (click)="editService.hideEdit()">Cancel</button>
