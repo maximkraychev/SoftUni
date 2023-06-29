@@ -7,15 +7,11 @@ import { task } from '../interfaces-types/interfaces-types';
 export class EditService {
   taskToEdit: task | null = null;
 
-  showEdit(taskToEdit: task): void {
-    this.taskToEdit = taskToEdit;
-  }
-
   hideEdit(): void {
     this.taskToEdit = null;
   }
 
-  edit(taskToEdit: task): void {
+  showEdit(taskToEdit: task): void {
     this.taskToEdit = taskToEdit;
   }
 }

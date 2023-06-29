@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from '../services/api-data.service';
-import { task } from '../interfaces-types/interfaces-types';
+import { EditService } from '../services/edit.service';
 
 @Component({
   selector: 'app-side-edit',
@@ -8,17 +8,19 @@ import { task } from '../interfaces-types/interfaces-types';
   styleUrls: ['./side-edit.component.css']
 })
 export class SideEditComponent {
-  @Input() task!: task | null;
-  @Output() removeEdit = new EventEmitter;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    public editService: EditService
+  ) { }
 
   edit(title: string): void {
-    this.apiService.editTask(this.task, { title, completed: false });
-    this.removeEdit.emit();
-  }
 
-  cancel(): void {
-    this.removeEdit.emit();
+    if(title == '') {
+      return console.log('The task title cannot be empty string!');
+    }
+
+    this.apiService.editTask(this.editService.taskToEdit, { title, completed: false });
+    this.editService.hideEdit();
   }
 }

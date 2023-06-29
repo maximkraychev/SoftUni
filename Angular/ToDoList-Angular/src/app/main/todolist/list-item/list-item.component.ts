@@ -26,6 +26,6 @@ export class ListItemComponent {
   }
 
   editEmitter(): void {
-    this.editService.edit(this.task);
+    this.editService.showEdit(this.task);
   }
 }
