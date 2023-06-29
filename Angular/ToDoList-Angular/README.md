@@ -1,27 +1,36 @@
 # ToDoListAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+This project is an Angular-based Todo application developed for the purpose of studying Angular framework and its core concepts. 
+The app allows users to manage their tasks and practice working with Angular components, services, and routing.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To get started with the Todo app, follow these steps:
 
-## Code scaffolding
+1.Clone the repository to your local machine using the following command:
+`git clone <repository-url>`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.Navigate to the project directory:
+`cd ToDoList-Angular`
 
-## Build
+3.Install the required packages using npm:
+`npm install`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Usage
 
-## Running unit tests
+Once you have installed the necessary packages, you can run the development server and access the Todo app in your browser. 
+Use the following command: `ng serve`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This will compile the application and start a local development server. Open your browser and visit http://localhost:4200 to access the Todo app.
 
-## Running end-to-end tests
+## Features
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The Todo app provides the following features:
 
-## Further help
+- Add new tasks with a title.
+- Mark tasks as completed or uncompleted.
+- Edit existing tasks to update their title.
+- Delete tasks that are no longer needed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The application is designed to be simple and straightforward, making it a suitable project for learning and experimenting with Angular.
+
