@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-data.service';
 import { task } from '../interfaces-types/interfaces-types';
+import { ErrorService } from '../services/error.service';
 
 @Component({
   selector: 'app-main',
@@ -9,13 +10,22 @@ import { task } from '../interfaces-types/interfaces-types';
 })
 export class MainComponent implements OnInit {
   public data!: task[];
+  public errorMessage: string | null = null;
 
-  constructor(public apiService: ApiService) { }
+  constructor(
+    public apiService: ApiService,
+    private errorService: ErrorService
+  ) { }
 
   ngOnInit(): void {
     this.apiService.getDataFromAPI().subscribe((data) => {
       this.data = data;
       this.apiService.setData(data);
+    })
+
+    this.errorService.error$.subscribe((error) => {
+      this.errorMessage = error;
+      setTimeout(() => { this.errorMessage = null }, 3000);
     })
   }
 }

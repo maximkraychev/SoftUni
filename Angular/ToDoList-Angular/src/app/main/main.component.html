@@ -1,4 +1,10 @@
 <div class="todo">
     <app-header (inputEvent)="apiService.addTask($event)"></app-header>
-    <app-todolist [data] = "data"></app-todolist>
+    <div class="todolist">
+        <h3>List of Works Todo:</h3>
+        <p class="error-info" *ngIf="errorMessage">{{errorMessage}}</p>
+        <ul>
+            <app-list-item *ngFor="let currTask of data" [task] = "currTask"></app-list-item>
+        </ul>
+    </div>
 </div>
