@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ApiService } from '../api-data.service';
+import { ApiService } from '../services/api-data.service';
 import { task } from '../interfaces-types/interfaces-types';
 
 @Component({

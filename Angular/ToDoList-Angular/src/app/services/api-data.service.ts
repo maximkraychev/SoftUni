@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { apiData, task } from './interfaces-types/interfaces-types';
+import { apiData, task } from '../interfaces-types/interfaces-types';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs'
 

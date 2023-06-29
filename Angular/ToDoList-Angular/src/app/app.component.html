@@ -1,2 +1,2 @@
-<app-main (editEvent)="showEdit($event)"></app-main>
-<app-side-edit *ngIf="isThereTaskToEdit" [task]="taskToEdit" (removeEdit)="hideEdit()"></app-side-edit>
+<app-main (editEvent)="editHandler.showEdit($event)"></app-main>
+<app-side-edit *ngIf="editHandler.taskToEdit" [task]="editHandler.taskToEdit" (removeEdit)="editHandler.hideEdit()"></app-side-edit>

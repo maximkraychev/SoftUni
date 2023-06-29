@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { task } from './interfaces-types/interfaces-types';
+
+import { EditService } from './services/edit.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,6 @@ import { task } from './interfaces-types/interfaces-types';
 })
 export class AppComponent {
   title = 'ToDoList-Angular';
-  isThereTaskToEdit: boolean = false;
-  taskToEdit: task | null = null;
 
-  showEdit(taskToEdit: task): void {
-    this.isThereTaskToEdit = true;
-    this.taskToEdit = taskToEdit;
-  }
-
-  hideEdit(): void {
-    this.isThereTaskToEdit = false;
-    this.taskToEdit = null;
-  }
+  constructor(public editHandler: EditService) {}
 }
