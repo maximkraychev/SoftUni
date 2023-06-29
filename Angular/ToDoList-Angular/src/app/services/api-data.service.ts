@@ -15,6 +15,10 @@ export class ApiService {
     this.data = curData
   }
 
+  addTask(newTask: task): void {
+    this.data.push(newTask);
+  }
+
   deleteTask(taskToDelete: task): void {
     const index = this.data.findIndex(x => x == taskToDelete);
 

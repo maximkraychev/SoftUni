@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api-data.service';
 import { task } from '../interfaces-types/interfaces-types';
 
@@ -9,22 +9,13 @@ import { task } from '../interfaces-types/interfaces-types';
 })
 export class MainComponent implements OnInit {
   public data!: task[];
-  @Output() editEvent = new EventEmitter<task>;
 
-  constructor(private apiService: ApiService) { }
+  constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
     this.apiService.getDataFromAPI().subscribe((data) => {
       this.data = data;
       this.apiService.setData(data);
     })
-  }
-
-  addTask(newTaskData: task): void {
-    this.data.push(newTaskData);
-  }
-
-  editEmitter(taskToEdit: task): void {
-    this.editEvent.emit(taskToEdit);
   }
 }

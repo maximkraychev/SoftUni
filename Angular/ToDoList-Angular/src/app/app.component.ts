@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { EditService } from './services/edit.service';
 
 @Component({
@@ -10,5 +9,5 @@ import { EditService } from './services/edit.service';
 export class AppComponent {
   title = 'ToDoList-Angular';
 
-  constructor(public editHandler: EditService) {}
+  constructor(public editHandler: EditService) { }
 }

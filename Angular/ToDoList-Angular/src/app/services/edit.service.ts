@@ -14,4 +14,8 @@ export class EditService {
   hideEdit(): void {
     this.taskToEdit = null;
   }
+
+  edit(taskToEdit: task): void {
+    this.taskToEdit = taskToEdit;
+  }
 }

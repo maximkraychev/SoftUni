@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiService } from 'src/app/services/api-data.service';
 import { task } from 'src/app/interfaces-types/interfaces-types';
+import { EditService } from 'src/app/services/edit.service';
 
 @Component({
   selector: 'app-list-item',
@@ -9,10 +10,12 @@ import { task } from 'src/app/interfaces-types/interfaces-types';
 })
 export class ListItemComponent {
   @Input('task') task!: task;
-  @Output() editEvent = new EventEmitter<task>;
   isComplete: boolean = false;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private editService: EditService
+  ) { }
 
   complete(): void {
     this.isComplete = !this.isComplete;
@@ -23,6 +26,6 @@ export class ListItemComponent {
   }
 
   editEmitter(): void {
-    this.editEvent.emit(this.task);
+    this.editService.edit(this.task);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { task } from '../../interfaces-types/interfaces-types'
 
 @Component({
@@ -8,9 +8,4 @@ import { task } from '../../interfaces-types/interfaces-types'
 })
 export class TodolistComponent {
   @Input('data') data!: task[];
-  @Output() editEvent = new EventEmitter<task>;
-
-  editEmitter(taskToEdit: task): void {
-    this.editEvent.emit(taskToEdit);
-  }
 }
