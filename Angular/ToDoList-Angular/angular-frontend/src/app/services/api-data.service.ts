@@ -51,4 +51,8 @@ export class ApiService {
             data.map((x: apiData): task => ({ title: x.title, completed: x.completed })))
         )
   }
+
+  getTest() {
+    return this.http.get('http://localhost:3000/api/posts?limit=5')
+  }
 }

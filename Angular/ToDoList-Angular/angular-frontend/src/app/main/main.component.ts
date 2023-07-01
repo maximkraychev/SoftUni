@@ -30,5 +30,9 @@ export class MainComponent implements OnInit {
     }, (err: Error) => {
       this.errorService.setError(err.message);
     })
+
+    this.apiService.getTest().subscribe((data) => {
+      console.log(data);
+    })
   }
 }
