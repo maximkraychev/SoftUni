@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { IPost } from '../interfaces/post';
 
@@ -7,21 +7,20 @@ import { IPost } from '../interfaces/post';
   templateUrl: './recent-post-list.component.html',
   styleUrls: ['./recent-post-list.component.css']
 })
-export class RecentPostListComponent {
+export class RecentPostListComponent implements OnInit {
 
   postList: IPost[] | null = null;
+  showSpinner: boolean = true;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService) { }
 
-    this.apiService.loadPosts(5).subscribe({
-      next: (value) => {
-        this.postList = value;
-      },
-      error: (err) => {
-        console.log(err);
-
-      }
+  ngOnInit(): void {
+    this.apiService.loadPosts(5).subscribe((data) => {
+      this.postList = data;
+      this.showSpinner = false;
+    }, (err) => {
+      console.log(err);
+      this.showSpinner = false;
     })
-
   }
 }

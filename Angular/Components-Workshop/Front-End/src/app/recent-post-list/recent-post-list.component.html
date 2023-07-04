@@ -1,4 +1,4 @@
-<aside>
+<aside *ngIf="!showSpinner">
     <div class="aside">
         <h2 class="title">
             Recent posts
@@ -14,3 +14,4 @@
         </div>
     </div>
 </aside>
+<app-spinner *ngIf="showSpinner"></app-spinner>
