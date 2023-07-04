@@ -1,4 +1,4 @@
-<main>
+<main *ngIf="!showSpinner">
     <div class="theme-title">
         <div *ngFor="let theme of themeList" class="theme-container">
             <div class="theme-name-wrapper">
@@ -23,3 +23,4 @@
         </div>
     </div>
 </main>
+<app-spinner *ngIf="showSpinner"></app-spinner>

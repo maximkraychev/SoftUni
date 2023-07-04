@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ITheme } from '../interfaces/theme';
 
@@ -7,20 +7,20 @@ import { ITheme } from '../interfaces/theme';
   templateUrl: './theme-list.component.html',
   styleUrls: ['./theme-list.component.css']
 })
-export class ThemeListComponent {
+export class ThemeListComponent implements OnInit {
 
   themeList: ITheme[] | null = null;
+  showSpinner: boolean = true;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService) { }
 
-    this.apiService.loadThemes().subscribe({
-      next: (value) => {
-        this.themeList = value;
-      },
-      error: (err) => {
-        console.log(err);
-      }
+  ngOnInit(): void {
+    this.apiService.loadThemes().subscribe((data) => {
+      this.themeList = data;
+      this.showSpinner = false;
+    }, (err) => {
+      console.log(err);
+      this.showSpinner = false;
     })
-
   }
 }
