@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ITheme } from './interfaces/theme';
-import { IPost } from './interfaces/post';
+import { ITheme } from '../interfaces/theme';
+import { IPost } from '../interfaces/post';
 
 @Injectable({
   providedIn: 'root'
