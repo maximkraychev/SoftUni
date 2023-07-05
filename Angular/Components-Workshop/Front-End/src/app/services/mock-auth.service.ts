@@ -20,4 +20,8 @@ export class MockAuthService {
     this.isLogin =false;
     this.authSubject.next(this.isLogin);
   }
+
+  get isUser() {
+    return this.isLogin;
+  }
 }

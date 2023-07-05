@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent {
-  //@Input() isLogin: boolean = false;
+  @Input() isLogin!: boolean;
 }

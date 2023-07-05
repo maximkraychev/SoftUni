@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MockAuthService } from 'src/app/services/mock-auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  //test = true
+  constructor(private mockAuth: MockAuthService){}
+
+  get isUser() {
+    return this.mockAuth.isUser;
+  }
 }
