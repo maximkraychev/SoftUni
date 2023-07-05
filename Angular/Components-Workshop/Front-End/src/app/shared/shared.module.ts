@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-
-
 @NgModule({
   declarations: [
     SpinnerComponent,
     WelcomeComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     SpinnerComponent,
