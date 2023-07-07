@@ -5,6 +5,7 @@ import { LoginComponent } from './features/login/login.component';
 import { RegisterComponent } from './features/register/register.component';
 import { LogoutComponent } from './features/logout/logout.component';
 import { ThemesComponent } from './features/themes/themes.component';
+import { NotFoundComponent } from './features/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'logout', component: LogoutComponent }
     ]
-  }
+  },
+  {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({
