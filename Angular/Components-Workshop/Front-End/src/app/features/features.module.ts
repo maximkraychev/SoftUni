@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterLink } from '@angular/router';
+import { NewThemeComponent } from './new-theme/new-theme.component';
 
 
 
@@ -16,7 +17,8 @@ import { RouterLink } from '@angular/router';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NewThemeComponent
   ],
   imports: [
     CommonModule,

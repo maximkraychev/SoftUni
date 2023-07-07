@@ -6,11 +6,13 @@ import { RegisterComponent } from './features/register/register.component';
 import { LogoutComponent } from './features/logout/logout.component';
 import { ThemesComponent } from './features/themes/themes.component';
 import { NotFoundComponent } from './features/not-found/not-found.component';
+import { NewThemeComponent } from './features/new-theme/new-theme.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   {path: 'themes', component: ThemesComponent},
+  {path: 'new-theme', component: NewThemeComponent},
   {
     path: 'auth', children: [
       { path: 'login', component: LoginComponent },
