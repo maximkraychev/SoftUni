@@ -7,13 +7,13 @@ import { AppComponent } from './app.component';
 import { ThemeListComponent } from './core/theme-list/theme-list.component';
 import { RecentPostListComponent } from './core/recent-post-list/recent-post-list.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MainComponent } from './features/main/main.component';
+import { ThemesComponent } from './features/themes/themes.component';
 import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    ThemesComponent
   ],
   imports: [
     BrowserModule,
