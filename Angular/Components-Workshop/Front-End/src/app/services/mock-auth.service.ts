@@ -5,23 +5,23 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class MockAuthService {
-  private isLogin: boolean = false;
+  private isLoginUser: boolean = false;
   private authSubject: Subject<boolean> = new Subject<boolean>();
   public authObservable: Observable<boolean> = this.authSubject.asObservable();
 
   constructor() { }
 
   login() {
-    this.isLogin = true;
-    this.authSubject.next(this.isLogin);
+    this.isLoginUser = true;
+    this.authSubject.next(this.isLoginUser);
   }
 
   logout() {
-    this.isLogin =false;
-    this.authSubject.next(this.isLogin);
+    this.isLoginUser =false;
+    this.authSubject.next(this.isLoginUser);
   }
 
   get isUser() {
-    return this.isLogin;
+    return this.isLoginUser;
   }
 }

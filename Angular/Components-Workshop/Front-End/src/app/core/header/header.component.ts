@@ -13,14 +13,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private auth: MockAuthService) {}
 
-  login() {
-    this.auth.login();
-  }
-
-  logout() {
-    this.auth.logout();
-  }
-
   ngOnInit(): void {
     this.authSub = this.auth.authObservable.subscribe((data) => {
       this.isLogin = data;
