@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { LoginComponent } from './login/login.component';
   ],
   exports: [
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ]
 })
 export class FeaturesModule { }
