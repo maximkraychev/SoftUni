@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeListComponent } from './theme-list/theme-list.component';
 import { RecentPostListComponent } from './recent-post-list/recent-post-list.component';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { RecentPostListComponent } from './recent-post-list/recent-post-list.com
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterLink
   ],
   exports: [
     HeaderComponent,
