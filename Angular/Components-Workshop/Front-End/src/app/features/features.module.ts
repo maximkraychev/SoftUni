@@ -8,6 +8,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterLink } from '@angular/router';
 import { NewThemeComponent } from './new-theme/new-theme.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -18,7 +19,8 @@ import { NewThemeComponent } from './new-theme/new-theme.component';
     RegisterComponent,
     LogoutComponent,
     NotFoundComponent,
-    NewThemeComponent
+    NewThemeComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
