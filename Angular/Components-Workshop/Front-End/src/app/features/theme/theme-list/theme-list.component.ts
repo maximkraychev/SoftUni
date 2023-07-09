@@ -14,13 +14,26 @@ export class ThemeListComponent implements OnInit {
 
   constructor(private apiService: ApiService) { }
 
+  // ngOnInit(): void {
+  //   this.apiService.loadThemes().subscribe((data) => {
+  //     this.themeList = data;
+  //     this.showSpinner = false;
+  //   }, (err) => {
+  //     console.log(err);
+  //     this.showSpinner = false;
+  //   })
+  // }
+
   ngOnInit(): void {
-    this.apiService.loadThemes().subscribe((data) => {
-      this.themeList = data;
-      this.showSpinner = false;
-    }, (err) => {
-      console.log(err);
-      this.showSpinner = false;
+    this.apiService.loadThemes().subscribe({
+      next: (data) => {
+        this.themeList = data;
+        this.showSpinner = false;
+      },
+      error: (err) => {
+        console.log(err);
+        this.showSpinner = false;
+      }
     })
-  }
+}
 }
