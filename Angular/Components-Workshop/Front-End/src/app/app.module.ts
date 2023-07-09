@@ -9,6 +9,7 @@ import { RecentPostListComponent } from './core/recent-post-list/recent-post-lis
 import { HttpClientModule } from '@angular/common/http';
 import { ThemesComponent } from './features/themes/themes.component';
 import { FeaturesModule } from './features/features.module';
+import { UserModule } from './features/user/user.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,11 @@ import { FeaturesModule } from './features/features.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    FeaturesModule
+    FeaturesModule,
+    UserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
