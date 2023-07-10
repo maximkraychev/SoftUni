@@ -4,11 +4,12 @@ import { RouterModule, Routes } from "@angular/router";
 import { ThemesComponent } from "./themes/themes.component";
 import { NewThemeComponent } from "./new-theme/new-theme.component";
 import { CurrentThemeCommentsComponent } from "./current-theme-comments/current-theme-comments.component";
+import { CanActivateGuard } from "src/app/shared/guards/can-activate-guard.service";
 
 
 const routes: Routes = [
     { path: 'themes', component: ThemesComponent },
-    { path: 'new-theme', component: NewThemeComponent },
+    { path: 'new-theme', canActivate: [CanActivateGuard], component: NewThemeComponent },
     { path: 'theme/:themeId', component: CurrentThemeCommentsComponent }
 ];
 
