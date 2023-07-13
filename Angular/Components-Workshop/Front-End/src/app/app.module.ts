@@ -11,9 +11,10 @@ import { ThemesComponent } from './features/theme/themes/themes.component';
 import { FeaturesModule } from './features/features.module';
 import { UserModule } from './features/user/user.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
