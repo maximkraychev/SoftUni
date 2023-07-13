@@ -1,18 +1,24 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Directive({
   selector: '[appClassError]',
   exportAs: 'appClassError',
 })
-export class ClassErrorHandlerDirective implements OnInit {
+export class ClassErrorHandlerDirective implements OnInit, OnDestroy {
   @Input() appClassError!: FormGroup;
+  unsubFromEvents: (() =>void) [] = [];
 
   constructor(private elRef: ElementRef, private render: Renderer2) { }
 
   ngOnInit(): void {
-    this.render.listen(this.elRef.nativeElement, 'input', this.onChnage.bind(this))
-    this.render.listen(this.elRef.nativeElement, 'blur', this.onBlur.bind(this))
+    this.unsubFromEvents.push(
+      this.render.listen(this.elRef.nativeElement, 'input', this.onChnage.bind(this))
+      );
+
+    this.unsubFromEvents.push(
+      this.render.listen(this.elRef.nativeElement, 'blur', this.onBlur.bind(this))
+      );
   }
 
   onChnage() {
@@ -29,5 +35,9 @@ export class ClassErrorHandlerDirective implements OnInit {
     } else {
       this.render.removeClass(this.elRef.nativeElement, 'input-error');
     }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubFromEvents.forEach(x => x());
   }
 }
