@@ -1,52 +1,43 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MockAuthService } from 'src/app/services/mock-auth.service';
+import { emailValidator } from 'src/app/shared/validators/email-validator';
+import { matchPasswordsValidator } from 'src/app/shared/validators/passwords-match-validator';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit, OnChanges {
+export class RegisterComponent implements OnInit {
 
   registerForm = this.fb.group({
-    username: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    tel: ['', [Validators.pattern('^[0-9]+$')]],
-    password: ['', [Validators.required]],
-    rePassword: ['', [Validators.required]]
+    username: ['', [Validators.required, Validators.minLength(5)]],
+    email: ['', [Validators.required, emailValidator()]],
+    tel: ['', [Validators.pattern('^[0-9]*$')]],
+    passGroup: this.fb.group(
+      {
+        password: ['', [Validators.required, Validators.minLength(5)]],
+        rePassword: ['', [Validators.required, matchPasswordsValidator('password', 'rePassword')]]
+      },
+      { validators: [matchPasswordsValidator('password', 'rePassword')] }
+    )
   });
 
-  constructor(private fb: FormBuilder, private route: Router) {}
-
-  ngOnChanges(changes: SimpleChanges): void{
-    console.log(changes);
-    console.log('asdjfioafhsofho');
-    
-  }
+  constructor(private fb: FormBuilder, private route: Router) { }
 
   ngOnInit(): void {
     this.registerForm.get('username')?.valueChanges.subscribe(console.log);
+    console.log(this.passGroup);
+    
   }
 
   handleSubmit(): void {
     console.log(this.registerForm.get('username')?.errors);
   }
+
+  get passGroup(): FormGroup {
+    return this.registerForm.get('passGroup') as FormGroup;
+  }
 }
-
-
-
-
-// export class RegisterComponent implements OnInit {
-//   constructor(private auth: MockAuthService, private route: Router) {}
-
-//   ngOnInit(): void {
-//     this.login();
-//     this.route.navigate(['home'])
-//   }
-
-//   login() {
-//     this.auth.login();
-//   }
-// }

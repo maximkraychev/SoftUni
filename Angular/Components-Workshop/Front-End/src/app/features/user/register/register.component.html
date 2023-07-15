@@ -7,24 +7,39 @@
             <!-- username -->
             <p class="field field-icon">
                 <label for="username"><span><i class="fas fa-user"></i></span></label>
-                <input type="text" name="username" id="username" placeholder="Johny" formControlName="username" [appClassError]="registerForm">
+                <input type="text" name="username" id="username" placeholder="Johny" 
+                formControlName="username" 
+                [appClassError]="registerForm" 
+                [ngClass]="registerForm.get('username')?.touched ? 'input-error' : ''">
             </p>
-            <p 
-            class="error" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.errors?.['required']">
-                Username is required!
-            </p>
+            <!-- Username Error -->
+            <ng-container *ngIf="registerForm.get('username')?.touched">
+                <p 
+                class="error" *ngIf="registerForm.get('username')?.errors?.['required']">
+                    Username is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('username')?.errors?.['minlength']">
+                    Username must be at least 5 characters long!
+                </p>
+            </ng-container>
 
             <!-- email -->
             <p class="field field-icon">
                 <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-                <input type="email" name="email" id="email" placeholder="john.doe@gmail.com" formControlName="email" [appClassError]="registerForm">
+                <input type="email" name="email" id="email" placeholder="john.doe@gmail.com" 
+                formControlName="email"
+                [appClassError]="registerForm"
+                [ngClass]="registerForm.get('email')?.touched ? 'input-error' : ''">
             </p>
-            <p class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.errors?.['required']">
-                Email is required!
-            </p>
-            <p class="error" *ngIf="registerForm.get('email')?.touched">
-                Email is not valid!
-            </p>
+            <!-- Email Error -->
+            <ng-container *ngIf="registerForm.get('email')?.touched">
+                <p class="error"  *ngIf="registerForm.get('email')?.errors?.['required']">
+                    Email is required!
+                </p>
+                <p class="error" *ngIf="registerForm.get('email')?.errors?.['emailValidator']">
+                    Email is not valid!
+                </p>
+            </ng-container>
 
             <!-- telephone -->
             <p class="field field-icon">
@@ -32,29 +47,45 @@
                 <select name="select-tel" id="select-tel" class="tel">
                     <option value="00359">+359</option>
                 </select>
-                <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel" [appClassError]="registerForm">
+                <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel" >
             </p>
 
-            <!-- password -->
-            <p class="field field-icon">
-                <label for="password"><span><i class="fas fa-lock"></i></span></label>
-                <input type="password" name="password" id="password" placeholder="******" formControlName="password" [appClassError]="registerForm">
-            </p>
-            <!-- <p class="error">
-                Password is required!
-            </p>
-            <p class="error">
-                Password must be at least 4 characters!
-            </p> -->
+            <ng-container formGroupName="passGroup">
 
-            <!-- rePassword -->
-            <p class="field field-icon">
-                <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
-                <input type="password" name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword" [appClassError]="registerForm">
-            </p>
-            <!-- <p class="error">Repeat Password does not match password!</p> -->
+                <!-- password -->
+                <p class="field field-icon">
+                    <label for="password"><span><i class="fas fa-lock"></i></span></label>
+                    <input type="password" name="password" id="password" placeholder="******" 
+                    formControlName="password" 
+                    [appClassError]="passGroup"
+                    [ngClass]="(passGroup.touched && passGroup.get('password')?.invalid) ? 'input-error' : ''">
+                </p>
+                <ng-container *ngIf="passGroup?.touched">
+                    <p class="error" *ngIf="passGroup.get('password')?.errors?.['required']">
+                        Password is required!
+                    </p>
+                    <p class="error" *ngIf="passGroup.get('password')?.errors?.['minlength']">
+                        Password must be at least 5 characters!
+                    </p>
+                </ng-container>
 
-            <button>Create Account</button>
+                <!-- rePassword -->
+                <p class="field field-icon">
+                    <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
+                    <input type="password" name="rePassword" id="rePassword" placeholder="******" 
+                    formControlName="rePassword" 
+                    [appClassError]="passGroup"
+                    [ngClass]="(passGroup.get('rePassword')?.touched && passGroup.invalid) ? 'input-error' : ''" >
+                </p>
+
+                <ng-container *ngIf="passGroup.get('rePassword')?.touched">
+                    <p class="error" 
+                    *ngIf="passGroup.get('rePassword')?.errors?.['matchPasswordsValidator']">Repeat Password does not match password!</p>
+                </ng-container>
+
+            </ng-container>
+
+            <button [disabled]="registerForm.invalid" [ngStyle]="registerForm.invalid ? { 'background-color': 'grey'} : {'color' : ''}">Create Account</button>
 
             <p class="text-center">
                 Have an account?
