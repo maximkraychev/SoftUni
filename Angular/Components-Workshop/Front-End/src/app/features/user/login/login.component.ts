@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MockAuthService } from 'src/app/services/mock-auth.service';
+import { emailValidator } from 'src/app/shared/validators/email-validator';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,25 @@ import { MockAuthService } from 'src/app/services/mock-auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private auth: MockAuthService, private route: Router) {}
+
+  loginForm = this.fb.group({
+    email: ['', [Validators.required, emailValidator()]],
+    password: ['', [Validators.required, Validators.minLength(5)]]
+  });
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.login();
-    this.route.navigate(['home'])
+    // this.login();
+    // this.route.navigate(['home'])
   }
 
-  login() {
-    this.auth.login();
+  handleSubmit() {
+    console.log('submit');
+    
   }
+
+  // login() {
+  //   this.auth.login();
+  // }
 }
