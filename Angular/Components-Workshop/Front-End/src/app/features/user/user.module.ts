@@ -7,7 +7,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { UserRoutingModule } from './user-routing';
 import { ProfileComponent } from './profile/profile.component';
-import { ClassErrorHandlerDirective } from 'src/app/classError.directive';
+import { ClassErrorHandlerDirective } from 'src/app/shared/directives/classError.directive';
 
 @NgModule({
   declarations: [

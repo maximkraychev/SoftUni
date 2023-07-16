@@ -47,8 +47,13 @@
                 <select name="select-tel" id="select-tel" class="tel">
                     <option value="00359">+359</option>
                 </select>
-                <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel" >
+                <input type="text" name="tel" id="tel" placeholder="885 888 888" formControlName="tel" 
+                [ngClass]="(registerForm.get('tel')?.touched && registerForm.get('tel')?.invalid)  ? 'input-error' : ''">
             </p>
+
+            <ng-container *ngIf="registerForm.get('tel')?.touched">
+                <p class="error" *ngIf="registerForm.get('tel')?.errors?.['pattern']">Phone number should only contain numbers!</p>
+            </ng-container>
 
             <ng-container formGroupName="passGroup">
 
@@ -56,8 +61,8 @@
                 <p class="field field-icon">
                     <label for="password"><span><i class="fas fa-lock"></i></span></label>
                     <input type="password" name="password" id="password" placeholder="******" 
-                    formControlName="password" 
-                    [appClassError]="passGroup"
+                    formControlName="password"
+                    [appClassError]="passGroup" 
                     [ngClass]="(passGroup.touched && passGroup.get('password')?.invalid) ? 'input-error' : ''">
                 </p>
                 <ng-container *ngIf="passGroup?.touched">
@@ -73,14 +78,13 @@
                 <p class="field field-icon">
                     <label for="rePassword"><span><i class="fas fa-lock"></i></span></label>
                     <input type="password" name="rePassword" id="rePassword" placeholder="******" 
-                    formControlName="rePassword" 
-                    [appClassError]="passGroup"
+                    formControlName="rePassword"
                     [ngClass]="(passGroup.get('rePassword')?.touched && passGroup.invalid) ? 'input-error' : ''" >
                 </p>
 
                 <ng-container *ngIf="passGroup.get('rePassword')?.touched">
                     <p class="error" 
-                    *ngIf="passGroup.get('rePassword')?.errors?.['matchPasswordsValidator']">Repeat Password does not match password!</p>
+                    *ngIf="passGroup.errors?.['matchPasswordsValidator']">Repeat password does not match password!</p>
                 </ng-container>
 
             </ng-container>

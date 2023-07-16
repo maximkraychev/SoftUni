@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     passGroup: this.fb.group(
       {
         password: ['', [Validators.required, Validators.minLength(5)]],
-        rePassword: ['', [Validators.required, matchPasswordsValidator('password', 'rePassword')]]
+        rePassword: ['', [Validators.required]]
       },
       { validators: [matchPasswordsValidator('password', 'rePassword')] }
     )
@@ -28,9 +28,8 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private route: Router) { }
 
   ngOnInit(): void {
-    this.registerForm.get('username')?.valueChanges.subscribe(console.log);
-    console.log(this.passGroup);
-    
+    // Using valueChnages we can sub to the event and we can use it like two way data binding
+    //this.registerForm.get('username')?.valueChanges.subscribe(console.log);
   }
 
   handleSubmit(): void {
