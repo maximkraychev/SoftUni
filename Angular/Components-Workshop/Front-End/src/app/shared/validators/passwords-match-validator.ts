@@ -6,10 +6,7 @@ export function matchPasswordsValidator(passwordName: string, rePasswordName: st
         const group = control as FormGroup
         const passControll = group.get(passwordName);
         const rePassControll = group.get(rePasswordName);
-        console.log(passControll?.value === rePassControll?.value ? null : { matchPasswordsValidator: true });
         
-        
-
-        return (passControll?.value != '' || passControll?.value === rePassControll?.value) ? null : { matchPasswordsValidator: true }
+        return (passControll?.value === rePassControll?.value) ? null : { matchPasswordsValidator: true }
     }
 }
