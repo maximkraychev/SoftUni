@@ -10,7 +10,7 @@
                 <input type="text" name="username" id="username" placeholder="Johny" 
                 formControlName="username" 
                 [appClassError]="registerForm" 
-                [ngClass]="registerForm.get('username')?.touched ? 'input-error' : ''">
+                [ngClass]="registerForm.get('username')?.touched && registerForm.get('username')?.invalid ? 'input-error' : ''">
             </p>
             <!-- Username Error -->
             <ng-container *ngIf="registerForm.get('username')?.touched">
@@ -29,7 +29,7 @@
                 <input type="email" name="email" id="email" placeholder="john.doe@gmail.com" 
                 formControlName="email"
                 [appClassError]="registerForm"
-                [ngClass]="registerForm.get('email')?.touched ? 'input-error' : ''">
+                [ngClass]="registerForm.get('email')?.touched && registerForm.get('email')?.invalid ? 'input-error' : ''">
             </p>
             <!-- Email Error -->
             <ng-container *ngIf="registerForm.get('email')?.touched">
