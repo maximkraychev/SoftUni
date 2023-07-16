@@ -2,6 +2,11 @@ import { Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from '@ang
 import { FormGroup } from '@angular/forms';
 import { Unsubscribable } from 'rxjs';
 
+// For this to work the DOM element should have a name attribute that is the same as formControlName;
+
+// Won't work properly for rePass because it's in sub group and the error validator( matchPasswordsValidator ) 
+// will be in the sub group erros obj and this directive will check only the property Controll 
+
 
 @Directive({
   selector: '[appClassError]',
@@ -40,9 +45,6 @@ export class ClassErrorHandlerDirective implements OnInit, OnDestroy {
   // }
 
   logic() {
-    //console.log(this.ourFormGroup?.get(this.elRef?.nativeElement?.name));
-    console.log(this.ourFormGroup?.get(this.controllName)?.errors, 'fhqui');
-    
     if (this.ourFormGroup?.get(this.controllName)?.errors) {
       this.render.addClass(this.elRef.nativeElement, 'input-error');
     } else if (!this.ourFormGroup?.get(this.controllName)?.errors) {
