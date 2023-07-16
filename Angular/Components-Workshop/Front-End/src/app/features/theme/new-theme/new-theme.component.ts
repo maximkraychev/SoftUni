@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-theme',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class NewThemeComponent {
 
+
+  postHandler(form: NgForm) {
+    console.log(form);
+    // TODO hanle the submit
+  }
 }

@@ -9,7 +9,8 @@ import { CanActivateGuard } from "src/app/shared/guards/can-activate-guard.servi
 
 const routes: Routes = [
     { path: 'themes', component: ThemesComponent },
-    { path: 'new-theme', canActivate: [CanActivateGuard], component: NewThemeComponent },
+    // { path: 'new-theme', canActivate: [CanActivateGuard], component: NewThemeComponent },
+    { path: 'new-theme', component: NewThemeComponent },  // without guard
     { path: 'theme/:themeId', component: CurrentThemeCommentsComponent }
 ];
 

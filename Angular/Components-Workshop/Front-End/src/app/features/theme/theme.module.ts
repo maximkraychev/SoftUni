@@ -8,6 +8,7 @@ import { ThemeListComponent } from './theme-list/theme-list.component';
 import { RecentPostListComponent } from './recent-post-list/recent-post-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CurrentThemeCommentsComponent } from './current-theme-comments/current-theme-comments.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CurrentThemeCommentsComponent } from './current-theme-comments/current-
   imports: [
     CommonModule,
     ThemeRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class ThemeModule { }

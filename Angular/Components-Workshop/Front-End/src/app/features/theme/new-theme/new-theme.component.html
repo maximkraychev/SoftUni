@@ -3,30 +3,47 @@
         <div class="header-background">
             <span>New Theme</span>
         </div>
-        <form>
+        <form #form="ngForm" (ngSubmit)="postHandler(form)">
             <div class="new-theme-title">
                 <label for="themeName">Title <span class="red">*</span></label>
-                <input type="text" name="themeName" id="themeName">
-                <p class="error">
-                    Theme name is required.
-                </p>
-                <p class="error">
-                    Theme name must be at least 5 characters long.
-                </p>
+                <input type="text" name="themeName" id="themeName" 
+                ngModel 
+                #themeName="ngModel" 
+                required 
+                minlength="5">
+
+                <ng-container *ngIf="themeName.touched" >
+                    <p class="error" *ngIf="themeName?.errors?.['required']">
+                        Theme name is required.
+                    </p>
+                    <p class="error" *ngIf="themeName?.errors?.['minlength']">
+                        Theme name must be at least 5 characters long.
+                    </p>
+                </ng-container>
             </div>
             <div class="new-theme-content">
                 <label for="postText">Post <span class="red">*</span></label>
-                <textarea type="text" name="postText" id="postText" rows="8" class="height"></textarea>
-                <p class="error">
-                    The field with your post is required.
-                </p>
-                <p class="error">
-                    Post must be at least 10 characters long.
-                </p>
+                <textarea type="text" name="postText" id="postText" rows="8" class="height" 
+                ngModel 
+                #postText="ngModel" 
+                required 
+                minlength="10"></textarea>
+
+                <ng-container *ngIf="postText.touched">
+                    <p class="error" *ngIf="postText.errors?.['required']">
+                        The field with your post is required.
+                    </p>
+                    <p class="error" *ngIf="postText.errors?.['minlength']">
+                        Post must be at least 10 characters long.
+                    </p>
+                </ng-container>
             </div>
             <div class="new-theme-buttons">
                 <button class="cancel">Cancel</button>
-                <button class="public">Post</button>
+                <button 
+                [disabled]="form.invalid"
+                [ngStyle]="form.invalid ? { 'background-color': 'grey'} : {'color' : ''}"
+                 class="public">Post</button>
             </div>
 
         </form>
