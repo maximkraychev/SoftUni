@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -21,6 +21,7 @@ import { ClassErrorHandlerDirective } from 'src/app/shared/directives/classError
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UserModule { }

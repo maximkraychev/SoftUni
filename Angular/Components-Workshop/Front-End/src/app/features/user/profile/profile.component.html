@@ -1,18 +1,69 @@
-<div class="container">
-    <div class="profile"><img src="/assets/profile.png" alt="default user">
-        <h3>User Info:</h3>
-        <div class="flex">
-            <p>Username: </p>
-            <p>Johny</p>
+<ng-container *ngIf="!isOnEditMode">
+    <div class="container">
+        <div class="profile"><img src="/assets/profile.png" alt="default user">
+            <h3>User Info:</h3>
+            <div class="flex">
+                <p>Username: </p>
+                <p>{{mockUser.username}}</p>
+            </div>
+            <div class="flex">
+                <p>Email: </p>
+                <p>{{mockUser.email}}</p>
+            </div>
+            <div class="flex">
+                <p>Phone: </p>
+                <p>+359 {{mockUser.tel}}</p>
+            </div>
+            <button class="edit-button" (click)="toggleView()">Edit</button>
         </div>
-        <div class="flex">
-            <p>Email: </p>
-            <p>john.doe@gmail.com</p>
-        </div>
-        <div class="flex">
-            <p>Phone: </p>
-            <p>+359 885 888 888</p>
-        </div>
-        <button class="edit-button">Edit</button>
     </div>
-</div>
+</ng-container>
+
+<!-- Edit Mode -->
+<ng-container *ngIf="isOnEditMode">
+    <div class="container">
+        <div class="profile">
+            <img src="/assets/profile.png" alt="default user">
+            <h3>User Info:</h3>
+            <form #editForm="ngForm" (ngSubmit)="save()">
+
+                <div class="flex">
+                    <p>Username: </p>
+                    <input type="text" name="username" id="username" [ngModel]="mockUser.username" required minlength="5">
+                </div>
+                <ng-container *ngIf="editForm.form.controls?.['username']?.touched">
+                    <p class="error" *ngIf="editForm.form.controls?.['username']?.errors?.['required']">Username is required!</p>
+                    <p class="error" *ngIf="editForm.form.controls?.['username']?.errors?.['minlength']">Username must be at least 5 characters!</p>
+                </ng-container>
+
+                <div class="flex">
+                    <p>Email: </p>
+                    <input type="email" name="email" id="email" [ngModel]="mockUser.email" required emailValidator>
+                </div>
+                <ng-container *ngIf="editForm.form.controls?.['email']?.touched">
+                    <p class="error" *ngIf="editForm.form.controls?.['email']?.errors?.['required']">Email is required!</p>
+                    <p class="error" *ngIf="editForm.form.controls?.['email']?.errors?.['emailValidator']">Email is not valid email!</p>
+                </ng-container>
+
+                <div class="flex">
+                    <p>Phone: </p>
+                    <div>
+                        <select name="select-tel" id="select-tel" class="tel">
+                            <option value="00359">+359</option>
+                        </select>
+                        <input type="text" name="tel" id="tel" [ngModel]="mockUser.tel" required pattern="^[0-9]*$">
+                    </div>
+                </div>
+                <ng-container *ngIf="editForm.form.controls?.['tel']?.touched">
+                    <p class="error" *ngIf="editForm.form.controls?.['tel']?.errors?.['pattern']">Phone Number should only contain numbers!</p>
+                </ng-container>
+
+                <button class="red-button" (click)="toggleView()">Cancel</button>
+                <button class="green-button" 
+                [disabled]="editForm.invalid" 
+                [ngStyle]="editForm.invalid ? { 'background-color': 'grey'} : {'color' : ''}"
+                >Save</button>
+            </form>
+        </div>
+    </div>
+</ng-container>
