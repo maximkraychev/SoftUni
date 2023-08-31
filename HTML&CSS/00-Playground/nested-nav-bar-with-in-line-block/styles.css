@@ -1,0 +1,48 @@
+nav {
+    background-color:cadetblue;
+    padding: 10px;
+}
+
+nav ul {
+    padding: 0;
+}
+
+nav li {
+    position: relative;
+    background-color: lightblue;
+}
+
+nav a {
+    display: block;
+    padding: 5px;
+}
+
+nav li:hover > a,
+nav a:hover {
+    background-color:darkcyan;
+}
+
+nav  > ul > li {
+    display: inline-block;
+}
+
+nav > ul > li li {
+    display: block;
+}
+
+nav > ul ul {
+    display: none;
+    position: absolute;
+    width: 100px;
+    top: 100%;
+    left: 0;
+}
+
+nav > ul ul ul {
+    top: 0;
+    left: 100%;
+}
+
+nav li:hover > ul {
+    display: block;
+}
