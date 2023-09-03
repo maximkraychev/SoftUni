@@ -1,0 +1,22 @@
+html {
+    font: 16px/1.5 Helvetica, sans-serif;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+body {
+    width: fit-content;
+    margin: auto;
+}
+
+section {
+    display: flex;
+    justify-content: space-between;
+    max-width: 70vw;
+    padding-top: 10rem;
+    gap: 2rem;
+}
