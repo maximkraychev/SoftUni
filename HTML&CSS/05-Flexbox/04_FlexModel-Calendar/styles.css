@@ -1,0 +1,41 @@
+html {
+    box-sizing: border-box;
+}
+
+span {
+    border: 1px solid black;
+    display: block;
+    text-align: center;
+    padding: 2em 2em;
+}
+
+.container {
+    display: flex;
+    align-items: stretch;
+    max-width: 65vw;
+    margin: 0 auto;
+}
+
+.week {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.notes {
+    display: flex;
+    flex-direction: column;
+}
+
+.day-title {
+    flex: 1 1 100%;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+.day {
+    flex: 1 1 auto;
+}
+
+.special {
+    flex: 1 1 100%;
+}
