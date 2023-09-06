@@ -1,0 +1,26 @@
+body,
+ul,
+li {
+    display: flex   ;
+}
+
+body {
+    background-color: #EEEEEE;
+    padding: 5em 20em;
+    box-sizing: border-box;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2em;
+    align-items: stretch;
+}
+
+li {
+    border: 1em solid black;
+    padding: 2em 1em;
+    align-items: center;
+}
