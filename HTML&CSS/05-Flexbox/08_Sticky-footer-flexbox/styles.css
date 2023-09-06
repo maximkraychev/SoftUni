@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    background-color: rgb(238, 238, 238);
+    height: 100vh;
+    font-family: Helvetica, sans-serif;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+
+footer {
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 102, 102);
+}
+
+header {
+    border-bottom: 2px solid black;
+}
+
+header h1 {
+    text-transform: uppercase;
+}
+
+header,
+main,
+footer {
+    padding-inline: 1em;
+}
+
