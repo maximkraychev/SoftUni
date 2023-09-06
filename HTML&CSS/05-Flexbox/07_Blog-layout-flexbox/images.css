@@ -1,0 +1,16 @@
+img {
+    border: 0.2em solid black;
+    padding: 0.4em;
+    box-shadow: 0 0 1em 0.5em rgb(0,0,0, 0.1);
+    background-color: rgb(255, 255, 255);
+}
+
+.right {
+    float: right;
+    margin: 1em 0 1em 1em;
+}
+
+.left {
+    float: left;
+    margin: 1em 1em 1em 0;
+}

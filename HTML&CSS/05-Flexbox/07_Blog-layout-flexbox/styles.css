@@ -1,0 +1,120 @@
+/* @import url("./reset.css");
+@import url("./typography.css");
+@import url("./layout.css");
+@import url("./images.css"); */
+
+/*For judge the css must be in one file*/
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --white-space: 2em;
+}
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+p,
+ul,
+blockquote {
+    padding-bottom: var(--white-space, 1.5em);
+}
+
+ul,
+blockquote {
+    padding-left: calc(1.5 * var(--white-space, 1.5em));
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    line-height: 1.1;
+    margin: calc(0.6 * var(--white-space, 1.5em)) 0 calc(0.3 * var(--white-space, 1.5em));
+}
+
+h1 { font-size: 2.2em;}
+h2 { font-size: 2.0em;}
+h3 { font-size: 1.6em;}
+h4 { font-size: 1.4em;}
+h5 { font-size: 1.2em;}
+h6 { font-size: 1.0em;}
+
+blockquote {
+    border-left: 0.3em solid #ddd;
+    margin-left: 1.5em;
+    font-family: Georgia, serif;
+}
+
+blockquote p {
+    font-style: italic;
+}
+
+blockquote p:last-child {
+    text-align: end;
+}
+
+header h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+    padding: 5em 25em;
+}
+
+aside a {
+    color: rgb(0, 153, 0);
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2em;
+}
+
+header {
+    flex: 1 1 100%;
+    border-bottom: 2px solid black;
+}
+
+main {
+    flex: 0 1 75%;
+}
+
+aside {
+    flex: 0 1 15%;
+    margin-left: 2em;
+}
+
+blockquote {
+    float: right;
+    width: 50%;
+}
+
+ul {
+    list-style-type: square;
+}
+
+img {
+    border: 0.2em solid black;
+    padding: 0.4em;
+    box-shadow: 0 0 1em 0.5em rgb(0,0,0, 0.1);
+    background-color: rgb(255, 255, 255);
+}
+
+.right {
+    float: right;
+    margin: 1em 0 1em 1em;
+}
+
+.left {
+    float: left;
+    margin: 1em 1em 1em 0;
+}

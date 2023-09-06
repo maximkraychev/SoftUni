@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(238, 238, 238);
+    padding: 5em 25em;
+}
+
+aside a {
+    color: rgb(0, 153, 0);
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2em;
+}
+
+header {
+    flex: 1 1 100%;
+    border-bottom: 2px solid black;
+}
+
+main {
+    flex: 0 1 75%;
+}
+
+aside {
+    flex: 0 1 15%;
+    margin-left: 2em;
+}
+
+blockquote {
+    float: right;
+    width: 50%;
+}
+
+ul {
+    list-style-type: square;
+}
