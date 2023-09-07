@@ -1,0 +1,32 @@
+body {
+    background-color: rgb(238, 238, 238);
+    width: 80%;
+    margin: 3em auto;
+}
+
+/* .masonry {
+    display:  flex;
+    flex-direction: column;
+    gap: 2em;
+    flex-wrap: wrap;
+    height: 200vh;
+    width: 100%;
+} */
+
+.masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); /* Adjust column width as needed */
+    gap: 2em;
+    width: 100%;
+}
+
+.card {
+    /* flex: 1 1 30%; */
+    background-color: white;
+}
+
+/* section,
+footer {
+    width: 30%;
+} */
+
