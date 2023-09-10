@@ -1,7 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: rgb(238, 238, 238);
-    width: 80%;
+    width: 50%;
     margin: 3em auto;
+}
+
+h2 {
+    padding: 1.5em 1.5em 1.5em 0;
 }
 
 /* .masonry {
@@ -21,8 +30,34 @@ body {
 }
 
 .card {
-    /* flex: 1 1 30%; */
+    display: flex;
+    flex-direction: column;
     background-color: white;
+    align-content: flex-start;
+    border: 1.5px solid rgb(0, 0, 0, 0.2);
+    border-radius: 0.3em;
+    box-shadow: 0 0 0.4em 0.1em rgb(0, 0, 0, 0.1);
+}
+
+img {
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 0.3em;
+}
+
+.card p {
+    padding-inline: 1rem;
+}
+
+.card h3 {
+    font-weight: normal;
+    padding-top: 1.5em;
+    padding-inline: 1rem;
+}
+
+.card footer {
+    border-top: 1.5px solid rgb(0, 0, 0, 0.2);
+    padding: 1em 0;
+    margin-top: 1em;
 }
 
 /* section,
