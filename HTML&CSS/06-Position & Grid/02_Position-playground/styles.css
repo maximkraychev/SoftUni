@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.card {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.viewport {
+    position: relative;
+    height: 50vh;
+}
+
+.viewport:nth-child(1) {
+    background: linear-gradient(to right, #185B9D, #2D94A0, #42CCA1);
+}
+
+.viewport:nth-child(2) {
+    background: linear-gradient(to right, #A83278, #BC5A44, #D28212);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.imageContainer {
+    width: 50%;
+    position: relative;
+}
+
+.icon {
+    fill: white;
+    position: absolute;
+    bottom: 0.7em;
+    right: 0.4em;
+}
