@@ -1,5 +1,6 @@
 .flex-container {
   display: flex;
+  align-items: center;
   background-color: DodgerBlue;
   width: 300px;
   height: 200px;

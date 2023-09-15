@@ -1,5 +1,6 @@
 .flex-container {
   display: flex;
+  flex-direction: row-reverse;
   background-color: DodgerBlue;
   width: 300px;
 }
