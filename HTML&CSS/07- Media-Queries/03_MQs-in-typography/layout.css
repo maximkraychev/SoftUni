@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(238, 238, 238);
+    padding: 1em 2em;
+}
+
+.page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2em;
+}
+
+header {
+    flex: 1 1 100%;
+    border-bottom: 2px solid black;
+}
+
+section {
+    flex: 0 1 100%;
+    margin: 0 auto;
+}
+
+ul {
+    list-style-type: square;
+}
+
+@media (width > 600px) {
+
+    blockquote {
+        float: right;
+        width: 50%;
+    }
+
+    blockquote::after {
+        content: "";
+        clear: both ;
+    }
+
+}
