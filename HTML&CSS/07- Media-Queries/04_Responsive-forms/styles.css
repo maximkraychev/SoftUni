@@ -1,54 +1,129 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* box-sizing */
 html {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body,
 input,
 label,
-form {
+form,
+fieldset,
+legend,
+div {
     box-sizing: inherit;
 }
 
-form {
-    width: 15em;
-    margin: 0 auto;
+/*style*/
+
+body {
+    width: 80%;
+    margin: 5em auto;
 }
 
 fieldset {
+    display: block  ;
     background-color: #F8F8F8;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1em;
-    gap: 0.3em;
     border-radius: 0.2em;
 }
 
 legend  {
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    border-radius: 0.2em;
+    outline: 2px solid rgb(96, 96, 96);
+    border-radius: 0.1em;
+    padding: 0.4em 5em 0.4em 1em;
+    background-color: #F8F8F8;
 }
 
-label {
-   flex: 1 1 100%
-}
-
-input {
-    flex: 1 1 10px;
-    padding-left: 1em;
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em 2em;
+    gap: 2em;
 }
 
 .input-container {
     position: relative;
 }
 
+label {
+   display: block;
+   font-weight: bold;
+}
+
+input {
+    padding-left: 1em;
+    width: 100%;
+    font-size: 2em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.2em;
+}
+
+button {
+    width: fit-content;
+    background-color: #2d2d2d;
+    color: #f6f6f6;
+    padding: 0.5em 1.5em;
+    border-radius: 0.3em;
+    border: none;
+    cursor: pointer;
+}
+
 .icon {
     position: absolute;
-    height: 0.5em;
+    height: 1em;
     width: auto;
-    transform: translateX(0.5em);
+    transform: translateX(0.5em) translateY(0.7em);
 }
 
 svg {
     height: 100%;
     width: auto;
+}
+
+@media (width > 600px) {
+    body {
+        width: 60%;
+    }
+}
+
+@media (width > 1024px) {
+    body {
+        width: 40%;
+    }
+
+    label {
+        font-size: 1em;
+        align-self: center;
+        flex: 0 0 5em
+    }
+
+    .form-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
+
+    .input-container {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .icon {
+        transform: translateX(5.5em) translateY(0.7em);
+    }
+}
+
+@media (width > 1440px) {
+    body {
+        width: 30%;
+    }
+
 }
