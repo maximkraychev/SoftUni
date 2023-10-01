@@ -1,0 +1,62 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(238, 238, 238);
+    box-sizing: inherit;
+    padding: 5em;
+}
+
+button {
+    background-color: rgb(0, 153, 0);
+}
+
+.card {
+    background-color: rgb(255, 255, 255);
+    width: 27em;
+    height: 25em;
+    border-radius: 0.2em;
+    overflow: hidden;
+    box-shadow: 0 0 1em 0.2em rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    font: 1em/1.2 Georgia, serif;
+    font-weight: bold;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+}
+
+.image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.info {
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7em;
+}
+
+.info button {
+    align-self: flex-end;
+    border: none;
+    padding: 0.7em 1em;
+    color: white;
+    border-radius: 0.3em;
+}
