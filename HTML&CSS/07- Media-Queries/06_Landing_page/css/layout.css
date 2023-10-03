@@ -10,6 +10,7 @@ header {
     align-items: center;
     max-width: 90%;
     margin-inline: auto;
+    padding-top: 1em;
 }
 
 h1 {
@@ -79,16 +80,16 @@ h1 + p {
 /* Our-Team-Section */
 
 .section-our-team {
-    max-width: 90%;
+    max-width: 80%;
     margin-inline: auto;
 }
 
-.cards-layout p:last-child {
+.section-our-team p:last-child {
     margin-top: 1em;
     font-style: italic;
 }
 
-.cards-layout h6 {
+.section-our-team h6 {
     font-weight: bold;
 }
 
@@ -134,4 +135,25 @@ h1 + p {
     font-weight: bold;
     padding: 0.9em;
     flex: 2 1;
+}
+
+/* Section-Testimonials */
+
+.section-testimonials {
+    max-width: 80%;
+    margin-inline: auto;
+    padding-bottom: 7em;
+}
+
+.section-testimonials p:first-of-type {
+    opacity: 0.8;
+    padding-bottom: 1em;
+}
+
+.section-testimonials h6 {
+    font-weight: bold;
+}
+
+.section-testimonials p:last-of-type {
+    opacity: 0.8; 
 }
