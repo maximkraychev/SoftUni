@@ -1,9 +1,16 @@
 body {
     background-image: url(../background.png);
-    padding: 1em 1em;
 }
 
 /* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin-inline: auto;
+}
 
 h1 {
     color: #840984;
@@ -39,17 +46,13 @@ h1 + p {
     line-height: 16px; 
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 /* First-Section */
 
 .first-section {
     display: flex;
     gap: 1em;
+    max-width: 90%;
+    margin-inline: auto;
 }
 
 .first-section .text-container {
@@ -75,71 +78,60 @@ header {
 
 /* Our-Team-Section */
 
-.section-our-team h2 {
-    font-weight: 500;
-    display: block;
-    letter-spacing: -1px;
-}
-
-.section-our-team h2::after {
-    content: '';
-    width: 80px;
-    height: 1px;
-    display: block;
-    margin: 0.5em auto;
-    border-top: 2px solid black;
-}
-
 .section-our-team {
-    text-align: center;
+    max-width: 90%;
+    margin-inline: auto;
 }
 
-.section-our-team ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 2.5em 1em; 
-    list-style: none;
-}
-
-.section-our-team li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.section-our-team .image-container {
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    box-shadow: 0 0 1.5em 0.5em rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-    margin-bottom: 2em;
-    position: relative;
-}
-
-.section-our-team .image-container::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.2);
-}
-
-.image-container img {
-    width: 100%;
-    height: auto;
-    box-shadow: inset 0 0 0px 10px rgba(0, 0, 0, 1);
-}
-
-.section-our-team p:last-child {
+.cards-layout p:last-child {
     margin-top: 1em;
     font-style: italic;
 }
 
-.section-our-team h6 {
+.cards-layout h6 {
     font-weight: bold;
+}
+
+/* Section-Sign-Up*/
+
+.section-sign-up {
+    background-color: #68347B;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1.5em 0 3em 0;
+    gap: 1em;
+}
+
+.section-sign-up h2 {
+    text-align: center;
+    flex: 1 1 90%;
+    color: white;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+.section-sign-up form {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5em;
+    max-width: 400px;
+    width: 100%;
+}
+
+.section-sign-up form > input {
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.section-sign-up form [type="text"] {
+    outline: none;
+    flex: 8 1;
+}
+
+.section-sign-up form [type=submit] {
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0.9em;
+    flex: 2 1;
 }

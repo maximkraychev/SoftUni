@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
+* {
+    box-sizing: inherit
+}
+
 :root {
     --white-space: 2em;
 }
@@ -7,13 +11,13 @@
 html {
     font-size: 16px;
     line-height: 1.1;
+    box-sizing: border-box;
 }
 
 button,
 input {
     font-size: inherit;
     line-height: inherit;
-    box-sizing: border-box;
 }
 
 section {

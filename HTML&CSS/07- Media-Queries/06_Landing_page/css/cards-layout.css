@@ -1,0 +1,50 @@
+.cards-layout h2 {
+    font-weight: 500;
+    display: block;
+    letter-spacing: -1px;
+}
+
+.cards-layout {
+    text-align: center;
+}
+
+.cards-layout ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2.5em 1em; 
+    list-style: none;
+}
+
+.cards-layout li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cards-layout .image-container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    box-shadow: 0 0 1.5em 0.5em rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    margin-bottom: 2em;
+    position: relative;
+}
+
+.cards-layout .image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.cards-layout img {
+    width: 100%;
+    height: auto;
+    box-shadow: inset 0 0 0px 10px rgba(0, 0, 0, 1);
+}

@@ -1,0 +1,12 @@
+.line-after::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    display: block;
+    margin: 0.5em auto;
+    border-top: 2px solid black;
+}
+
+.line-after-dubble::after {
+    border-top: 4px solid black;
+}
