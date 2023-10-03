@@ -157,3 +157,80 @@ h1 + p {
 .section-testimonials p:last-of-type {
     opacity: 0.8; 
 }
+
+/* Footer */
+
+footer {
+    padding-block: 4em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* --- */
+
+.footer-info {
+    flex-basis: 90%;
+}
+
+.footer-info p {
+    padding-block: 1em;
+}
+
+/* --- */
+
+.footer-sitemap {
+    flex-basis: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    padding-bottom: 1em;
+}
+
+.footer-sitemap ul {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.2em;
+}
+
+.footer-sitemap a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-sitemap h5 {
+    flex-basis: 100%;
+}
+
+.footer-sitemap li {
+    display: block;
+}
+
+/* --- */
+
+.footer-contacts {
+    flex-basis: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.footer-contacts li {
+    display: flex;
+    gap: 0.5em;
+}
+
+.footer-contacts li + li {
+    padding-top: 0.5em;
+}
+
+.footer-contacts li:last-of-type p {
+    display: flex;
+    flex-direction: column;
+}
+
+svg {
+    height: 1em;
+    width: auto;
+}
