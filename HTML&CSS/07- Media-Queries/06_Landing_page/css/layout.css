@@ -17,7 +17,7 @@ h1 {
     color: #840984;
 }
 
-h1 + p {
+h1+p {
     text-transform: uppercase;
     letter-spacing: 'none';
     white-space: nowrap;
@@ -44,7 +44,7 @@ h1 + p {
 .button-nav button {
     border: none;
     background-color: unset;
-    line-height: 16px; 
+    line-height: 16px;
 }
 
 /* First-Section */
@@ -56,7 +56,7 @@ h1 + p {
     margin-inline: auto;
 }
 
-.first-section .text-container {
+.text-container {
     flex: 1 1 50%;
     display: flex;
     flex-direction: column;
@@ -120,7 +120,7 @@ h1 + p {
     width: 100%;
 }
 
-.section-sign-up form > input {
+.section-sign-up form>input {
     border: 2px solid black;
     border-radius: 2px;
 }
@@ -155,7 +155,7 @@ h1 + p {
 }
 
 .section-testimonials p:last-of-type {
-    opacity: 0.8; 
+    opacity: 0.8;
 }
 
 /* Footer */
@@ -221,7 +221,7 @@ footer {
     gap: 0.5em;
 }
 
-.footer-contacts li + li {
+.footer-contacts li+li {
     padding-top: 0.5em;
 }
 
@@ -236,11 +236,40 @@ footer svg {
 }
 
 @media (width > 480px) {
-    .first-section .text-container {
+    /* .first-section {
+        width: 100%;
+    } */
+
+    .text-container {
         flex: 0 0 60%;
     }
 
     .first-section svg {
         flex: 0 0 150px
+    }
+}
+
+@media (width > 1024px) {
+    .button-nav {
+        display: none;
+    }
+
+    .main-nav {
+        display: flex;
+        gap: 1.5em;
+    }
+
+    .main-nav li {
+        display: block;
+    }
+
+    .main-nav a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .text-container {
+        flex: 0 0 50%;
+        margin-left: 10%;
     }
 }
