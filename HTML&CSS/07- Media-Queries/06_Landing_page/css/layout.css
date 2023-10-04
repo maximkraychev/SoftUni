@@ -230,7 +230,17 @@ footer {
     flex-direction: column;
 }
 
-svg {
+footer svg {
     height: 1em;
     width: auto;
+}
+
+@media (width > 480px) {
+    .first-section .text-container {
+        flex: 0 0 60%;
+    }
+
+    .first-section svg {
+        flex: 0 0 150px
+    }
 }
