@@ -272,4 +272,33 @@ footer svg {
         flex: 0 0 50%;
         margin-left: 10%;
     }
+
+    .first-section {
+        gap: 2em;
+    }
+
+    footer {
+        flex-wrap: nowrap;
+        gap: 2.5em;
+        justify-content: space-between;
+        margin-inline: 2em;
+    }
+
+    .footer-sitemap {
+        padding-bottom: 0;
+    }
+
+    header,
+    .first-section,
+    .section-our-team,
+    .section-testimonials,
+    footer {
+       max-width: 950px;
+       margin-inline: auto;
+    }
+
+}
+
+@media (width > 1441px) {
+
 }
