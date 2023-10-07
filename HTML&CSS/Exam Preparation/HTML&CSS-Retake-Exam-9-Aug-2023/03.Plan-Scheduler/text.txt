@@ -51,22 +51,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem lorem, malesua
 
 Free
 $0
-10
-Projects
-99
-Components
-3
-Collaborators
+10 Projects
+99 Components
+3 Collaborators
 Public projects
 Learn More
 
 Free
 $29
-100
-Projects
-100
-Components
-20
-Collaborators
+100 Projects
+100 Components
+20 Collaborators
 Private projects
 Learn More

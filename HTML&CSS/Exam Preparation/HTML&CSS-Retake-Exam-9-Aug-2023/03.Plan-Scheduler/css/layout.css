@@ -1,0 +1,36 @@
+.site {
+    width: 1920px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.main-nav {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 4em;
+    padding-left: 4em;
+    padding-right: 3em;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 2em;
+}
+
+.main-nav li {
+    display: block;
+}
+
+.main-nav a {
+    color: var(--black-color);
+}
+
+.buy-now-button {
+    border: 1px solid var(--black-color);
+    border-radius: 5px;
+    padding: 0.5em 1em;
+    background-color: var(--white-color);
+}
