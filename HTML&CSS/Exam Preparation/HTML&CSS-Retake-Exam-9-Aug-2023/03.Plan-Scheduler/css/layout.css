@@ -34,3 +34,26 @@
     padding: 0.5em 1em;
     background-color: var(--white-color);
 }
+
+/* GET-STARTED */
+
+.get-started {
+    height: 750px;
+    position: relative;
+    overflow: hidden;
+}
+
+.get-started img {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    transform: translate(0, -29%);
+}
+
+.get-started .container {
+    width: 720px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 300px 800px 200px 300px;
+}
