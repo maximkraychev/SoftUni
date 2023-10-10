@@ -262,6 +262,7 @@ footer ul {
 footer svg {
     width: 1.7em;
     height: auto;
+    cursor: pointer;
 }
 
 footer ul li {
