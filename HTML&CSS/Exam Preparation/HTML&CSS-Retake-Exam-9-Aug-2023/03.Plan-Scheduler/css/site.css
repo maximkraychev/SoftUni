@@ -2,9 +2,3 @@
 @import url(./colors.css);
 @import url(./typography.css);
 @import url(./layout.css);
-
-
-svg {
-    width: 1em;
-    height: auto;
-}

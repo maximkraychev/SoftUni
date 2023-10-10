@@ -244,3 +244,30 @@
     background-color: var(--white-color);
     color: var(--black-color);
 }
+
+/* FOOTER */
+
+footer {
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+}
+
+footer ul {
+    display: flex;
+    height: 8em;
+    width: 80%;
+}
+
+footer svg {
+    width: 1.7em;
+    height: auto;
+}
+
+footer ul li {
+    display: flex;
+    list-style: none;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+}
