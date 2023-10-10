@@ -47,7 +47,7 @@
     position: absolute;
     top: 0;
     z-index: -1;
-    transform: translate(0, -29%);
+    transform: translate(0, -29.5%);
 }
 
 .get-started .container {
@@ -55,5 +55,25 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    /* padding: 300px 800px 200px 300px; */
+    position: relative;
+    top: 190px;
+    left: 320px;
+}
+
+.get-started .container h1 {
+    margin-bottom: 1.5em;
+}
+
+.get-started .container p:first-of-type {
+    margin-bottom: 3.5em;
+    color: var(--white-color);
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.get-started .container .get-started-button {
+    color: var(--white-color);
+    padding: 1.2em 2em;
+    background-color: var(--black-color);
+    border-radius: 5px;
 }
