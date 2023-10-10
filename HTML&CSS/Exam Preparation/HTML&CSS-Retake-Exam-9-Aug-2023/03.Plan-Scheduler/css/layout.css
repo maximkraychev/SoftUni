@@ -1,3 +1,5 @@
+/* GLOBAL STYLES */
+
 .site {
     width: 1920px;
     margin: 0 auto;
@@ -35,7 +37,7 @@
     background-color: var(--white-color);
 }
 
-/* GET-STARTED */
+/* SECTION => get-started */
 
 .get-started {
     height: 750px;
@@ -76,4 +78,39 @@
     padding: 1.2em 2em;
     background-color: var(--black-color);
     border-radius: 5px;
+}
+
+/* SECTION => stats */
+
+.stats ul {
+    display: flex;
+    justify-content: center; 
+    gap: 2em;
+    padding-block: 5em;
+}
+
+.stats ul li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.stats ul li > * {
+    text-align: center;
+}
+
+.stats ul li h2 {
+    color: var(--orange-color);
+    font-size: 4em;
+    padding-bottom: 0.7em;
+}
+
+.stats ul li p:first-of-type {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.stats ul li p:last-of-type {
+    color: grey;
 }
