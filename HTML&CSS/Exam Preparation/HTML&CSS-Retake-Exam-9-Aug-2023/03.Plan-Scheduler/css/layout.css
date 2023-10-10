@@ -166,3 +166,81 @@
     padding-top: 0.5em;
     cursor: pointer;
 }
+
+/* SECTION => pricing */
+
+.pricing {
+    background-color: var(--darkwhite-color);
+}
+
+.pricing .container {
+    width: 92%;
+    margin: 0 auto;
+    background-color: var(--white-color);
+}
+
+.pricing .container ul {
+    display: flex;
+    gap: 2.5em;
+    padding: 3.5em;
+}
+
+.pricing .container ul li {
+    list-style: none;
+    flex: 1 1 33%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: 1.2em;
+    padding-block: 2em;
+}
+
+.pricing .free-plan {
+    background-color: var(--orange-color);
+    text-align: center;
+    box-shadow: 0 0 1em 0.1em rgba(0, 0, 0, 0.2);
+}
+
+.pricing .paid-plan {
+    background-color: var(--black-color);
+    color: var(--white-color);
+    text-align: center;
+    box-shadow: 0 0 1em 0.1em rgba(0, 0, 0, 0.2);
+}
+
+.pricing .big-text {
+    font-size: 4em;
+    font-weight: 200;
+    padding-block: 0.5em;
+}
+
+.pricing .container ul li:first-child p {
+    padding-top: 2em;
+    color: var(--darkgrey-color);
+}
+
+.pricing .container ul li p:first-child {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.pricing .container ul li p:last-child {
+    padding-top: 3em;
+    padding-bottom: 1em;
+}
+
+.pricing .learn-more-dark-button,
+.pricing .learn-more-light-button {
+    padding: 1em 1.5em;
+    border-radius: 5px;
+}
+
+.pricing .learn-more-dark-button {
+    background-color: var(--black-color);
+    color: var(--white-color);
+}
+
+.pricing .learn-more-light-button {
+    background-color: var(--white-color);
+    color: var(--black-color);
+}
