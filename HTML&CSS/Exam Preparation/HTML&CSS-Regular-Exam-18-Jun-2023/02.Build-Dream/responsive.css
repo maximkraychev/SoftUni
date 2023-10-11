@@ -1,0 +1,25 @@
+@media (width <= 600px) {
+
+    /* .home-container {
+        width: 100vw;
+    } */
+
+    /* SECTION => home-hero */
+
+    .home-hero {
+        flex-direction: column-reverse;
+    }
+
+    .home-image1 {
+        width: 100%;
+    }
+
+    .home-hero-text-container {
+        width: 100%;
+    }
+
+    .home-hero-text-container .home-cta-btn2 {
+        align-self: center;
+        padding-inline: 1em;
+    }
+}
