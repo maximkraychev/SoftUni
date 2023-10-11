@@ -4,6 +4,17 @@
         width: 100vw;
     } */
 
+    /* SECTION => home-navbar-container */
+
+    .home-navbar-container .home-navbar {
+        justify-content: space-around;
+        padding-right: 0;
+    }
+
+    .home-navbar-container .home-cta-btn {
+        padding-inline: 10px;
+    }
+
     /* SECTION => home-hero */
 
     .home-hero {
