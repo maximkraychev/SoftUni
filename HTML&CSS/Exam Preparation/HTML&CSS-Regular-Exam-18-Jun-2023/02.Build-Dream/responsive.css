@@ -16,10 +16,31 @@
 
     .home-hero-text-container {
         width: 100%;
+        margin-left: 0;
     }
 
     .home-hero-text-container .home-cta-btn2 {
         align-self: center;
         padding-inline: 1em;
+    }
+
+    /* SECTION => home-features */
+
+    .home-features .home-heading-container {
+        width: 100%;
+    }
+
+    .home-features .home-cards-container {
+        flex-direction: column;
+        align-content: center;
+        gap: 2em;
+    }
+
+    .home-features .home-cards-container > * {
+        width: 100%;
+    }
+
+    .home-features .home-cards-container .home-image2 {
+        zoom: 120%;
     }
 }
