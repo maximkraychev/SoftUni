@@ -1,0 +1,89 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.component {
+    width: 1900px;
+    margin: 0 auto;
+    padding: 5em;
+    background-color: #D9D9D9;
+    font-size: 19px;
+    font-family: 'Inter', sans-serif;
+}
+
+.component ul {
+    display: flex;
+    gap: 3em;
+}
+
+.component ul li {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.component .img-container {
+    /* flex: 0 0 320px; */
+    height: 320px;
+}
+
+.component .img-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.component .description {
+    flex: 0 0 420px;
+    padding: 2.5em;
+}
+
+.component .description .bulkier {
+    color: #595969;
+    font-weight: 700;
+    padding-bottom: 1em;
+}
+
+.component .description h2 {
+    font-weight: 300;
+    padding-bottom: 1.5em;
+}
+
+.component .description h2 + p {
+    opacity: 80%;
+    padding-bottom: 2em;
+}
+
+.component .description .author {
+    display: flex;
+    flex-wrap: nowrap;
+    border-top: 1px solid black;
+    padding-top: 1.5em;
+}
+
+.component .description .author .author-img-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 0.5em;
+}
+
+.component .description .author .author-img-container img {
+    width: 100%;
+    height: auto;
+    transform: translate(0, -15%);
+}
+
+.component .description .author p + p {
+    line-height: 50px;
+}
+
+.component .description .author p:last-child {
+    margin-left: auto;
+    opacity: 40%;
+}
