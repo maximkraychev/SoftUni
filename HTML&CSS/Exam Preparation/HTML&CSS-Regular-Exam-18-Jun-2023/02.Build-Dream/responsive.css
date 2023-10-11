@@ -1,4 +1,4 @@
-@media (width <= 600px) {
+@media (width <=600px) {
 
     /* .home-container {
         width: 100vw;
@@ -26,6 +26,10 @@
 
     /* SECTION => home-features */
 
+    .home-features {
+        height: auto;
+    }
+
     .home-features .home-heading-container {
         width: 100%;
     }
@@ -36,11 +40,19 @@
         gap: 2em;
     }
 
-    .home-features .home-cards-container > * {
+    .home-features .home-cards-container>* {
         width: 100%;
     }
 
     .home-features .home-cards-container .home-image2 {
         zoom: 120%;
     }
+
+    /* SECTION => home-stats */
+
+    .home-stats {
+        grid-template-columns: 1fr;
+        margin-top: 3em;
+    }
+
 }
