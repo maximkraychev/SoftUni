@@ -22,7 +22,7 @@
 .site-header .main-navigation ul li {
     list-style: none;
     display: block;
-} 
+}
 
 .site-header .account {
     display: flex;
@@ -77,4 +77,56 @@
 
 .stats-section ul li p {
     padding-bottom: 4em;
+}
+
+/* advantages-section */
+
+.advantages-section {
+    display: flex;
+    gap: 3em;
+    justify-content: center;
+    background-color: var(--main-color);
+}
+
+.advantages-section .img-container {
+    flex: 0 1 25%;
+    border: 2px dotted rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.advantages-section .content {
+    flex: 0 1 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.advantages-section .content h3 {
+    padding-bottom: 0.5em;
+}
+
+.advantages-section .content>p:nth-of-type(odd) {
+    padding-top: 1.5em;
+    padding-bottom: 0.5em;
+}
+
+.advantages-section .content .pricing-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-bottom: 2px solid black;
+    padding-top: 2em;
+    padding-bottom: 0.3em;
+    width: fit-content;
+}
+
+.advantages-section .content .pricing-link a {
+    color: black;
+
+}
+
+.advantages-section .content .pricing-link p {
+    display: flex;
+    align-content: center;
 }
