@@ -12,11 +12,11 @@ html {
 }
 
 h2 { font-size: 3.5em;}
-h3 { font-size: 1.6em;}
+h3 { font-size: 2.4em;}
 h4 { font-size: 1.4em;}
 
 h2 {
-    margin-block: 0.1em;
+    margin-block: 0.3em;
 }
 
 button {
@@ -25,6 +25,7 @@ button {
 
 a {
     text-decoration: none;
+    display: block;
 }
 
 p {

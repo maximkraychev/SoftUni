@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-inline: 9em;
+    padding: 1.5em 9em;
     background-color: var(--white-color);
     font-weight: 500;
 }
@@ -51,5 +51,30 @@
 .download-section .download-btns {
     display: flex;
     gap: 1em;
-    margin-top: 1em;
+    margin-top: 2em;
+}
+
+/* stats-section */
+
+.stats-section ul {
+    display: flex;
+    justify-content: center;
+    padding-block: 5em;
+}
+
+.stats-section ul li {
+    list-style: none;
+    display: block;
+    padding-inline: 1em;
+    border-inline: 1px solid rgba(0, 0, 0, 0.2);
+    flex: 0 1 27%;
+    text-align: center;
+}
+
+.stats-section ul li h3 {
+    padding-bottom: 1em;
+}
+
+.stats-section ul li p {
+    padding-bottom: 4em;
 }
