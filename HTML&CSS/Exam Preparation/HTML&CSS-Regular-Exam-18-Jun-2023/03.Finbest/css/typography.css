@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap');
+
+* {
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+}
+
+h2 { font-size: 3.5em;}
+h3 { font-size: 1.6em;}
+h4 { font-size: 1.4em;}
+
+h2 {
+    margin-block: 0.1em;
+}
+
+button {
+    font-size: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    font-weight: 500;
+}
+
+svg {
+    height: 1em;
+    width: auto;
+}

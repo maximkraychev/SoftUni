@@ -1,0 +1,55 @@
+.site {
+    width: 1900px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 9em;
+    background-color: var(--white-color);
+    font-weight: 500;
+}
+
+.site-header .main-navigation ul {
+    display: flex;
+    gap: 3em;
+}
+
+.site-header .main-navigation ul li {
+    list-style: none;
+    display: block;
+} 
+
+.site-header .account {
+    display: flex;
+}
+
+.site-header .account a {
+    color: var(--black-color);
+    padding: 1em 1.5em;
+    border-radius: 0.5em;
+}
+
+.site-header .account p:last-of-type a {
+    background-color: var(--main-color);
+}
+
+/* download-section */
+
+.download-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-color);
+    padding-block: 5em;
+}
+
+.download-section .download-btns {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+}

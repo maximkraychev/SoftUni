@@ -1,0 +1,15 @@
+button {
+    padding: 1em;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    border-radius: 0.5em;
+    border: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+button  svg {
+    fill: var(--white-color);
+    display: inline-block;
+}
