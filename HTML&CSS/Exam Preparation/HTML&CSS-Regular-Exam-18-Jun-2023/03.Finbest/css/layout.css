@@ -48,12 +48,6 @@
     padding-block: 5em;
 }
 
-.download-section .download-btns {
-    display: flex;
-    gap: 1em;
-    margin-top: 2em;
-}
-
 /* stats-section */
 
 .stats-section ul {
@@ -264,4 +258,21 @@
     padding-block: 1.5em;
     border-radius: 0.5em;
     text-align: center;
+}
+
+.download-two-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 5em;
+    background-color: var(--main-color);
+}
+
+.download-two-section>* {
+    max-width: 800px;
+    text-align: center;
+}
+
+.download-two-section>p {
+    font-size: 28px;
 }

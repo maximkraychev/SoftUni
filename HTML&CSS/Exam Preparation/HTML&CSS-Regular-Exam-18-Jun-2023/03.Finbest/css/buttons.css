@@ -13,3 +13,9 @@ button  svg {
     fill: var(--white-color);
     display: inline-block;
 }
+
+.download-btns {
+    display: flex;
+    gap: 1em;
+    margin-top: 2em;
+}
