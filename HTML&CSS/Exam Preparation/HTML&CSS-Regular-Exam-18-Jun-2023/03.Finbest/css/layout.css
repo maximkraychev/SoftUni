@@ -276,3 +276,14 @@
 .download-two-section>p {
     font-size: 28px;
 }
+
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 3em;
+}
+
+.site-footer .socials {
+    display: flex;
+    gap: 1em;
+}
