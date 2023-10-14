@@ -130,3 +130,138 @@
     display: flex;
     align-content: center;
 }
+
+/* price-section */
+
+.price-section {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding-block: 3em;
+    background-color: var(--grey-color);
+}
+
+.price-section>p {
+    background-color: var(--main-color);
+    padding: 0.5em 1em;
+    margin-inline: auto;
+    border-radius: 0.5em;
+}
+
+.price-section>h3 {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 2em;
+}
+
+.price-section .container {
+    display: flex;
+    border-block: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+.price-section .price-card-container {
+    flex: 3 1;
+    display: flex;
+    padding-block: 2em;
+    background-color: var(--white-color);
+}
+
+.price-section .expand-container {
+    display: flex;
+    flex-direction: column;
+    flex: 2 1;
+    background-color: var(--main-color);
+    padding: 2em;
+}
+
+.price-section .price-card {
+    flex: 1 1 10%;
+    background-color: var(--white-color);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    padding-inline: 1.5em;
+}
+
+.price-section .price-card h4 {
+    text-align: center;
+}
+
+.price-section .price-card>p:first-of-type {
+    font-size: 20px;
+}
+
+.price-section .price-card .price {
+    font-size: 50px;
+    font-weight: 600;
+    padding-block: 0.5em;
+}
+
+.price-section .price-card .price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+}
+
+.price-section .price-card ul {
+    padding-block: 2em;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.price-section li {
+    list-style: none;
+}
+
+.price-section li::before {
+    content: url('../images/check-solid.svg');
+    display: inline-block;
+    height: 100%;
+    width: 16px
+}
+
+.price-section .price-card .btn-like-link {
+    padding-top: 2em;
+}
+
+.price-section .price-card .btn-like-link a {
+    display: block;
+    color: var(--black-color);
+    background-color: var(--main-color);
+    text-align: center;
+    padding-block: 1.5em;
+    border-radius: 0.5em;
+}
+
+.price-section .expand-container h4 {
+    text-align: center;
+}
+
+.price-section .expand-container>p:first-of-type {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.price-section .expand-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding-block: 2em;
+    font-weight: 500;
+}
+
+.price-section .expand-container .contact-us-button {
+    margin-top: auto;
+}
+
+.price-section .expand-container .contact-us-button a {
+    color: var(--white-color);
+    background-color: var(--black-color);
+    display: block;
+    padding-block: 1.5em;
+    border-radius: 0.5em;
+    text-align: center;
+}
