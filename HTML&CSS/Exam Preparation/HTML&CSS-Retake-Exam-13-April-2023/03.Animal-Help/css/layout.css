@@ -3,25 +3,83 @@
     margin: 0 auto;
 }
 
+/* .main-header */
+
 .main-header {
-    font-size: 22px;
+    font-size: 24px;
     display: flex;
     justify-content: space-between;
-    padding-block: 1em;
+    padding-block: 1.5em;
+    box-shadow: 0 17px 10px -10px #D9E4E8;
+    position: relative;
 }
 
 .main-header h1 {
-    font-size: 22px;
-    padding-left: 2em;
+    font-size: 24px;
+    padding-left: 4em;
+    font-weight: 600;
 }
 
 .main-header nav {
     display: flex;
     gap: 1em;
+    padding-right: 1em;
 }
 
 .main-header nav a {
     display: block;
     color: var(--black-color);
     font-weight: 600;
+}
+
+/* section-banner */
+
+.section-banner {
+    display: flex;
+    gap: 8em;
+    background-color: var(--light-blue-color);
+    justify-content: center;
+}
+
+.section-banner img {
+    flex: 0 1 37%;
+    height: auto;
+}
+
+.section-banner .content-container {
+    flex: 0 1 43%;
+    align-self: center;
+    padding-left: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.section-banner .content-container > p {
+    font-weight: 500;
+    width: 95%;
+}
+
+.section-banner .buttons-container {
+    display: flex;
+    gap: 2em;
+}
+
+.section-banner .buttons-container a {
+    padding: 1.2em 5em;
+    border-radius: 0.5em;
+    font-weight: 600;
+}
+
+
+.section-banner .buttons-container .white-btn a {
+    color: var(--black-color);
+    border: 1px solid var(--black-color);
+    background-color: var(--white-color);
+  
+}
+
+.section-banner .buttons-container .black-btn a {
+    color: var(--white-color);
+    background-color: var(--black-color);
 }

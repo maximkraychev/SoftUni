@@ -7,13 +7,13 @@ html {
     box-sizing: border-box;
     font-family: "Ariel", sans-serif;
     font-size: 16px;
-    line-height: 1;
+    line-height: 1.5;
 }
 
 h1 { font-size: 4em;}
 h2 { font-size: 3.5em;}
 h3 { font-size: 2.4em;}
-h4 { font-size: 1.4em;}
+h4 { font-size: 2.2em;}
 h5 { font-size: 1.2em;}
 
 a {
