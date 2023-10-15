@@ -1,0 +1,71 @@
+@media (width <= 600px) {
+
+  /* HEADER */
+
+  .navigation-header .navigation-max-width {
+   padding-block: 1em;
+  }
+
+  .navigation-header .navigation-nav {
+    display: none;
+  }
+
+  /* home-portofolio */
+
+  .home-portofolio {
+    padding-top: 60px;
+  }
+
+  .home-portofolio .home-text {
+    display: none;
+  }
+
+  .home-portofolio .home-tab-selector-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* home-about */
+
+  .home-about {
+    padding-block: 40px;
+  }
+
+  .home-about .home-image-container {
+    display: none;
+  }
+
+  /* home-process */
+
+  .home-process {
+    padding-block: 40px;
+  }
+
+  .home-process .home-step .home-text10 {
+    margin-right: 40px;
+  }
+
+
+  /* FOOTER */
+
+  .home-container > .section-container {
+    padding-block: 40px;
+  }
+
+  .home-container > .section-container .max-content-container .home-top-part {
+    flex-direction: column;
+  }
+
+  .home-container > .section-container .home-links-container{
+    flex-direction: column;
+    gap: 2em;
+  }
+
+  .home-container > .section-container .home-subscribe-container {
+    width: 100%;
+    padding-top: 1.5em;
+  }
+
+  .home-container > .section-container .home-subscribe-container .button-primary {
+    padding: 1.5em 2em;
+  }
+}
