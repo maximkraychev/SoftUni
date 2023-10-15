@@ -1,0 +1,27 @@
+.site {
+    width: 1552px;
+    margin: 0 auto;
+}
+
+.main-header {
+    font-size: 22px;
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1em;
+}
+
+.main-header h1 {
+    font-size: 22px;
+    padding-left: 2em;
+}
+
+.main-header nav {
+    display: flex;
+    gap: 1em;
+}
+
+.main-header nav a {
+    display: block;
+    color: var(--black-color);
+    font-weight: 600;
+}
