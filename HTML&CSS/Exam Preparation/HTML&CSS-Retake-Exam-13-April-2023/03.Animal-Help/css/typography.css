@@ -1,0 +1,22 @@
+* {
+    box-sizing: inherit;
+    font-family: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-family: "Ariel", sans-serif;
+    font-size: 16px;
+    line-height: 1;
+}
+
+h1 { font-size: 4em;}
+h2 { font-size: 3.5em;}
+h3 { font-size: 2.4em;}
+h4 { font-size: 1.4em;}
+h5 { font-size: 1.2em;}
+
+a {
+    text-decoration: none;
+    display: block;
+}
