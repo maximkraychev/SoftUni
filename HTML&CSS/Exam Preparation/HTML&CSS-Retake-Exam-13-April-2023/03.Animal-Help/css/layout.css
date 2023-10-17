@@ -178,3 +178,36 @@
     border-radius: 0.5em;
     font-size: 0.9em;
 }
+
+/* section-animals */
+
+.section-animals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    padding-block: 3em;
+    justify-content: center;
+}
+
+.section-animals h2,
+.section-animals p {
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+.section-animals p {
+    letter-spacing: -0.5px;
+    font-size: 18px;
+}
+
+.section-animals .img-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    flex: 0 1 90%;
+    gap: 3em;
+}
+
+.section-animals .img-container img {
+    width: 100%;
+    height: auto;
+}
