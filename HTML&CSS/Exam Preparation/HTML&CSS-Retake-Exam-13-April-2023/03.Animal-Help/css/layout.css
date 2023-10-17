@@ -211,3 +211,35 @@
     width: 100%;
     height: auto;
 }
+
+/* section-how-we-work */
+
+.section-how-we-work {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+}
+
+.section-how-we-work h4 {
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+.section-how-we-work article {
+    flex: 0 1 75%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.section-how-we-work article h6 {
+    background-color: var(--light-blue-color);
+    padding: 1.5em 2em;
+}
+
+.section-how-we-work article p {
+    font-weight: 600;
+    padding: 2em;
+    font-size: 14px;
+}
