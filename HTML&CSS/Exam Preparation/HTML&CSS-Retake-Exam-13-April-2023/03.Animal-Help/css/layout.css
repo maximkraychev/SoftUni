@@ -300,3 +300,21 @@
     font-size: 16px;
     border-radius: 0.6em;
 }
+
+/* main-footer */
+
+.main-footer {
+    display:  flex;
+    justify-content: space-between;
+    padding: 2em 4em;
+    align-items: center;
+}
+
+.main-footer .socials i {
+    font-size: 1.8em;
+    padding-inline: 0.2em;
+}
+
+.main-footer p {
+    font-weight: 600;
+}
