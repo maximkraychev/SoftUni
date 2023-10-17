@@ -66,7 +66,7 @@
 }
 
 .section-banner .buttons-container a {
-    padding: 1.2em 5em;
+    padding: 1.1em 5em;
     border-radius: 0.5em;
     font-weight: 600;
 }
@@ -82,4 +82,54 @@
 .section-banner .buttons-container .black-btn a {
     color: var(--white-color);
     background-color: var(--black-color);
+}
+
+/* section-motto */
+
+.section-motto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+    padding-block: 2em;
+}
+
+.section-motto > p {
+    font-weight: 600;
+    text-align: center;
+    max-width: 650px;
+    letter-spacing: 1.5px;
+    font-size: 20px;
+}
+
+.section-motto .motto-container {
+    display: flex;
+    width: 90%;
+    text-align: center;
+    gap: 7em;
+    padding-top: 2em;
+}
+
+.section-motto .motto-container article {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    flex: 1 1 30%
+}
+
+.section-motto .motto-container article h5 {
+    letter-spacing: -1px;
+    font-size: 1.6em;
+}
+
+.section-motto .motto-container article p:last-child {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+
+.section-motto .motto-container .svg-icon i {
+   font-size: 150px;
+   color: var(--light-blue-color);
 }
