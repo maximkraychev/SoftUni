@@ -1,0 +1,75 @@
+:root {
+    --blue-color: #327DC4;
+    --dark-blue-color: #819DAF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+.component {
+    width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-block: 2em;
+
+}
+
+.component > h2,
+.component > p {
+    flex: 1 1 100%;
+    text-align: center;
+}
+
+.component > h2 {
+    font-size: 3em;
+    padding-block: 0.4em;
+}
+
+.component > p {
+    font-size: 1.2em;
+    padding-bottom: 2em;
+}
+
+.component > h2 span {
+    color: var(--blue-color);
+}
+
+.component .article-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+.component .article-container article {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 30%;
+    background-color: var(--dark-blue-color);
+    border-radius: 1em;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.component .article-container article img {
+    width: 100%;
+    height: auto;
+    border-radius: 1em;
+}
+
+.component .article-container article .content {
+    flex: 0 1 90%;
+}
+
+.component .article-container article .content h3 {
+    font-size: 1.8em;
+    padding-block: 1em;
+}
