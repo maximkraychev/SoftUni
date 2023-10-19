@@ -1,0 +1,14 @@
+@media (width <= 600px) {
+
+    header .div-header {
+        display: none;
+    }
+
+    body {
+        display: none;
+    }
+
+    body header .logo-center {
+        display: none;
+    }
+}
