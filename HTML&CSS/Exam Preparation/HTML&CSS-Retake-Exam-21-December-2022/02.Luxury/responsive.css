@@ -47,4 +47,36 @@
     .gallery article div {
         display: none;
     }
+
+    /* blog */
+    .blog .blog-title {
+        border-bottom-width: 1px;
+    }
+
+    .blog .blog-title h4 {
+        font-size: 1.1em;
+    }
+
+    .blog .blog-title h4 span,
+    .blog .blog-title a {
+        display: none;
+    }
+
+    .blog article #about-blog {
+       flex: 0 1 90%;
+    }
+    
+
+    .blog article img {
+        display: none;
+    }
+
+    .blog article #about-blog h3 {
+        font-size: 0.9em;
+        padding-top: 2em;
+    }
+
+    .blog article #about-blog p {
+        font-size: 0.55em;
+    }
 }
