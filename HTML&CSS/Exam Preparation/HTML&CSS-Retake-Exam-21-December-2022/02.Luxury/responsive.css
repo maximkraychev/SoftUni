@@ -130,4 +130,15 @@
         aspect-ratio: 21 / 7;
         height: auto;
     }
+
+    /* footer */
+
+    footer {
+        flex-direction: column;
+    }
+
+    footer .icons {
+        display: flex;
+        flex-direction: column;
+    }
 }
