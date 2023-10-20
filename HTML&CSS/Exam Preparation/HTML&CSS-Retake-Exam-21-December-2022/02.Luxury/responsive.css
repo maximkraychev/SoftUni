@@ -1,4 +1,4 @@
-@media (width <= 600px) {
+@media (width <= 700px) {
 
     /* header */
 
@@ -37,4 +37,14 @@
     header .options article a {
         display: none;
     } 
+
+    /* gallery */
+
+    .gallery {
+        flex-wrap: wrap;
+    }
+
+    .gallery article div {
+        display: none;
+    }
 }
