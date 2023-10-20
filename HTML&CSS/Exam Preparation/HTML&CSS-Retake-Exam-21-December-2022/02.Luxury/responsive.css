@@ -1,14 +1,40 @@
 @media (width <= 600px) {
 
+    /* header */
+
     header .div-header {
         display: none;
     }
-
-    body {
-        display: none;
+    
+    header h3 {
+        font-size: 0.5em;
+    }
+    
+    header h1 {
+        font-size: 1.1em;
     }
 
-    body header .logo-center {
-        display: none;
+    header .button-header {
+        margin-top: 5em;
+        margin-bottom: 7.5em;
     }
+    
+    header .options {
+        flex-wrap: wrap;
+        padding-top: 0;
+    }
+    
+    header .options article {
+        flex: 1 1 100%;
+        text-align: center;
+        padding-bottom: 1.1em;
+    }
+
+    header .options article h4 {
+        font-size: 0.85em;
+    }
+
+    header .options article a {
+        display: none;
+    } 
 }
