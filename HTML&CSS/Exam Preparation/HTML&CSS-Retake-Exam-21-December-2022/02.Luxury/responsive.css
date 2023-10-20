@@ -79,4 +79,55 @@
     .blog article #about-blog p {
         font-size: 0.55em;
     }
+
+    /* magazine */
+
+    .magazine .magazine-title {
+        padding-left: 60px;
+        border-width: 2px;
+        border-bottom-style: ridge;
+    }
+
+    .magazine .magazine-title a {
+        display: none;
+    }
+
+    .magazine .magazine-title h4 {
+        font-size: 0.9em;
+    }
+
+    .magazine article {
+        flex-direction: column;
+        margin: 0 auto;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .magazine article #magazine-img {
+        border: 2px solid #A5A5A5;
+    }
+
+    .magazine article .magazine-info {
+        margin: 0;
+        text-align: center;
+    }
+
+    .magazine article .magazine-info h2 {
+        font-size: 1.2em;
+        padding-block: 0.7em;
+    }
+
+    .magazine article .magazine-info p {
+        padding-block: 2em;
+    }
+
+    .magazine article .magazine-info button {
+        margin-bottom: 4em;
+    }
+
+    .magazine article .magazine-info img {
+        width: 100%;
+        aspect-ratio: 21 / 7;
+        height: auto;
+    }
 }
