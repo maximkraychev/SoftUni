@@ -35,3 +35,85 @@
     color: var(--main-color);
     font-weight: 600;
 }
+
+/* SECTION => fees */
+
+.fees {
+    background-image: url(../images/calculator-icon.svg);
+    background-repeat: no-repeat;
+    background-color: var(--main-color);
+    background-size: 12%;
+    background-position-y: 50%;
+    background-position-x: -6%;
+    margin-bottom: 18em;
+}
+
+.fees .section-container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2em;
+}
+
+.fees .section-container h2 {
+    flex: 1 1 100%;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500;
+    position: relative;
+    top: 2.5em;
+}
+
+.fees .section-container article {
+    flex: 1 1 20%;
+    overflow: hidden;
+}
+
+.fees .section-container .card-fundamentals p,
+.fees .section-container .card-professional p {
+    margin-top: 1em;
+}
+
+.fees .section-container .card-fundamentals p + p,
+.fees .section-container .card-professional p + p {
+    margin-bottom: 2em;
+}
+
+.fees .section-container .card-basic .gradient-container {
+    background: var(--basic-card-gradient-color);
+}
+
+.fees .section-container .card-fundamentals .gradient-container {
+    background: var(--fundamentals-card-gradient-color);
+}
+
+.fees .section-container .card-professional .gradient-container {
+    background: var(--professional-card-gradient-color);
+}
+
+.fees .section-container .card-fundamentals .gradient-container > *,
+.fees .section-container .card-professional .gradient-container > * {
+    flex: 1 1 40%;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.fees .section-container .card-fundamentals .gradient-container .gradient-left::after,
+.fees .section-container .card-professional .gradient-container .gradient-left::after {
+    content: '';
+    width: 2px;
+    height: 80%;
+    background-color: #fff;
+    position: absolute;
+    top: 10%;
+    right: calc(50% - 1px);
+} 
+
+.fees .section-container .card-basic .gradient-container {
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    font-size: 1.2em;
+    justify-content: center;
+}

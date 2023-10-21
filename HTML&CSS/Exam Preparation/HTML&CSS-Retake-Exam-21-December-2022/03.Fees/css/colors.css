@@ -1,3 +1,7 @@
 :root {
     --main-color: #54546D;
+    --button-color: #9A5DC6;
+    --basic-card-gradient-color: linear-gradient(90deg, rgba(2,154,60,1) 0%, rgba(76,215,129,1) 100%);
+    --fundamentals-card-gradient-color: linear-gradient(90deg, rgba(76,108,136,1) 0%, rgba(98,154,207,1) 100%);
+    --professional-card-gradient-color: linear-gradient(90deg, rgba(74,55,165,1) 0%, rgba(141,126,226,1) 100%);
 }

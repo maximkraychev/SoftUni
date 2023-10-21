@@ -1,0 +1,53 @@
+.article-card {
+    background-color: #fff;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em 0.1em rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 9em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.article-card .content {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 90%;
+    align-items: center;
+    height: 70%;
+}
+
+.article-card h3 {
+    color: var(--main-color);
+    padding-top: 1em;
+}
+
+.article-card .content p {
+    color: var(--main-color);
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.article-card .button a {
+    background-color: var(--button-color);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    border-radius: 2em;
+    text-transform: uppercase;
+}
+
+.article-card .button {
+    padding-block: 3em;
+}
+
+.article-card .gradient-container {
+    display: flex;
+    flex: 1 1 100%;
+    position: relative;
+    height: 30%;
+}
+
+.article-card .gradient-container .price {
+    font-size: 1.6em;
+}
