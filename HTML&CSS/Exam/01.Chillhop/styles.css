@@ -1,0 +1,98 @@
+/* Reset */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles for component */
+
+.component * {
+    box-sizing: inherit;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.component {
+    box-sizing: border-box;
+    font-family: "Helvetica", sans-serif; /*Helvetica font is missing from google fonts, I hope it's come preinstalled with operating system */
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* Component styles */
+
+.component {
+    max-width: 850px;
+    margin: 5em auto;
+    display: flex;
+    background-color: #1881B6;
+    border: 3px solid #010507;
+    outline: 1px solid #6B6B6B;
+    border-radius: 0.7em;
+    overflow: hidden;
+    padding: 2.5em;
+    gap: 2em;
+}
+
+.component .content-container {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.component .img-container {
+    flex: 1 1 32%;
+}
+
+.component .img-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.component .content-container .bold {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-top: 1em;
+}
+
+.component .content-container h2 {
+    font-size: 2.5em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.component .content-container > p:last-of-type {
+    text-indent: 3em;
+}
+
+.component .content-container .links {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2em;
+    /* width: 80%;
+    align-self: center; */
+}
+
+.component .content-container .links a {
+    display: block;
+    border: 1px solid black;
+    text-decoration: none;
+    padding: 0.1em 1em;
+    border-radius: 0.5em;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.component .content-container .links .primary-btn a {
+    color: #fff;
+    background-color: #B6416D;
+}
+
+.component .content-container .links .secondary-btn a {
+    color: black;
+}
