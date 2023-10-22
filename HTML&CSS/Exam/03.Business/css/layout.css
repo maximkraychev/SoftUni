@@ -1,0 +1,194 @@
+.section-container {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.main-header .section-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2em;
+}
+
+.main-header .section-container .p-logo img {
+    width: 8em;
+    height: 100%;
+}
+
+.main-header .section-container .p-logo {
+    padding-block: 1em;
+}
+
+.main-header .section-container nav {
+    display: flex;
+    gap: 1em;
+}
+
+.main-header .section-container nav p a {
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* SECTION => banner */
+
+.banner .img-back-ground {
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner .section-container {
+    max-width: 1500px;
+    padding-bottom: 15em;
+    padding-top: 2em;
+}
+
+.banner .section-container h2 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.banner .section-container p {
+    color: #fff;
+    max-width: 50%;
+    font-size: 1.3em;
+    line-height: 1.7;
+}
+
+/* SECTION => objectives */
+
+.objectives {
+    background-color: #fff;
+}
+
+.objectives .section-container {
+    max-width: 1500px;
+    display: flex;
+    padding-top: 10em;
+    padding-bottom: 7em;
+    gap: 3em;
+}
+
+.objectives .section-container .summary h3 {
+    font-weight: 500;
+    padding-bottom: 0.5em;
+}
+
+.objectives .section-container .summary .text {
+    line-height: 1.5;
+    font-size: 1.2em;
+}
+
+.objectives .section-container .summary .button {
+    display: inline-block;
+    padding-top: 2.5em;
+}
+
+.objectives .section-container .summary .button a {
+    color: var(--element-color);
+    border: 2px solid var(--element-color);
+    padding: 0.7em 1.2em;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* SECTION => sponsors */
+
+.sponsors {
+    background-color: #fff;
+}
+
+.sponsors .section-container {
+    max-width: 1500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 2em;
+}
+
+.sponsors .section-container h3 {
+    color: var(--element-color);
+    font-weight: 500;
+}
+
+.sponsors .section-container > p {
+    text-align: center;
+    line-height: 2;
+    font-size: 1.2em;
+    padding-block: 1em;
+    color: #716567;
+}
+
+.sponsors .section-container .sponsors-logo {
+    padding-block: 0.5em;
+    display: flex;
+    gap: 6em;
+    max-width: 550px;
+    padding-block: 3em;
+}
+
+.sponsors .section-container .sponsors-logo p {
+ flex-grow: 1;
+ background-color: #DDDDDD;
+ border-radius: 50%;
+ overflow: hidden;
+ padding: 1.5em;
+}
+
+.sponsors .section-container .sponsors-logo img {
+    width: 150px;
+    aspect-ratio: 1 / 1;
+}
+
+/* FOOTER */
+
+.main-footer {
+    background-color: var(--footer-color);
+}
+
+.main-footer .section-container {
+    max-width: 1500px;
+}
+
+.main-footer .section-container h4 {
+    color: #fff;
+    font-weight: 500;
+}
+
+.main-footer .section-container p {
+    color: #B3A6A8;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.main-footer .section-container .main-footer-section {
+    display: flex;
+    gap: 2em;
+    padding-block: 3em;
+}
+
+.main-footer .section-container .main-footer-section article {
+    flex: 1 1 20%;
+    line-height: 3;
+}
+
+.main-footer .second-hr {
+    border-top: none;
+    opacity: 0.5;
+}
+
+.main-footer .section-container .copyright-section {
+    padding-block: 1em;
+}
+
+.main-footer .section-container .copyright-section p {
+    font-size: 0.8em;
+}
