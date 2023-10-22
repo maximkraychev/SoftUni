@@ -1,0 +1,128 @@
+@media (width <= 600px) {
+
+    .home-main {
+        padding-bottom: 50px;
+    }
+
+    /* home-navbar */
+
+    .home-container {
+        padding-top: 60px;
+    }
+
+    .home-container .home-navbar .home-header {
+        padding-bottom: 0;
+    }
+
+    .home-container .home-navbar .home-navbar1 {
+        display: none;
+    }
+
+    /* .section-container .column */
+
+    .home-main > .column {
+        padding-top: 0;
+    }
+
+    .home-main > .column .max-width-container {
+        padding-inline: 12px;
+    }
+
+    .home-main > .column .max-width-container .section-heading-section-heading {
+        margin-bottom: 24px;
+    }
+
+    .home-main > .column .max-width-container .section-heading-section-heading .section-heading-text {
+        font-size: 1.5em;
+        margin-bottom: 8px;
+    }
+
+    .home-main > .column .max-width-container .section-heading-section-heading .section-heading-text1 {
+        font-size: 1em;
+    }
+
+    .home-main > .column .max-width-container .home-cards-container {
+        gap: 10px;
+    }
+
+    .home-main > .column .max-width-container .home-cards-container .category-card-category-card {
+        flex: 0 1 48%;
+    }
+
+    .home-main > .column .max-width-container .home-cards-container .category-card-category-card .category-card-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .home-main > .column .max-width-container .home-cards-container .category-card-category-card .category-card-text {
+        font-size: 1em;
+    }
+
+    /* home-full-width-banner */
+
+    .home-full-width-banner {
+        flex-direction: column;
+        padding-top: 0;
+    }
+
+    .home-full-width-banner .home-image6 {
+        width: 100%;
+        height: auto;
+    }
+
+    .home-full-width-banner .home-left4 {
+        padding-block: 1.5em;
+    }
+
+    .home-full-width-banner .home-left4 .home-content {
+        width: 95%;
+        margin-bottom: 10px;
+    }
+
+    .home-full-width-banner .home-left4 .home-content .home-text29 {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+    }
+
+    .home-full-width-banner .home-left4 .home-content .home-text30 {
+        width: 95%;
+        font-size: 1em;
+        line-height: 1.5;
+    }
+
+    .home-full-width-banner .home-left4 .home-btn {
+        padding: 0.6em 1.2em;
+        border-inline: none;
+    }
+
+    /* home-container06 */
+
+    .home-container06 {
+        padding-inline: 15px;
+    }
+
+    /* last section */
+
+    .home-main > div:last-of-type .max-width-container {
+        padding-inline: 12px;
+    }
+
+    .home-main > div:last-of-type .max-width-container .home-container08 .blog-post-card-blog-post-card {
+        max-width: 100%;
+    }
+
+
+    /* home-footer */
+
+    .home-footer .home-footer1 {
+        flex-direction: column-reverse;
+        padding-block: 50px;
+        gap: 2em;
+    }
+
+    .home-footer .home-footer1 .home-links-container {
+        flex-direction: column;
+    }
+}
+
