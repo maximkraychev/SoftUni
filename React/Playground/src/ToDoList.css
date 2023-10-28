@@ -4,3 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+
+td {
+  border: 1px solid #fff;
+  padding: 10px;
+}
+
