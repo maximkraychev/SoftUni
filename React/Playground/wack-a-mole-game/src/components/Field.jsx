@@ -1,10 +1,11 @@
 import './Field.css';
 import hole from '../assets/hole.png';
+import mole from '../assets/mole.png';
 
-function Field() {
+function Field(params) {
     return (
         <div>
-            <img src={hole} alt="hole" />
+            <img src={params.state ? mole : hole} onClick={() => params.handler(params.state)} alt="field" />
         </div>
     );
 }
