@@ -1,2 +1,17 @@
+.board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-self: center;
+  line-height: 0;
+  cursor: crosshair;
+}
 
+h1,
+p {
+  text-align: center;
+}
+
+p {
+  font-size: 30px;
+}
 
