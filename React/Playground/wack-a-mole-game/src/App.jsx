@@ -8,32 +8,33 @@ function App() {
     const [fieldState, setState] = useState(initialArray);
 
     const [score, updateScore] = useState(0);
-
-    console.log('main');
+    const [index, setIndex] = useState(generatingRandomIndex());
 
     useEffect(() => {
-
-        const index = generatingRandomIndex();
-        const newArray = [...fieldState];
-
-        const showMole = setTimeout(() => {
+        
+        const showMole = setInterval(() => {
+            const newArray = [...fieldState];
             newArray[index] = true;
-            console.log('show');
+            console.log('show', fieldState);
             setState(newArray);
         }, 1000);
 
+        return () => clearInterval(showMole);
+    }, []);
+
+
+    useEffect(() => {
         const hideMole = setTimeout(() => {
-            newArray[index] = false;
-            console.log('hide');
-            setState(newArray);
-        }, 1000);
+            const reset = [...fieldState].map(() => false);
+            setState(reset);
+            setIndex(() => generatingRandomIndex());
+            console.log('hide', fieldState);
+        }, 500);
 
-        return () => {
-            clearTimeout(showMole);
-            clearTimeout(hideMole);
-        };
+        return () => clearTimeout(hideMole);
 
     }, [fieldState]);
+
 
     function generatingRandomIndex() {
         return Math.floor(Math.random() * 9);   // Generating indexes from 0 to 8
