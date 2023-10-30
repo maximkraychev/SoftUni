@@ -1,38 +1,29 @@
-import { useState, useEffect  } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Field from './components/Field';
 
 function App() {
 
-    const initialArray = new Array(9).fill(false, 0, 9);
+    const initialArray = new Array(9).fill(false);
     const [fieldState, setState] = useState(initialArray);
 
     const [score, updateScore] = useState(0);
-    const [index, setIndex] = useState(generatingRandomIndex());
 
     useEffect(() => {
-        
         const showMole = setInterval(() => {
             const newArray = [...fieldState];
+            const index = generatingRandomIndex();
             newArray[index] = true;
-            console.log('show', fieldState);
             setState(newArray);
-        }, 1000);
+
+            setTimeout(() => {
+                const reset = [...fieldState].map(() => false);
+                setState(reset);
+            }, 700);
+
+        }, 1500);
 
         return () => clearInterval(showMole);
-    }, []);
-
-
-    useEffect(() => {
-        const hideMole = setTimeout(() => {
-            const reset = [...fieldState].map(() => false);
-            setState(reset);
-            setIndex(() => generatingRandomIndex());
-            console.log('hide', fieldState);
-        }, 500);
-
-        return () => clearTimeout(hideMole);
-
     }, [fieldState]);
 
 
@@ -41,8 +32,9 @@ function App() {
     }
 
     function scoreHandler(currentFieldState) {
-        if(currentFieldState == true) {
+        if (currentFieldState == true) {
             updateScore(score + 1);
+            setState(fields => fields.map(() => false));
         }
     }
 
