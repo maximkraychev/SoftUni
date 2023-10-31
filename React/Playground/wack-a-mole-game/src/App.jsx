@@ -4,37 +4,41 @@ import Field from './components/Field';
 
 function App() {
 
-    const initialArray = new Array(9).fill(false);
-    const [fieldState, setState] = useState(initialArray);
-
+    const initialField = new Array(9).fill(false);
+    const [field, setField] = useState(initialField);
     const [score, updateScore] = useState(0);
 
     useEffect(() => {
-        const showMole = setInterval(() => {
-            const newArray = [...fieldState];
-            const index = generatingRandomIndex();
-            newArray[index] = true;
-            setState(newArray);
-
+        const interval = setInterval(() => {
+            showMole();
             setTimeout(() => {
-                const reset = [...fieldState].map(() => false);
-                setState(reset);
+                hideMole();
             }, 700);
-
         }, 1500);
 
-        return () => clearInterval(showMole);
-    }, [fieldState]);
+        return () => clearInterval(interval);
+    }, [field]);
 
+    function showMole() {
+        const newField = [...field];
+        const index = generatingRandomIndex();
+        newField[index] = true;
+        setField(newField);
+    }
+
+    function hideMole() {
+        const newField = [...field].map(() => false);
+        setField(newField);
+    }
 
     function generatingRandomIndex() {
-        return Math.floor(Math.random() * 9);   // Generating indexes from 0 to 8
+        return Math.floor(Math.random() * field.length);   // Generating indexes from 0 to 8
     }
 
     function scoreHandler(currentFieldState) {
         if (currentFieldState == true) {
-            updateScore(score + 1);
-            setState(fields => fields.map(() => false));
+            updateScore((score) => score + 1);
+            hideMole();
         }
     }
 
@@ -43,7 +47,7 @@ function App() {
             <h1>Score</h1>
             <p>{score}</p>
             <div className='board'>
-                {fieldState.map((x, index) => <Field key={index} state={x} handler={scoreHandler} />)}
+                {field.map((x, index) => <Field key={index} state={x} handler={scoreHandler} />)}
             </div>
         </div>
     );
