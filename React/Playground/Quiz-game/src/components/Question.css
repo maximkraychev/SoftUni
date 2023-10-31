@@ -1,0 +1,28 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 20px;
+    padding-left: 15px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p {
+    text-align: center;
+}
+
+span {
+    background-color: #393838;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+input[type='submit'] {
+    padding-block: 10px;
+}
