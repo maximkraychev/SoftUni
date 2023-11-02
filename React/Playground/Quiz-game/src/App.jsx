@@ -1,56 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import StartButton from './components/StartButton';
 import Question from './components/Question';
 import Result from './components/Result';
-
-const mockData = [
-    {
-        id: 1,
-        question: 'What does the "DOM" stand for in JavaScript?',
-        a: 'Document Object Model',
-        b: 'Data Output Module',
-        c: 'Digital Object Manipulation',
-        d: 'Document Orientation Model',
-        answer: 'Document Object Model',
-    },
-    {
-        id: 2,
-        question: 'What is the purpose of the addEventListener method in JavaScript?',
-        a: 'To subtract two numbers',
-        b: 'To handle mouse clicks and other events',
-        c: 'To create a new element in the DOM',
-        d: 'To define a function',
-        answer: 'To handle mouse clicks and other events',
-    },
-    {
-        id: 3,
-        question: 'How do you comment out multiple lines in JavaScript?',
-        a: '// Comment //',
-        b: '/* Comment */',
-        c: '# Comment #',
-        d: '-- Comment --',
-        answer: '/* Comment */',
-    },
-    {
-        id: 4,
-        question: 'What is the result of 3 + \'3\' in JavaScript?',
-        a: '6',
-        b: '\'33\'',
-        c: '33',
-        d: '\'6\'',
-        answer: '\'33\'',
-    },
-    {
-        id: 5,
-        question: 'In JavaScript, what does the === operator check for?',
-        a: 'Equality with type coercion',
-        b: 'Equality without type coercion',
-        c: 'Assignment',
-        d: 'Greater than or equal to',
-        answer: 'Equality without type coercion',
-    },
-];
 
 const PROGRESS_STATE = {
     START: 'start',
@@ -62,6 +14,7 @@ function App() {
 
     const [quizState, setQuizState] = useState(PROGRESS_STATE.START);
     const [userAnswers, setUserAnswers] = useState([]);
+    const [mockData, setMockData] = useState([]);
 
 
     function startQuiz() {
@@ -73,10 +26,10 @@ function App() {
     }
 
     function saveUserAnswer(userAnswer) {
-     
+
         setUserAnswers((x) => {
             const currentUserAnswers = [...x, userAnswer];
-            console.log(currentUserAnswers);
+            
             if (currentUserAnswers.length == mockData.length) {
                 finishQuiz(currentUserAnswers);
             }
@@ -84,6 +37,13 @@ function App() {
             return currentUserAnswers;
         });
     }
+
+    useEffect(() => {
+        fetch('./src/mockData.json')
+            .then(request => request.json())
+            .then(data => setMockData(data))
+            .catch(err => console.log(err));
+    }, []);
 
     return (
         <>

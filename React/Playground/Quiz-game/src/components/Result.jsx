@@ -14,8 +14,6 @@ export default function Result({ userAnswers, answers }) {
 
     useEffect(() => {
         let correctAnswers = 0;
-        console.log(userAnswers);
-        console.log(answers);
         answers.forEach((x, index) => {
             if (x == userAnswers[index]) {
                 correctAnswers++;
