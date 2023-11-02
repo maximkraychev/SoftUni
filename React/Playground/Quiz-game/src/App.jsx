@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import StartButton from './components/StartButton';
 import Question from './components/Question';
+import Result from './components/Result';
 
 const mockData = [
     {
@@ -29,7 +30,7 @@ const mockData = [
         b: '/* Comment */',
         c: '# Comment #',
         d: '-- Comment --',
-        correctAnswer: '/* Comment */',
+        answer: '/* Comment */',
     },
     {
         id: 4,
@@ -67,23 +68,22 @@ function App() {
         setQuizState(PROGRESS_STATE.IN_PROGRESS);
     }
 
-    // function finishQuiz() {
-    //     setState(PROGRESS_STATE.FINISH);
-    // }
-
-    function formHandler(event, selectedValue) {
-        event.preventDefault();
-
-        if (selectedValue == null) {
-            return;
-        }
-
-        setUserAnswers((x) => [...x, selectedValue]);
+    function finishQuiz() {
+        setQuizState(PROGRESS_STATE.FINISH);
     }
 
-    useEffect(() => {
+    function saveUserAnswer(userAnswer) {
+     
+        setUserAnswers((x) => {
+            const currentUserAnswers = [...x, userAnswer];
+            console.log(currentUserAnswers);
+            if (currentUserAnswers.length == mockData.length) {
+                finishQuiz(currentUserAnswers);
+            }
 
-    }, [userAnswers]);
+            return currentUserAnswers;
+        });
+    }
 
     return (
         <>
@@ -92,11 +92,13 @@ function App() {
             {quizState == PROGRESS_STATE.IN_PROGRESS
                 ? <Question
                     question={mockData[userAnswers.length]}
-                    handler={formHandler}
+                    userAnswerHandler={saveUserAnswer}
                     currentQuestion={userAnswers.length + 1}
                     questionNumber={mockData.length}
                 />
                 : null}
+
+            {quizState == PROGRESS_STATE.FINISH ? <Result userAnswers={userAnswers} answers={mockData.map(x => x.answer)} /> : null}
         </>
     );
 }
