@@ -14,7 +14,7 @@ function App() {
 
     const [quizState, setQuizState] = useState(PROGRESS_STATE.START);
     const [userAnswers, setUserAnswers] = useState([]);
-    const [mockData, setMockData] = useState([]);
+    const [questions, setQuestions] = useState([]);
 
 
     function startQuiz() {
@@ -30,7 +30,7 @@ function App() {
         setUserAnswers((x) => {
             const currentUserAnswers = [...x, userAnswer];
             
-            if (currentUserAnswers.length == mockData.length) {
+            if (currentUserAnswers.length == questions.length) {
                 finishQuiz(currentUserAnswers);
             }
 
@@ -41,7 +41,7 @@ function App() {
     useEffect(() => {
         fetch('./src/mockData.json')
             .then(request => request.json())
-            .then(data => setMockData(data))
+            .then(data => setQuestions(data))
             .catch(err => console.log(err));
     }, []);
 
@@ -51,14 +51,14 @@ function App() {
 
             {quizState == PROGRESS_STATE.IN_PROGRESS
                 ? <Question
-                    question={mockData[userAnswers.length]}
-                    userAnswerHandler={saveUserAnswer}
-                    currentQuestion={userAnswers.length + 1}
-                    questionNumber={mockData.length}
+                    currentQuestion={questions[userAnswers.length]}
+                    saveUserAnswer={saveUserAnswer}
+                    currentQuestionNumber={userAnswers.length + 1}
+                    numbersOfQuestions={questions.length}
                 />
                 : null}
 
-            {quizState == PROGRESS_STATE.FINISH ? <Result userAnswers={userAnswers} answers={mockData.map(x => x.answer)} /> : null}
+            {quizState == PROGRESS_STATE.FINISH ? <Result userAnswers={userAnswers} answers={questions.map(x => x.answer)} /> : null}
         </>
     );
 }
