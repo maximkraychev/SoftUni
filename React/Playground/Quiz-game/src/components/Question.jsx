@@ -24,7 +24,8 @@ export default function Question({ question, userAnswerHandler, currentQuestion,
         setSelectedOption(selectEvent.target.name);
     }
 
-    function resetSelectedOption() {
+    function resetSelectedOption(e) {
+        e.preventDefault();
         setUserAnswer(tempAnswer);
         setSelectedOption(null);
     }
@@ -49,7 +50,7 @@ export default function Question({ question, userAnswerHandler, currentQuestion,
             </p>
             <h2>{question?.question}</h2>
 
-            <form onSubmit={(event) => event.preventDefault()}>
+            <form onSubmit={resetSelectedOption}>
                 <div>
                     <input type="radio" id='a' name='option1' value={question?.a} onChange={onSelect} checked={selectedOption === 'option1'} />
                     <label htmlFor="a">{question?.a}</label>
@@ -66,7 +67,7 @@ export default function Question({ question, userAnswerHandler, currentQuestion,
                     <input type="radio" id='d' name='option4' value={question?.d} onChange={onSelect} checked={selectedOption === 'option4'} />
                     <label htmlFor="d">{question?.d}</label>
                 </div>
-                <input type="submit" value={currentQuestion == questionNumber ? 'Quiz results' : 'Next'} onClick={resetSelectedOption} />
+                <input type="submit" value={currentQuestion == questionNumber ? 'Quiz results' : 'Next'} />
             </form>
         </>
     );
