@@ -13,14 +13,8 @@ export default function Result({ userAnswers, answers }) {
     const [correctAnswerNumber, setCorrectAnswerNumber] = useState(null);
 
     useEffect(() => {
-        let correctAnswers = 0;
-        answers.forEach((x, index) => {
-            if (x == userAnswers[index]) {
-                correctAnswers++;
-            }
-        });
-
-        setCorrectAnswerNumber(correctAnswers);
+        const correctAnswers = answers.filter((x, index) => x == userAnswers[index]);
+        setCorrectAnswerNumber(correctAnswers.length);
     }, []);
 
     return (
