@@ -2,46 +2,31 @@
     {
         "id": 1,
         "question": "What does the \"DOM\" stand for in JavaScript?",
-        "a": "Document Object Model",
-        "b": "Data Output Module",
-        "c": "Digital Object Manipulation",
-        "d": "Document Orientation Model",
+        "options": ["Document Object Model", "Data Output Module", "Digital Object Manipulation", "Document Orientation Model"],
         "answer": "Document Object Model"
     },
     {
         "id": 2,
         "question": "What is the purpose of the addEventListener method in JavaScript?",
-        "a": "To subtract two numbers",
-        "b": "To handle mouse clicks and other events",
-        "c": "To create a new element in the DOM",
-        "d": "To define a function",
+        "options": ["To subtract two numbers", "To handle mouse clicks and other events", "To create a new element in the DOM", "To define a function"],
         "answer": "To handle mouse clicks and other events"
     },
     {
         "id": 3,
         "question": "How do you comment out multiple lines in JavaScript?",
-        "a": "// Comment //",
-        "b": "/* Comment */",
-        "c": "# Comment #",
-        "d": "-- Comment --",
+        "options": ["// Comment //", "/* Comment */", "# Comment #", "-- Comment --"],
         "answer": "/* Comment */"
     },
     {
         "id": 4,
         "question": "What is the result of 3 + '3' in JavaScript?",
-        "a": "6",
-        "b": "'33'",
-        "c": "33",
-        "d": "'6'",
+        "options": ["6", "'33'", "33", "'6'"],
         "answer": "'33'"
     },
     {
         "id": 5,
         "question": "In JavaScript, what does the === operator check for?",
-        "a": "Equality with type coercion",
-        "b": "Equality without type coercion",
-        "c": "Assignment",
-        "d": "Greater than or equal to",
+        "options": ["Equality with type coercion", "Equality without type coercion", "Assignment", "Greater than or equal to"],
         "answer": "Equality without type coercion"
     }
 ]
