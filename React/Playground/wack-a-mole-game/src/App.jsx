@@ -7,13 +7,18 @@ function App() {
     const initialField = new Array(9).fill(false);
     const [field, setField] = useState(initialField);
     const [score, updateScore] = useState(0);
+    const [timeoutRef, setTimeoutRef] = useState(null);
 
     useEffect(() => {
         const interval = setInterval(() => {
             showMole();
-            setTimeout(() => {
-                hideMole();
-            }, 700);
+
+            setTimeoutRef(                              // Get timeout ref and stop that timeout when user click on the mole
+                setTimeout(() => {                      // That way we ensure the hideMole function doesn't be called twice
+                    hideMole();
+                    setTimeoutRef(null);
+                }, 700)
+            );
         }, 1500);
 
         return () => clearInterval(interval);
@@ -27,12 +32,15 @@ function App() {
     }
 
     function hideMole() {
+        if (timeoutRef) {
+            clearTimeout(timeoutRef);
+        }
         const newField = [...field].map(() => false);
         setField(newField);
     }
 
     function generatingRandomIndex() {
-        return Math.floor(Math.random() * field.length);   // Generating indexes from 0 to 8
+        return Math.floor(Math.random() * field.length);   // Generating indexes from 0 to field length
     }
 
     function scoreHandler(currentFieldState) {
