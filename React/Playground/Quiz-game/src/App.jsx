@@ -47,7 +47,7 @@ function App() {
 
     return (
         <>
-            {quizState == PROGRESS_STATE.START ? <StartButton handler={startQuiz} /> : null}
+            {quizState == PROGRESS_STATE.START ? <StartButton startQuiz={startQuiz} /> : null}
 
             {quizState == PROGRESS_STATE.IN_PROGRESS
                 ? <Question
