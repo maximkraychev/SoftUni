@@ -380,3 +380,21 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Java
+*.class
+*.war
+*.ear
+*.jar
+
+# Compiled Java
+target/
+bin/
+out/
+
+# IDE specific files
+.idea/
+*.iml
+
+# Dependency directories
+node_modules/
