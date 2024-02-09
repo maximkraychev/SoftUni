@@ -389,12 +389,7 @@ bin/
 
 # Compiled Java
 target/
-bin/
-out/
 
 # IDE specific files
 .idea/
 *.iml
-
-# Dependency directories
-node_modules/
